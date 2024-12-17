@@ -34,6 +34,7 @@ public class StepsUI : MonoBehaviour
         public bool isCheck = false;
         public string text = string.Empty;
         public List<SubStepsData> subSteps = new List<SubStepsData>();
+        public void checkStep() { isCheck = true; }
     }
 
     [Serializable]
@@ -41,6 +42,7 @@ public class StepsUI : MonoBehaviour
     {
         public bool isCheck = false;
         public string text = string.Empty;
+        public void checkSubStep() { isCheck = true; }
 
     }
 
@@ -74,28 +76,31 @@ public class StepsUI : MonoBehaviour
         foreach (StepsData step in data)
         {
             
+                string hexCode ;
             if (text != null) {
-                text.text = $"{text.text}{(step.isCheck ? "[X]" : "[]")} {step.text} {"\n"}";
                 if (step.isCheck) {
-                    text.color = Color.gray;
+                    hexCode = "#808080";
                 } else {
-                    text.color = Color.white;
+                    hexCode = "#FFFFFF";
+
                 }
+                text.text = $"<color={hexCode}>{text.text}{(step.isCheck ? "[X]" : "[]")} {step.text} </color>\n";
             }
 
             foreach (SubStepsData subStep in step.subSteps ) {
 
                 if (text != null)
                 {
-                    text.text = $"{text.text} {"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text} {"\n"}";
                     if (subStep.isCheck)
                     {
-                        text.color = Color.gray;
+                        hexCode = "#808080";
                     }
                     else
                     {
-                        text.color = Color.white;
+                        hexCode = "#FFFFFF";
+
                     }
+                    text.text = $"<color={hexCode}>{text.text} {"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}</color>\n"; 
                 }
             }
         }
