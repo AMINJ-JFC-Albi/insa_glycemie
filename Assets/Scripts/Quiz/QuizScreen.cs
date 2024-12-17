@@ -7,10 +7,10 @@ public class QuizScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI question;
     [SerializeField] private List<TextMeshProUGUI> answers;
-
     private string titleText;
     private string questionText;
     private List<string> answersText;
+
 
     private void Awake()
     {
