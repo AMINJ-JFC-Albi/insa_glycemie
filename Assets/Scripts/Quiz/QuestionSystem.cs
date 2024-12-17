@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System;
+
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -29,26 +31,40 @@ public class QuestionSystemEditor : Editor
 
 public class QuestionSystem : MonoBehaviour
 {
+    [Serializable]
+    public class Question
+    {
+        [Serializable]
+        public enum GoodAnswer
+        {
+            A, B, C
+        }
+        [SerializeField] public string question;
+        [SerializeField] public string answerA;
+        [SerializeField] public string answerB;
+        [SerializeField] public string answerC;
+        [SerializeField] public GoodAnswer goodAnswer;
+    }
+
     [Header("Question")]
     [SerializeField] private TextMeshProUGUI questTMP;
-    [SerializeField] private List<string> questions;
     
-    [Header("Answers A")]
+    [Header("Answer A")]
     [SerializeField] private TextMeshProUGUI answATMP;
-    [SerializeField] private List<string> answersA;
-    [Header("Answers B")]
+    [Header("Answer B")]
     [SerializeField] private TextMeshProUGUI answBTMP;
-    [SerializeField] private List<string> answersB;
-    [Header("Answers C")]
+    [Header("Answer C")]
     [SerializeField] private TextMeshProUGUI answCTMP;
-    [SerializeField] private List<string> answersC;
-    
+
+    [Header("Datas")]
+    [SerializeField] private List<Question> datas;
+
     private int progressionStep = 0;
 
     void Start()
     {
         if (questTMP == null) throw new System.Exception("TextMeshProUGUI questTMP null !");
-        if (questions.Count == 0) throw new System.Exception("List<string> question is empty !");
+        if (datas.Count == 0) throw new System.Exception("List<Question> datas is empty !");
         ShowQuestion();
     }
 
@@ -60,12 +76,12 @@ public class QuestionSystem : MonoBehaviour
     public void IncrementStep()
     {
         progressionStep++;
-        if (progressionStep >= questions.Count) progressionStep = questions.Count;
+        if (progressionStep >= datas.Count) progressionStep = datas.Count;
     }
 
     public void ShowQuestion()
     {
-        if (progressionStep >= questions.Count)
+        if (progressionStep >= datas.Count)
         {
             questTMP.text = "";
             answATMP.text = "";
@@ -74,10 +90,10 @@ public class QuestionSystem : MonoBehaviour
         }
         else
         {
-            questTMP.text = questions[progressionStep];
-            answATMP.text = answersA[progressionStep];
-            answBTMP.text = answersB[progressionStep];
-            answCTMP.text = answersC[progressionStep];
+            questTMP.text = datas[progressionStep].question;
+            answATMP.text = datas[progressionStep].answerA;
+            answBTMP.text = datas[progressionStep].answerB;
+            answCTMP.text = datas[progressionStep].answerC;
         }
     }
 

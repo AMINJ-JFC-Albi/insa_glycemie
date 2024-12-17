@@ -37054,21 +37054,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questTMP: {fileID: 1160389915}
-  questions:
-  - "Ici se touve l'intitul\xE9 des questions"
-  - "Qu'est ce qui influence le taux de glyc\xE9mie ?"
   answATMP: {fileID: 702334788}
-  answersA:
-  - "R\xE9ponse A"
-  - "Parac\xE9tamol"
   answBTMP: {fileID: 1390289019}
-  answersB:
-  - "R\xE9ponse B"
-  - Amidon
   answCTMP: {fileID: 2097791901}
-  answersC:
-  - "R\xE9ponse C"
-  - Glucose
+  datas:
+  - question: "Ici se touve l'intitul\xE9 des questions"
+    answerA: "R\xE9ponse A"
+    answerB: "R\xE9ponse B"
+    answerC: "R\xE9ponse C"
+    goodAnswer: 0
+  - question: "Qu'est ce qui influence le taux de glyc\xE9mie ?"
+    answerA: "Parac\xE9tamol"
+    answerB: Amidon
+    answerC: Glucose
+    goodAnswer: 2
 --- !u!1001 &1160719525
 PrefabInstance:
   m_ObjectHideFlags: 0
