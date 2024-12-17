@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using System.Diagnostics.CodeAnalysis;
+
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -50,6 +52,25 @@ public class FadeTeleportEditor : Editor
                 EditorGUILayout.HelpBox("Veuillez assigner un Transform au champ 'Player' pour tester.", MessageType.Warning);
             }
         }
+
+        if (GUILayout.Button("Test Fade"))
+        {
+            if (testPlayer != null)
+            {
+                FadeTeleport fadeTeleportScript = (FadeTeleport)target;
+
+                fadeTeleportScript.StartTeleportSequence(testPlayer, testFadeDuration, () =>
+                {
+                    Debug.Log("Custom function executed during teleportation!");
+                });
+
+                Debug.Log("Fade sequence initiated.");
+            }
+            else
+            {
+                EditorGUILayout.HelpBox("Veuillez assigner un Transform au champ 'Player' pour tester.", MessageType.Warning);
+            }
+        }
     }
 }
 #endif
@@ -63,12 +84,17 @@ public class FadeTeleport : MonoBehaviour
     private Material fadeMaterial;
     private GameObject fadeQuadInstance;
 
+    public void StartTeleportSequence(Transform player, float fadeDuration, Action customAction = null)
+    {
+        StartCoroutine(FadeAndTeleport(player, player.localPosition, player.localRotation, fadeDuration, customAction));
+    }
+
     public void StartTeleportSequence(Transform player, Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration, Action customAction = null)
     {
         StartCoroutine(FadeAndTeleport(player, teleportPosition, teleportRotation, fadeDuration, customAction));
     }
 
-    private IEnumerator FadeAndTeleport(Transform player, Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration, Action customAction)
+    private IEnumerator FadeAndTeleport(Transform player, [AllowNull] Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration, Action customAction)
     {
         SetupFadeQuad(player);
 
