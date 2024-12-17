@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -37,7 +38,10 @@ public class FadeTeleportEditor : Editor
             {
                 FadeTeleport fadeTeleportScript = (FadeTeleport)target;
 
-                fadeTeleportScript.StartTeleportSequence(testPlayer, testTeleportPosition, testTeleportRotation, testFadeDuration);
+                fadeTeleportScript.StartTeleportSequence(testPlayer, testTeleportPosition, testTeleportRotation, testFadeDuration, () =>
+                {
+                    Debug.Log("Custom function executed during teleportation!");
+                });
 
                 Debug.Log("Fade and Teleport sequence initiated.");
             }
@@ -59,12 +63,12 @@ public class FadeTeleport : MonoBehaviour
     private Material fadeMaterial;
     private GameObject fadeQuadInstance;
 
-    public void StartTeleportSequence(Transform player, Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration)
+    public void StartTeleportSequence(Transform player, Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration, Action customAction = null)
     {
-        StartCoroutine(FadeAndTeleport(player, teleportPosition, teleportRotation, fadeDuration));
+        StartCoroutine(FadeAndTeleport(player, teleportPosition, teleportRotation, fadeDuration, customAction));
     }
 
-    private IEnumerator FadeAndTeleport(Transform player, Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration)
+    private IEnumerator FadeAndTeleport(Transform player, Vector3 teleportPosition, Quaternion teleportRotation, float fadeDuration, Action customAction)
     {
         SetupFadeQuad(player);
 
@@ -74,14 +78,17 @@ public class FadeTeleport : MonoBehaviour
         // 2. Attendre 0.5 seconde
         yield return new WaitForSeconds(0.5f);
 
-        // 3. Téléportation du joueur
+        // 3. Exécuter l'action personnalisée (si spécifiée)
+        customAction?.Invoke();
+
+        // 4. Téléportation du joueur
         player.position = teleportPosition;
         player.rotation = teleportRotation;
 
-        // 4. Attendre 0.5 seconde
+        // 5. Attendre 0.5 seconde
         yield return new WaitForSeconds(0.5f);
 
-        // 5. Fondu au noir inversé
+        // 6. Fondu au noir inversé
         yield return StartCoroutine(FadeFromBlack(fadeDuration));
     }
 
