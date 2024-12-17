@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &1160110 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5836826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16582,6 +16587,122 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8176325188201194163, guid: 0c2387832aee4d14c9095f0f05aebe31, type: 3}
   m_PrefabInstance: {fileID: 544365152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &550310963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1546274491}
+    m_Modifications:
+    - target: {fileID: 454066073181672184, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Name
+      value: Quiz
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.928
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.839
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075285724211390912, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_text
+      value: "Intitul\xE9 de la question"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5867153398885136176, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1160389918}
+  m_SourcePrefab: {fileID: 100100000, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
 --- !u!1001 &551679350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22552,6 +22673,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1657325121553188381, guid: 092a4707f8b589a439a015aeb164de54, type: 3}
   m_PrefabInstance: {fileID: 702155407}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &702334788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 46646552184343752, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &702854106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36893,6 +37025,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8122536342666285899, guid: 405500ba6852da942957eec1e3d7c92b, type: 3}
   m_PrefabInstance: {fileID: 1118932242}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1160389913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5867153398885136176, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1160389915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8075285724211390912, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160389913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1160389918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160389913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6beaf7c2e81cc34588d477a07dd1607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTMP: {fileID: 1160389915}
+  questions:
+  - "Ici se touve l'intitul\xE9 des questions"
+  - "Qu'est ce qui influence le taux de glyc\xE9mie ?"
+  answATMP: {fileID: 702334788}
+  answersA:
+  - "R\xE9ponse A"
+  - "Parac\xE9tamol"
+  answBTMP: {fileID: 1390289019}
+  answersB:
+  - "R\xE9ponse B"
+  - Amidon
+  answCTMP: {fileID: 2097791901}
+  answersC:
+  - "R\xE9ponse C"
+  - Glucose
 --- !u!1001 &1160719525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44812,6 +44988,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8433186268357637103, guid: 3a504b825a3083b47815316c8971dc19, type: 3}
   m_PrefabInstance: {fileID: 1390227737}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1390289019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 508602230593812569, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1390302424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49483,6 +49670,7 @@ Transform:
   - {fileID: 47075206}
   - {fileID: 615839313}
   - {fileID: 1838878190}
+  - {fileID: 1160110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1546775719
@@ -59323,7 +59511,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1874794013
 RectTransform:
@@ -66530,6 +66718,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3419437074853055413, guid: 2f88dba5f4b2e15449fc2288dd773e59, type: 3}
   m_PrefabInstance: {fileID: 2096478057}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097791901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6569291382405505473, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2098428828
 PrefabInstance:
   m_ObjectHideFlags: 0
