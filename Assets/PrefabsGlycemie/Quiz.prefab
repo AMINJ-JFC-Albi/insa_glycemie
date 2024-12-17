@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 3522943779103432577}
   - component: {fileID: 1619326551960079011}
   - component: {fileID: 8075285724211390912}
+  - component: {fileID: 2152139083689916221}
   m_Layer: 5
   m_Name: Question
   m_TagString: Untagged
@@ -893,6 +894,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2152139083689916221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867153398885136176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6beaf7c2e81cc34588d477a07dd1607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTMP: {fileID: 8075285724211390912}
+  answATMP: {fileID: 46646552184343752}
+  answBTMP: {fileID: 508602230593812569}
+  answCTMP: {fileID: 6569291382405505473}
+  datas:
+  - question: "Ici se touve l'intitul\xE9 des questions"
+    answerA: "R\xE9ponse A"
+    answerB: "R\xE9ponse B"
+    answerC: "R\xE9ponse C"
+    goodAnswer: 0
+  - question: "Qu'est ce qui influence le taux de glyc\xE9mie ?"
+    answerA: "Parac\xE9tamol"
+    answerB: Amidon
+    answerC: Glucose
+    goodAnswer: 2
 --- !u!1 &6596840709138002660
 GameObject:
   m_ObjectHideFlags: 0
