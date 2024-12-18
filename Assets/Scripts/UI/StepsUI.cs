@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 using TMPro;
 
 
@@ -34,7 +33,22 @@ public class StepsUI : MonoBehaviour
         public bool isCheck = false;
         public string text = string.Empty;
         public List<SubStepsData> subSteps = new List<SubStepsData>();
-        public void checkStep() { isCheck = true; }
+        public void checkStep() { 
+            isCheck = true;
+        }
+        public bool isAllStepsChecked()
+        {
+            bool isAllSubStepsChecked = true;
+
+            foreach (SubStepsData subStep in subSteps)
+            {
+                if (!subStep.isCheck)
+                {
+                    isAllSubStepsChecked = false;
+                }
+            }     
+            return isCheck && isAllSubStepsChecked;
+        }
     }
 
     [Serializable]
@@ -42,13 +56,14 @@ public class StepsUI : MonoBehaviour
     {
         public bool isCheck = false;
         public string text = string.Empty;
-        public void checkSubStep() { isCheck = true; }
+        public void checkSubStep() { 
+            isCheck = true;
+        }
 
     }
 
     [SerializeField] private List<StepsData> data;
-    [SerializeField] private TMP_Text text;
-    
+    [SerializeField] private TMP_Text text;    
     private void Awake()
     {
         if (data == null || data.Count == 0 )
@@ -60,7 +75,6 @@ public class StepsUI : MonoBehaviour
             UpdateUI();
         }
     }
-
     public void ShowDebug()
     {
         data.ForEach(step =>
@@ -68,65 +82,21 @@ public class StepsUI : MonoBehaviour
             Debug.Log($"[{(step.isCheck ? "X" : " ")}] {step.text}");
         });
     }
-
-    //public void oldUpdateUI()
-    //{
-
-    //    text.text = "";
-    //    foreach (StepsData step in data)
-    //    {
-
-    //        string hexCode;
-    //        if (text != null)
-    //        {
-    //            if (step.isCheck)
-    //            {
-    //                hexCode = "#808080";
-    //            }
-    //            else
-    //            {
-    //                hexCode = "#FFFFFF";
-
-    //            }
-    //            text.text = $"<color={hexCode}>{text.text}{(step.isCheck ? "[X]" : "[]")} {step.text} </color>\n";
-    //        }
-
-    //        foreach (SubStepsData subStep in step.subSteps)
-    //        {
-
-    //            if (text != null)
-    //            {
-    //                if (subStep.isCheck)
-    //                {
-    //                    hexCode = "#808080";
-    //                }
-    //                else
-    //                {
-    //                    hexCode = "#FFFFFF";
-
-    //                }
-    //                text.text = $"<color={hexCode}>{text.text} {"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}</color>\n";
-    //            }
-    //        }
-    //    }
-
-    //}
-
     public void UpdateUI()
     {
         GameObject content = GameObject.Find("Content");
 
         foreach (StepsData step in data)
         {
-                TMP_Text texte = Instantiate(text, content.transform);
-                texte.text = $"{(step.isCheck ? "[X]" : "[]")} {step.text}";
-                texte.color = (step.isCheck) ? Color.gray : Color.white ;
+            TMP_Text newStepText = Instantiate(text, content.transform);
+            newStepText.text = $"{(step.isCheck ? "[X]" : "[]")} {step.text}";
+            newStepText.color = (step.isCheck) ? Color.gray : Color.white ;
 
             foreach (SubStepsData subStep in step.subSteps)
             {
-                    TMP_Text texte2 = Instantiate(text, content.transform);
-                    texte2.text = $"{"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}";
-                    texte2.color = (step.isCheck) ? Color.gray : Color.white;
+                TMP_Text newSubStepText = Instantiate(text, content.transform);
+                newSubStepText.text = $"{"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}";
+                newSubStepText.color = (step.isCheck) ? Color.gray : Color.white;
             }
         }
 
