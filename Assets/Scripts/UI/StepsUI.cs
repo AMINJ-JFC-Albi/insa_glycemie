@@ -69,39 +69,64 @@ public class StepsUI : MonoBehaviour
         });
     }
 
+    //public void oldUpdateUI()
+    //{
+
+    //    text.text = "";
+    //    foreach (StepsData step in data)
+    //    {
+
+    //        string hexCode;
+    //        if (text != null)
+    //        {
+    //            if (step.isCheck)
+    //            {
+    //                hexCode = "#808080";
+    //            }
+    //            else
+    //            {
+    //                hexCode = "#FFFFFF";
+
+    //            }
+    //            text.text = $"<color={hexCode}>{text.text}{(step.isCheck ? "[X]" : "[]")} {step.text} </color>\n";
+    //        }
+
+    //        foreach (SubStepsData subStep in step.subSteps)
+    //        {
+
+    //            if (text != null)
+    //            {
+    //                if (subStep.isCheck)
+    //                {
+    //                    hexCode = "#808080";
+    //                }
+    //                else
+    //                {
+    //                    hexCode = "#FFFFFF";
+
+    //                }
+    //                text.text = $"<color={hexCode}>{text.text} {"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}</color>\n";
+    //            }
+    //        }
+    //    }
+
+    //}
+
     public void UpdateUI()
     {
-        
-        text.text = "";
+        GameObject content = GameObject.Find("Content");
+
         foreach (StepsData step in data)
         {
-            
-                string hexCode ;
-            if (text != null) {
-                if (step.isCheck) {
-                    hexCode = "#808080";
-                } else {
-                    hexCode = "#FFFFFF";
+                TMP_Text texte = Instantiate(text, content.transform);
+                texte.text = $"{(step.isCheck ? "[X]" : "[]")} {step.text}";
+                texte.color = (step.isCheck) ? Color.gray : Color.white ;
 
-                }
-                text.text = $"<color={hexCode}>{text.text}{(step.isCheck ? "[X]" : "[]")} {step.text} </color>\n";
-            }
-
-            foreach (SubStepsData subStep in step.subSteps ) {
-
-                if (text != null)
-                {
-                    if (subStep.isCheck)
-                    {
-                        hexCode = "#808080";
-                    }
-                    else
-                    {
-                        hexCode = "#FFFFFF";
-
-                    }
-                    text.text = $"<color={hexCode}>{text.text} {"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}</color>\n"; 
-                }
+            foreach (SubStepsData subStep in step.subSteps)
+            {
+                    TMP_Text texte2 = Instantiate(text, content.transform);
+                    texte2.text = $"{"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}";
+                    texte2.color = (step.isCheck) ? Color.gray : Color.white;
             }
         }
 
