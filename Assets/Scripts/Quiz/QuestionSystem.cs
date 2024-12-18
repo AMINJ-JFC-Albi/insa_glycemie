@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
@@ -51,10 +52,15 @@ public class QuestionSystem : MonoBehaviour
     
     [Header("Answer A")]
     [SerializeField] private TextMeshProUGUI answATMP;
+    [SerializeField] private Button buttonA;
+
     [Header("Answer B")]
     [SerializeField] private TextMeshProUGUI answBTMP;
+    [SerializeField] private Button buttonB;
+
     [Header("Answer C")]
     [SerializeField] private TextMeshProUGUI answCTMP;
+    [SerializeField] private Button buttonC;
 
     [Header("Datas")]
     [SerializeField] private List<Question> datas;
@@ -65,6 +71,11 @@ public class QuestionSystem : MonoBehaviour
     {
         if (questTMP == null) throw new System.Exception("TextMeshProUGUI questTMP null !");
         if (datas.Count == 0) throw new System.Exception("List<Question> datas is empty !");
+        
+        buttonA.onClick.AddListener(() => OnAnswerClicked(Question.GoodAnswer.A));
+        buttonB.onClick.AddListener(() => OnAnswerClicked(Question.GoodAnswer.B));
+        buttonC.onClick.AddListener(() => OnAnswerClicked(Question.GoodAnswer.C));
+
         ShowQuestion();
     }
 
@@ -101,5 +112,25 @@ public class QuestionSystem : MonoBehaviour
     {
         IncrementStep();
         ShowQuestion();
+    }
+
+    private void OnAnswerClicked(Question.GoodAnswer chosenAnswer)
+    {
+        if (progressionStep < datas.Count)
+        {
+            if (datas[progressionStep].goodAnswer == chosenAnswer)
+            {
+                Debug.Log("Bonne réponse !");
+            }
+            else
+            {
+                Debug.Log("Mauvaise réponse.");
+            }
+        }
+        else
+        {
+            Debug.Log("Aucune question disponible.");
+        }
+        ShowNextQuestion();
     }
 }
