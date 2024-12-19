@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &1160110 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5836826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9392,6 +9397,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6056354264036807939, guid: 5301215597e6b6440ae976baa51ed7b0, type: 3}
   m_PrefabInstance: {fileID: 164492043}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &164668015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &165492322
 GameObject:
   m_ObjectHideFlags: 0
@@ -21457,6 +21473,333 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8176325188201194163, guid: 0c2387832aee4d14c9095f0f05aebe31, type: 3}
   m_PrefabInstance: {fileID: 544365152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &550310963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1546274491}
+    m_Modifications:
+    - target: {fileID: 46646552184343752, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 46646552184343752, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 46646552184343752, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 454066073181672184, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Name
+      value: Quiz
+      objectReference: {fileID: 0}
+    - target: {fileID: 508602230593812569, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 508602230593812569, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: buttonA
+      value: 
+      objectReference: {fileID: 164668015}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: buttonB
+      value: 
+      objectReference: {fileID: 2058115386}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: buttonC
+      value: 
+      objectReference: {fileID: 1204657681}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[1].answerA
+      value: Dans les cellules sanguines
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[1].answerB
+      value: Dans la peau
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[1].answerC
+      value: Dans le liquide interstitiel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[2].answerA
+      value: mg/g
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[2].answerB
+      value: mg/dl
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[2].answerC
+      value: g/l
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[3].answerA
+      value: Oui
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[3].answerB
+      value: Non
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[3].answerC
+      value: Je ne sais pas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[4].answerA
+      value: "Parce que la batterie sera vide \xE0 ce moment-l\xE0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[4].answerB
+      value: "Parce que l\u2019\xE9lectrode enzymatique qui transforme le sucre est 
+        \xE9puis\xE9e "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[4].answerC
+      value: "Parce que le capteur est abim\xE9 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[5].answerA
+      value: "Non, dans le sang on mesure la glyc\xE9mie capillaire"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[5].answerB
+      value: " Oui, c'est exactement la m\xEAme analyse"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[5].answerC
+      value: Non, dans le sang on mesure le fructose
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[6].answerA
+      value: Toutes les 10 minutes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[6].answerB
+      value: Toutes les heures
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[6].answerC
+      value: Toutes les minutes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[7].answerA
+      value: "Oui, c'est exactement le m\xEAme"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[7].answerB
+      value: "Le niveau de glucose est toujours plus \xE9lev\xE9 dans le sang"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[7].answerC
+      value: Non, dans le sang le niveau monte plus vite et descend plus  lentement
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[8].answerA
+      value: Oui
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[8].answerB
+      value: Non
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[8].answerC
+      value: Je nesais pas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[1].question
+      value: "O\xF9 le capteur mesure-t-il le glucose ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[2].question
+      value: "Le niveau de glucose est indiqu\xE9 dans quelle unit\xE9 ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[3].question
+      value: Y a-t-il une batterie dans le capteur de glucose ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[4].question
+      value: " Pourquoi un capteur ne peut-il \xEAtre utilis\xE9 que pendant deux
+        semaines ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[5].question
+      value: "Le capteur mesure-t-il le glucose de la m\xEAme mani\xE8re que si vous 
+        pr\xE9levez une goutte de sang de votre doigt ? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[6].question
+      value: "\xC0 quelle fr\xE9quence le capteur met-il \xE0 jour le niveau de glucose
+        ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[7].question
+      value: " Le niveau de glucose est-il le m\xEAme si vous le mesurez dans le
+        liquide  interstitiel ou dans le sang ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[8].question
+      value: "L\u2019\xE9quipe m\xE9dicale peut-elle recevoir des alertes du capteur
+        ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[2].goodAnswer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[3].goodAnswer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[4].goodAnswer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[5].goodAnswer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[6].goodAnswer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[7].goodAnswer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152139083689916221, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: datas.Array.data[8].goodAnswer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569291382405505473, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569291382405505473, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.928
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.839
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241596972292797377, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075285724211390912, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_text
+      value: "Intitul\xE9 de la question"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075285724211390912, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075285724211390912, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
 --- !u!1001 &551679350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43882,6 +44225,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6056354264036807939, guid: 5301215597e6b6440ae976baa51ed7b0, type: 3}
   m_PrefabInstance: {fileID: 1204101403}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1204657681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4227075385325183849, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+  m_PrefabInstance: {fileID: 550310963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1205176530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7887204122516621990, guid: 89080fe918ab9904fa6e2adef0c4b98d, type: 3}
@@ -54834,6 +55188,7 @@ Transform:
   - {fileID: 47075206}
   - {fileID: 615839313}
   - {fileID: 1838878190}
+  - {fileID: 1160110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1546775719
@@ -69493,7 +69848,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1874794013
 RectTransform:
