@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
@@ -16,9 +16,9 @@ public class StepsUIEditor : Editor
 
         StepsUI dialogueScript = (StepsUI)target;
 
-        if (GUILayout.Button("Show Step UI Debug"))
+        if (GUILayout.Button("Update Step UI"))
         {
-            dialogueScript.ShowDebug();
+            dialogueScript.UpdateUI();
         }
     }
 }
@@ -26,17 +26,16 @@ public class StepsUIEditor : Editor
 
 public class StepsUI : MonoBehaviour
 {
-
     [Serializable]
     protected class StepsData
     {
         public bool isCheck = false;
         public string text = string.Empty;
         public List<SubStepsData> subSteps = new List<SubStepsData>();
-        public void checkStep() { 
+        public void CheckStep() { 
             isCheck = true;
         }
-        public bool isAllStepsChecked()
+        public bool IsAllStepsChecked()
         {
             bool isAllSubStepsChecked = true;
 
@@ -56,16 +55,19 @@ public class StepsUI : MonoBehaviour
     {
         public bool isCheck = false;
         public string text = string.Empty;
-        public void checkSubStep() { 
+        public void CheckSubStep() { 
             isCheck = true;
         }
 
     }
 
+    [SerializeField] private GameObject content;
+    [SerializeField] private GameObject prefabObjectif;
     [SerializeField] private List<StepsData> data;
-    [SerializeField] private TMP_Text text;    
+
     private void Awake()
     {
+        if (content == null) throw new Exception("GameObject content null!");
         if (data == null || data.Count == 0 )
         {
             data = new List<StepsData>();
@@ -75,30 +77,30 @@ public class StepsUI : MonoBehaviour
             UpdateUI();
         }
     }
-    public void ShowDebug()
-    {
-        data.ForEach(step =>
-        {
-            Debug.Log($"[{(step.isCheck ? "X" : " ")}] {step.text}");
-        });
-    }
+
     public void UpdateUI()
     {
-        GameObject content = GameObject.Find("Content");
-
+        ClearUI();
         foreach (StepsData step in data)
         {
-            TMP_Text newStepText = Instantiate(text, content.transform);
-            newStepText.text = $"{(step.isCheck ? "[X]" : "[]")} {step.text}";
-            newStepText.color = (step.isCheck) ? Color.gray : Color.white ;
+            GameObject newStepText = Instantiate(prefabObjectif, content.transform);
+            ObjectifUI oUI = newStepText.GetComponent<ObjectifUI>();
+            oUI.UpdateUI(step.isCheck, step.text);
 
             foreach (SubStepsData subStep in step.subSteps)
             {
-                TMP_Text newSubStepText = Instantiate(text, content.transform);
-                newSubStepText.text = $"{"    "}{(subStep.isCheck ? "[X]" : "[]")} {subStep.text}";
-                newSubStepText.color = (step.isCheck) ? Color.gray : Color.white;
+                GameObject newSubStepText = Instantiate(prefabObjectif, content.transform);
+                ObjectifUI subOUI = newSubStepText.GetComponent<ObjectifUI>();
+                subOUI.UpdateUI(subStep.isCheck, subStep.text, true);
             }
         }
+    }
 
+    private void ClearUI()
+    {
+        foreach (Transform child in content.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
