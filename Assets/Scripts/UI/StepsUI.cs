@@ -3,22 +3,46 @@ using UnityEngine;
 using System;
 using TMPro;
 
-
 #if UNITY_EDITOR
 using UnityEditor;
 
 [CustomEditor(typeof(StepsUI))]
 public class StepsUIEditor : Editor
 {
+    private int stepIndex = 0;
+    private int subStepIndex = 0;
+    private bool checkStepIfAllSubStepsChecked = false;
+
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        StepsUI dialogueScript = (StepsUI)target;
+        StepsUI stepsUIScript = (StepsUI)target;
 
         if (GUILayout.Button("Update Step UI"))
         {
-            dialogueScript.UpdateUI();
+            stepsUIScript.UpdateUI();
+        }
+
+        // Options pour tester CheckSubStep
+        GUILayout.Space(10);
+        EditorGUILayout.LabelField("Test CheckSubStep", EditorStyles.boldLabel);
+        stepIndex = EditorGUILayout.IntField("Step Index", stepIndex);
+        subStepIndex = EditorGUILayout.IntField("SubStep Index", subStepIndex);
+        checkStepIfAllSubStepsChecked = EditorGUILayout.Toggle("Check Step If All SubSteps Checked", checkStepIfAllSubStepsChecked);
+
+        if (GUILayout.Button("Check SubStep"))
+        {
+            // Vérifie si les indices sont valides avant d'appeler CheckSubStep
+            if (stepIndex >= 0 && stepIndex < stepsUIScript.DataCount)
+            {
+                stepsUIScript.CheckSubStep(stepIndex, subStepIndex, checkStepIfAllSubStepsChecked);
+                stepsUIScript.UpdateUI(); // Met à jour l'UI pour refléter les changements
+            }
+            else
+            {
+                Debug.LogWarning("Step index out of range!");
+            }
         }
     }
 }
@@ -32,8 +56,32 @@ public class StepsUI : MonoBehaviour
         public bool isCheck = false;
         public string text = string.Empty;
         public List<SubStepsData> subSteps = new List<SubStepsData>();
-        public void CheckStep() { 
+
+        public void CheckStep() {
             isCheck = true;
+        }
+
+        public void CheckSubStep(int i, bool checkStepIfAllSubStepsChecked = false)
+        {
+            if (i < subSteps.Count)
+            {
+                subSteps[i].isCheck = true;
+            }
+
+            if (checkStepIfAllSubStepsChecked && subSteps.Count > 0)
+            {
+                bool isAllSubStepsChecked = true;
+
+                foreach (SubStepsData subStep in subSteps)
+                {
+                    if (!subStep.isCheck)
+                    {
+                        isAllSubStepsChecked = false;
+                    }
+                }
+
+                isCheck = isAllSubStepsChecked;
+            }
         }
         public bool IsAllStepsChecked()
         {
@@ -55,10 +103,6 @@ public class StepsUI : MonoBehaviour
     {
         public bool isCheck = false;
         public string text = string.Empty;
-        public void CheckSubStep() { 
-            isCheck = true;
-        }
-
     }
 
     [SerializeField] private GameObject content;
@@ -103,4 +147,21 @@ public class StepsUI : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+#if UNITY_EDITOR
+    public int DataCount => data.Count;
+
+    public void CheckSubStep(int stepIndex, int subStepIndex, bool checkStepIfAllSubStepsChecked)
+    {
+        if (stepIndex >= 0 && stepIndex < data.Count)
+        {
+            data[stepIndex].CheckSubStep(subStepIndex, checkStepIfAllSubStepsChecked);
+        }
+        else
+        {
+            Debug.LogWarning("Step index out of range!");
+        }
+    }
+
+#endif
 }
