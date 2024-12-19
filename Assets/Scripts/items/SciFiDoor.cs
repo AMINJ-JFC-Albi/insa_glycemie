@@ -41,7 +41,6 @@ public class SciFiDoor : MonoBehaviour
     private bool isOpening = false;
     private bool isClosing = false;
     private bool isRotatingPadlock = false;
-    private bool isPadlockRotated = false; // Flag pour savoir si le padlock est déjà tourné
 
     void Start()
     {
@@ -123,7 +122,6 @@ public class SciFiDoor : MonoBehaviour
             {
                 isRotatingPadlock = false; // Arrêter la rotation
                 padlock.rotation = padlockStartRotation * rotationPadlock; // Bloquer la position du padlock
-                isPadlockRotated = true; // Marquer le padlock comme tourné
             }
         }
         // Si on ferme les portes, on fait tourner le padlock vers sa position de départ (0°)
@@ -135,7 +133,6 @@ public class SciFiDoor : MonoBehaviour
             {
                 isRotatingPadlock = false; // Arrêter la rotation
                 padlock.rotation = padlockStartRotation; // Bloquer la position du padlock à son état initial
-                isPadlockRotated = false; // Marquer le padlock comme revenu à son état initial
                 isClosing = false;
             }
         }
