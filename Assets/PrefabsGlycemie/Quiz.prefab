@@ -908,8 +908,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTMP: {fileID: 8075285724211390912}
   answATMP: {fileID: 46646552184343752}
+  buttonA: {fileID: 8554849818814595224}
   answBTMP: {fileID: 508602230593812569}
+  buttonB: {fileID: 1943902665588711198}
   answCTMP: {fileID: 6569291382405505473}
+  buttonC: {fileID: 4227075385325183849}
   datas:
   - question: "Ici se touve l'intitul\xE9 des questions"
     answerA: "R\xE9ponse A"
