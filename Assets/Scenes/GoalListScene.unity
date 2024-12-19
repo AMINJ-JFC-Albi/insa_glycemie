@@ -735,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6917686769123952953, guid: fb0ede431291e37458c6dd89c7931a88, type: 3}
       propertyPath: data.Array.data[1].subSteps.Array.data[3].isCheck
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8389206892416294992, guid: fb0ede431291e37458c6dd89c7931a88, type: 3}
       propertyPath: m_Name
