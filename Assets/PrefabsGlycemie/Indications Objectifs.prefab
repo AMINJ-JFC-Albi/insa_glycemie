@@ -941,6 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d995de30c3dc52439241f348875d56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  content: {fileID: 5743539520748117065}
+  prefabObjectif: {fileID: 271392692258802015, guid: 443f00817851c684285e0907ccc32bcc, type: 3}
   data: []
   text: {fileID: 5213191850667845447}
 --- !u!223 &8187485554967612728
