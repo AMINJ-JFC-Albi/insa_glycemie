@@ -41,7 +41,8 @@ public class ExplodedView : MonoBehaviour
         public Vector3 finalPosition;  // Final position in exploded view
         public string description;     // Description of the part
         public Vector3 offset;         // Offset when selected
-
+        
+        public Vector3 InitialPosition { get; set; }
         public bool IsSelected { get; set; } = false;
     }
 
@@ -171,7 +172,16 @@ public class ExplodedView : MonoBehaviour
         for (int i = 0; i < parts.Length; i++)
         {
             initialPositions[i] = parts[i].partTransform.position;
-            targetPositions[i] = IsExplodedView ? parts[i].finalPosition + transform.position : transform.position;
+            if (IsExplodedView)
+            {
+                targetPositions[i] = parts[i].finalPosition + transform.position;
+                parts[i].InitialPosition = parts[i].partTransform.position;
+            }
+            else
+            {
+                targetPositions[i] = parts[i].InitialPosition;
+            }
+            
         }
 
         float elapsedTime = 0f;
