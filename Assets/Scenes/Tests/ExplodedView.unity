@@ -1426,6 +1426,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: DEBUG_VIEW
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: arrows.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[0].desc
+      value: "Description d\xE9taill\xE9e du cache haut"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[1].desc
+      value: "Description d\xE9taill\xE9e de la carte \xE9lectronique"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[2].desc
+      value: "Description d\xE9taill\xE9e de la base capteur"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[3].desc
+      value: "Description d\xE9taill\xE9e du porte aiguille"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[0].title
+      value: Cache Haut
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[1].image
+      value: 
+      objectReference: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[1].title
+      value: "Carte \xE9lectronique"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[2].title
+      value: Base capteur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[3].title
+      value: Porte aiguille
+      objectReference: {fileID: 0}
     - target: {fileID: 1922777968274902282, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0002
@@ -1481,7 +1525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.95
+      value: 9.16
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w

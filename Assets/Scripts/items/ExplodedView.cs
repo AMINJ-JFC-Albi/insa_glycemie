@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -34,25 +36,43 @@ public class ExplodedViewEditor : Editor
 
 public class ExplodedView : MonoBehaviour
 {
+#if UNITY_EDITOR
+    [SerializeField] private bool DEBUG_VIEW = true;
+#endif
+
     [System.Serializable]
     public class Part
     {
         public Transform partTransform; // Reference to the part's Transform
         public Vector3 finalPosition;  // Final position in exploded view
-        public string description;     // Description of the part
         public Vector3 offset;         // Offset when selected
-        
+        public string title;     // Title of the part
+        public string desc;     // Description of the part
+        public Sprite image;     // Image of the part
+
         public Vector3 InitialPosition { get; set; }
         public bool IsSelected { get; set; } = false;
     }
 
-    public Part[] parts = new Part[4]; // Array to hold the 4 parts
+    [SerializeField] private Part[] parts = new Part[4]; // Array to hold the 4 parts
+
+    [SerializeField] private GameObject infos;
+    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TextMeshProUGUI desc;
+    [SerializeField] private GameObject imgGO;
+    [SerializeField] private GameObject[] arrows;
+
     public bool IsExplodedView { get; private set; } = false;
 
     public float transitionSpeed = 2f; // Speed for smooth transitions
 
     private bool isToggling = false;
     private bool anyPartSelectedFlag = false; // Tracks selection state
+
+    private void Awake()
+    {
+        UpdateInfosUI();
+    }
 
     private void Update()
     {
@@ -67,7 +87,9 @@ public class ExplodedView : MonoBehaviour
     {
         if (anyPartSelectedFlag)
         {
-            Debug.Log("Cannot toggle exploded view while a part is selected.");
+#if UNITY_EDITOR
+            if (DEBUG_VIEW) Debug.Log("Cannot toggle exploded view while a part is selected.");
+#endif
             return;
         }
 
@@ -75,6 +97,12 @@ public class ExplodedView : MonoBehaviour
 
         IsExplodedView = !IsExplodedView;
         isToggling = true;
+
+        if (!IsExplodedView)
+        {
+            UpdateInfosUI();
+        }
+
         StartCoroutine(MoveAllPartsSmoothly());
     }
 
@@ -82,13 +110,17 @@ public class ExplodedView : MonoBehaviour
     {
         if (!IsExplodedView)
         {
-            Debug.LogError("Cannot select part when not in exploded view mode.");
+#if UNITY_EDITOR
+            if (DEBUG_VIEW) Debug.LogError("Cannot select part when not in exploded view mode.");
+#endif
             return;
         }
 
         if (partIndex < 0 || partIndex >= parts.Length)
         {
-            Debug.LogError("Invalid part index.");
+#if UNITY_EDITOR
+            if (DEBUG_VIEW) Debug.LogError("Invalid part index.");
+#endif
             return;
         }
 
@@ -96,7 +128,9 @@ public class ExplodedView : MonoBehaviour
 
         if (part.IsSelected)
         {
-            Debug.LogError("Part already selected.");
+#if UNITY_EDITOR
+            if (DEBUG_VIEW) Debug.LogError("Part already selected.");
+#endif
             return;
         }
 
@@ -117,17 +151,40 @@ public class ExplodedView : MonoBehaviour
 
         part.IsSelected = true;
         anyPartSelectedFlag = true;
-        Debug.Log(part.description);
+
+        UpdateInfosUI(part, partIndex);
 
         Vector3 offsetPosition = part.partTransform.position + part.offset;
         StartCoroutine(MovePartSmoothly(part.partTransform, offsetPosition));
+    }
+
+    private void UpdateInfosUI(Part part = null, int partIndex = 0)
+    {
+        if (anyPartSelectedFlag && (part != null))
+        {
+            title.text = part.title;
+            desc.text = part.desc;
+            imgGO.SetActive(part.image != null);
+            imgGO.GetComponent<Image>().sprite = part.image;
+            for(int i = 0; i < arrows.Length; i++)
+            {
+                arrows[i].SetActive(i == partIndex);
+            }
+            infos.SetActive(true);
+        }
+        else
+        {
+            infos.SetActive(false);
+        }
     }
 
     public void DeselectPart(int partIndex)
     {
         if (partIndex < 0 || partIndex >= parts.Length)
         {
-            Debug.LogError("Invalid part index.");
+#if UNITY_EDITOR
+            if (DEBUG_VIEW) Debug.LogError("Invalid part index.");
+#endif
             return;
         }
 
@@ -135,13 +192,17 @@ public class ExplodedView : MonoBehaviour
 
         if (!part.IsSelected)
         {
-            Debug.LogError("Part not selected.");
+#if UNITY_EDITOR
+            if (DEBUG_VIEW) Debug.LogError("Part not selected.");
+#endif
             return;
         }
 
         part.IsSelected = false;
 
         anyPartSelectedFlag = false;
+
+        UpdateInfosUI();
 
         Vector3 targetPosition = part.finalPosition + transform.position;
         StartCoroutine(MovePartSmoothly(part.partTransform, targetPosition));
