@@ -69,18 +69,21 @@ public class ExplodedView : MonoBehaviour
     private bool isToggling = false;
     private bool anyPartSelectedFlag = false; // Tracks selection state
 
+
+
     private void Awake()
     {
         UpdateInfosUI();
     }
 
-    private void Update()
+    public void RuntimeShowExplodedView(int partIndex)
     {
-        // Example of triggering the exploded view or reset with keys
-        if (Input.GetKeyDown(KeyCode.E))
+        if (IsExplodedView)
         {
-            ToggleExplodedView();
+            if (parts[partIndex].IsSelected) DeselectPart(partIndex);
+            else SelectPart(partIndex);
         }
+        else ToggleExplodedView();
     }
 
     public void ToggleExplodedView()
@@ -136,17 +139,7 @@ public class ExplodedView : MonoBehaviour
 
         if (anyPartSelectedFlag)
         {
-            // If another part is selected, deselect it
-            int i = 0;
-            while (i < parts.Length)
-            {
-                if (parts[i].IsSelected)
-                {
-                    DeselectPart(i);
-                    i = parts.Length;
-                }
-                i++;
-            }
+            DeselectAllParts();
         }
 
         part.IsSelected = true;
@@ -156,6 +149,20 @@ public class ExplodedView : MonoBehaviour
 
         Vector3 offsetPosition = part.partTransform.position + part.offset;
         StartCoroutine(MovePartSmoothly(part.partTransform, offsetPosition));
+    }
+
+    private void DeselectAllParts()
+    {
+        int i = 0;
+        while (i < parts.Length)
+        {
+            if (parts[i].IsSelected)
+            {
+                DeselectPart(i);
+                i = parts.Length;
+            }
+            i++;
+        }
     }
 
     private void UpdateInfosUI(Part part = null, int partIndex = 0)
