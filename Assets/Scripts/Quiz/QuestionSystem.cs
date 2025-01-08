@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
+using static QuestionSystem.Question;
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -72,8 +76,10 @@ public class QuestionSystem : MonoBehaviour
 
     private int progressionStep = 0;
     private int correctAnswers = 0;
+    private DateTime startTime;
+    private DateTime lastTime;
 
-    void Start()
+    void OnEnable()
     {
         if (questTMP == null) throw new System.Exception("TextMeshProUGUI questTMP null !");
         if (datas.Count == 0) throw new System.Exception("List<Question> datas is empty !");
@@ -85,7 +91,18 @@ public class QuestionSystem : MonoBehaviour
         winObject.SetActive(false);
         loseObject.SetActive(false);
         titleObject.SetActive(true);
+
+        startTime = DateTime.Now;
+        lastTime = DateTime.Now;
+
         ShowQuestion();
+    }
+
+    private void OnDisable()
+    {
+        buttonA.onClick.RemoveAllListeners();
+        buttonB.onClick.RemoveAllListeners();
+        buttonC.onClick.RemoveAllListeners();
     }
 
     public void ResetStep()
@@ -116,6 +133,7 @@ public class QuestionSystem : MonoBehaviour
             answBTMP.text = datas[progressionStep].answerB;
             answCTMP.text = datas[progressionStep].answerC;
         }
+        lastTime = DateTime.Now;
     }
 
     public void ShowNextQuestion()
@@ -128,17 +146,19 @@ public class QuestionSystem : MonoBehaviour
     {
         if (progressionStep < datas.Count)
         {
-            if (datas[progressionStep].goodAnswer == chosenAnswer)
-            {
-                Debug.Log("Bonne réponse !");
-                correctAnswers++;
-            }
-            else
-            {
-                Debug.Log("Mauvaise réponse.");
-            }
+            bool isGoodAnswer = datas[progressionStep].goodAnswer == chosenAnswer;
+            SaveQuestion(GetStringAnswer(chosenAnswer), isGoodAnswer);
+            if (isGoodAnswer) correctAnswers++;
         }
         ShowNextQuestion();
+    }
+
+    private string GetStringAnswer(Question.GoodAnswer chosenAnswer)
+    {
+        if (chosenAnswer == GoodAnswer.A) return datas[progressionStep].answerA;
+        if (chosenAnswer == GoodAnswer.B) return datas[progressionStep].answerB;
+        if (chosenAnswer == GoodAnswer.C) return datas[progressionStep].answerC;
+        return "NULL";
     }
 
     private void CheckResult()
@@ -154,16 +174,28 @@ public class QuestionSystem : MonoBehaviour
         buttonC.gameObject.SetActive(false);
 
         titleObject.SetActive(false);
-        
-        if (correctAnswers >= 4)
-        {
-            winObject.SetActive(true);
-            Debug.Log("Vous avez gagné !");
-        }
-        else
-        {
-            loseObject.SetActive(true);
-            Debug.Log("Vous avez perdu.");
-        }
+
+        bool win = correctAnswers >= (datas.Count/2);
+        string resultString = win ? "WIN" : "LOSE";
+        SaveFinalResult($"{correctAnswers}/{datas.Count} ({resultString})");
+        winObject.SetActive(win);
+        loseObject.SetActive(!win);
+        GameManager.Instance.datas.SaveData();
+    }
+
+    // Save Datas : "Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos"
+    public void SaveQuestion(string answer, bool goodAnswer)
+    {
+        string timeStamp1 = (DateTime.Now/*elapsedTime*/ - lastTime).ToString();
+        string timeStamp2 = (DateTime.Now/*elapsedTime*/ - startTime).ToString();
+        string goodAnswerString = goodAnswer ? "CORRECT" : "INCORRECT";
+        GameManager.Instance.datas.AddData(DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                                           "QUESTIONS", $";;{timeStamp1};{timeStamp2};{answer} ({goodAnswerString})");
+    }
+    public void SaveFinalResult(string result)
+    {
+        string timeStamp2 = (DateTime.Now/*elapsedTime*/ - startTime).ToString();
+        GameManager.Instance.datas.AddData(DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                                           "QUESTIONS_RESULT", $";;;{timeStamp2};{result}");
     }
 }
