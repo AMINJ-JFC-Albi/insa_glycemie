@@ -65,7 +65,13 @@ public class QuestionSystem : MonoBehaviour
     [Header("Datas")]
     [SerializeField] private List<Question> datas;
 
+    [Header("Result Objects")]
+    [SerializeField] private GameObject winObject;
+    [SerializeField] private GameObject loseObject;
+    [SerializeField] private GameObject titleObject;
+
     private int progressionStep = 0;
+    private int correctAnswers = 0;
 
     void Start()
     {
@@ -76,12 +82,19 @@ public class QuestionSystem : MonoBehaviour
         buttonB.onClick.AddListener(() => OnAnswerClicked(Question.GoodAnswer.B));
         buttonC.onClick.AddListener(() => OnAnswerClicked(Question.GoodAnswer.C));
 
+        winObject.SetActive(false);
+        loseObject.SetActive(false);
+        titleObject.SetActive(true);
         ShowQuestion();
     }
 
     public void ResetStep()
     {
         progressionStep = 0;
+        correctAnswers = 0;
+        winObject.SetActive(false);
+        loseObject.SetActive(false);
+        titleObject.SetActive(true);
     }
 
     public void IncrementStep()
@@ -94,10 +107,7 @@ public class QuestionSystem : MonoBehaviour
     {
         if (progressionStep >= datas.Count)
         {
-            questTMP.text = "";
-            answATMP.text = "";
-            answBTMP.text = "";
-            answCTMP.text = "";
+            CheckResult();
         }
         else
         {
@@ -121,16 +131,39 @@ public class QuestionSystem : MonoBehaviour
             if (datas[progressionStep].goodAnswer == chosenAnswer)
             {
                 Debug.Log("Bonne réponse !");
+                correctAnswers++;
             }
             else
             {
                 Debug.Log("Mauvaise réponse.");
             }
         }
+        ShowNextQuestion();
+    }
+
+    private void CheckResult()
+    {
+        questTMP.text = "";
+        answATMP.text = "";
+        answBTMP.text = "";
+        answCTMP.text = "";
+        
+
+        buttonA.gameObject.SetActive(false);
+        buttonB.gameObject.SetActive(false);
+        buttonC.gameObject.SetActive(false);
+
+        titleObject.SetActive(false);
+        
+        if (correctAnswers >= 4)
+        {
+            winObject.SetActive(true);
+            Debug.Log("Vous avez gagné !");
+        }
         else
         {
-            Debug.Log("Aucune question disponible.");
+            loseObject.SetActive(true);
+            Debug.Log("Vous avez perdu.");
         }
-        ShowNextQuestion();
     }
 }
