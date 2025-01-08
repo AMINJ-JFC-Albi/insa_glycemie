@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using Tools;
 using States;
-using System.Security.Cryptography;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class GameManager : MonoBehaviour
         Intro,
         Aiguille,
         Protection,
-        Carte_Mere,
+        Carte,
         Coque
     }
 
@@ -41,6 +40,13 @@ public class GameManager : MonoBehaviour
     private EventsManager eventsManager;
 
     internal static GameManager Instance;
+
+    //GameObjects & Components used:
+    [SerializeField] private GameObject holder;
+    [SerializeField] private GameObject partsFolder;
+    [SerializeField] private GameObject explodedView;
+    [SerializeField] private DialogueSystem dialogueSystemStep1;
+    [SerializeField] private SciFiDoor sciFiDoor1, sciFiDoor2, sciFiDoor3;
 
     private void Awake()
     {
@@ -72,11 +78,20 @@ public class GameManager : MonoBehaviour
     {
         var mainStateActions = new Dictionary<MainState, Action>
         {
-            { MainState.Tuto, OnTuto },
-            { MainState.Part1, OnPart1 },
-            { MainState.Part2, OnPart2 },
-            { MainState.Part3, OnPart3 },
-            { MainState.Part4, OnPart4 },
+            { MainState.Tuto, null },
+            { MainState.Part1, null },
+            { MainState.Part2, null },
+            { MainState.Part3, null },
+            { MainState.Part4, null },
+        };
+
+        var mainTransitionsActions = new Dictionary<(MainState, MainState), Action>
+        {
+            { (MainState.Tuto, MainState.Part1), OnIntroPart1 },
+            { (MainState.Part1, MainState.Part2), OnIntroPart2 },
+            { (MainState.Part2, MainState.Part3), null },
+            { (MainState.Part3, MainState.Part4), null },
+            { (MainState.Part4, MainState.Part4), null }
         };
 
         var part1StateActions = new Dictionary<Part1State, Action>
@@ -84,29 +99,37 @@ public class GameManager : MonoBehaviour
             { Part1State.Intro, null },
             { Part1State.Aiguille, null },
             { Part1State.Protection, null },
-            { Part1State.Carte_Mere, null },
+            { Part1State.Carte, null },
             { Part1State.Coque, null }
         };
 
         var part1TransitionsActions = new Dictionary<(Part1State, Part1State), Action>
         {
-            { (Part1State.Intro, Part1State.Aiguille), OnIntroPart1 },
-            { (Part1State.Aiguille, Part1State.Protection), OnAiguillePlacement },
-            { (Part1State.Protection, Part1State.Carte_Mere), OnProtectionPlacement },
-            { (Part1State.Carte_Mere, Part1State.Coque), OnMotherboardPlacement },
-            { (Part1State.Coque, Part1State.Coque), OnCoquePlacement }
+            { (Part1State.Intro, Part1State.Aiguille), OnAiguillePlacement },
+            { (Part1State.Aiguille, Part1State.Protection), OnProtectionPlacement },
+            { (Part1State.Protection, Part1State.Carte), OnMotherboardPlacement },
+            { (Part1State.Carte, Part1State.Coque), OnCoquePlacement },
+            { (Part1State.Coque, Part1State.Coque), null }
         };
 
         var part2StateActions = new Dictionary<Part2State, Action>
         {
-            { Part2State.Intro, OnIntroPart2 },
-            { Part2State.Phase1, OnPhase1 },
-            { Part2State.Phase2, OnPhase2 },
-            { Part2State.Phase3, OnPhase3 }
+            { Part2State.Intro, null },
+            { Part2State.Phase1, null },
+            { Part2State.Phase2, null },
+            { Part2State.Phase3, null }
+        };
+
+        var part2TransitionsActions = new Dictionary<(Part2State, Part2State), Action>
+        {
+            { (Part2State.Intro, Part2State.Phase1), OnPhase1 },
+            { (Part2State.Phase1, Part2State.Phase2), OnPhase2 },
+            { (Part2State.Phase2, Part2State.Phase3), OnPhase3 },
+            { (Part2State.Phase3, Part2State.Phase3), null }
         };
 
         var part1StateMachine = new StateMachine<Part1State>(Part1State.Intro, part1StateActions, part1TransitionsActions, onStateExecute: false);
-        var part2StateMachine = new StateMachine<Part2State>(Part2State.Intro, part2StateActions, onStateExecute : false);
+        var part2StateMachine = new StateMachine<Part2State>(Part2State.Intro, part2StateActions, part2TransitionsActions, onStateExecute : false);
 
         var subStateMachines = new Dictionary<MainState, IStateMachine>
         {
@@ -120,7 +143,7 @@ public class GameManager : MonoBehaviour
             { MainState.Part2, typeof(Part2State) }
         };
 
-        mainStateMachine = new StateMachine<MainState>(MainState.Tuto, mainStateActions, null, subStateMachines, subStateTypes);
+        mainStateMachine = new StateMachine<MainState>(MainState.Tuto, mainStateActions, mainTransitionsActions, subStateMachines, subStateTypes);
     }
 
     private void RegisterEvents()
@@ -128,7 +151,17 @@ public class GameManager : MonoBehaviour
         eventsManager.RegisterEvent("NextState", () => HandleNextState());
     }
 
-    private void HandleNextState()
+    private bool skipTutorial = false;
+    public void SkipTutorial()
+    {
+        if (!skipTutorial)
+        {
+            skipTutorial = true;
+            HandleNextState();
+        }
+    }
+
+    internal void HandleNextState()
     {
         if (mainStateMachine.IsLastSubState())
         {
@@ -141,7 +174,7 @@ public class GameManager : MonoBehaviour
         datas.SaveData();
     }
 
-    private void HandleNextStep(string infos = "")
+    internal void HandleNextStep(string infos = "")
     {
         oldID = $"NEXT_STEP_{oldStepName};{newStepName}";
         oldStepName = GameManager.Instance.mainStateMachine.CurrentStringState();
@@ -150,7 +183,7 @@ public class GameManager : MonoBehaviour
         SaveNextStep(oldStepName, newStepName, oldID, currentID, infos);
     }
 
-    private void HandleNextSubStep(string infos = "")
+    internal void HandleNextSubStep(string infos = "")
     {
         oldSubID = $"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}";
         oldSubStepName = GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString();
@@ -163,15 +196,23 @@ public class GameManager : MonoBehaviour
     // Save Datas : "Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos"
     internal void SaveGhostSubStepTime()
     {
-        GameManager.Instance.datas.EditGhostData($"SUBSTEP_{GameManager.Instance.mainStateMachine.GetCurrentSubState()}");
+        SaveGhostSubStepTime(GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString());
     }
+
+    internal void SaveGhostSubStepTime(string subState)
+    {
+        GameManager.Instance.datas.EditGhostData($"SUBSTEP_{subState}");
+    }
+
+    private TimeSpan timeSpanTMP = TimeSpan.Zero;
 
     internal void SaveNextStep(string oldStepName, string newStepName, string oldID, string currentID, string infos = "")
     {
         if (oldStepName != newStepName)
         {
             GameManager.Instance.datas.AddData($"NEXT_STEP_{oldStepName};{newStepName}", "NEXT_STEP", "");
-            string timeStamp2 = GameManager.Instance.datas.CalculateTotalTime(currentID).ToString();
+            timeSpanTMP = GameManager.Instance.datas.CalculateTotalTime(currentID);
+            string timeStamp2 = timeSpanTMP.ToString();
             string timeStamp1;
             if (oldID == "NEXT_STEP_;")
                 timeStamp1 = timeStamp2;
@@ -185,12 +226,12 @@ public class GameManager : MonoBehaviour
     {
         if (oldSubStepName != newSubStepName)
         {
-            Debug.Log($"{oldSubStepName}, {newSubStepName}, {oldID}, {currentID}");
             GameManager.Instance.datas.AddData($"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}", "NEXT_SUBSTEP", "");
-            string timeStamp2 = GameManager.Instance.datas.CalculateTotalTime(currentID).ToString();
+            TimeSpan totalTime = GameManager.Instance.datas.CalculateTotalTime(currentID);
+            string timeStamp2 = totalTime.ToString();
             string timeStamp1;
             if (oldID == "NEXT_SUBSTEP_;")
-                timeStamp1 = timeStamp2;
+                timeStamp1 = (totalTime - timeSpanTMP).ToString();
             else
                 timeStamp1 = GameManager.Instance.datas.CalculateTimeDifference(oldID, currentID).ToString();
             GameManager.Instance.datas.EditData($"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}", "NEXT_SUBSTEP", $"{oldSubStepName};{newSubStepName};{timeStamp1};{timeStamp2};{infos}");
@@ -203,51 +244,42 @@ public class GameManager : MonoBehaviour
     {
         LoggerTool.Log("First Actions.");
         datas.InitializeStartTime();
+        SaveGhostSubStepTime("Intro");
+        DisableUnusedGO();
     }
 
-    private void OnTuto()
+    private void DisableUnusedGO()
     {
-        LoggerTool.Log("OnTuto.", LoggerTool.Level.Temporised);
-    }
-
-    private void OnPart1()
-    {
-        LoggerTool.Log("OnPart1.", LoggerTool.Level.Temporised);
-    }
-
-    private void OnPart2()
-    {
-        LoggerTool.Log("OnPart2.", LoggerTool.Level.Temporised);
-    }
-
-    private void OnPart3()
-    {
-        LoggerTool.Log("OnPart3.", LoggerTool.Level.Temporised);
-    }
-
-    private void OnPart4()
-    {
-        LoggerTool.Log("OnPart4.", LoggerTool.Level.Temporised);
+        //holder?.SetActive(false);
+        partsFolder?.SetActive(false);
+        explodedView?.SetActive(false);
     }
 
     private void OnAiguillePlacement()
     {
         LoggerTool.Log("Aiguille placée.");
+        dialogueSystemStep1?.IncrementStep();
     }
 
     private void OnProtectionPlacement()
     {
         LoggerTool.Log("Protection placée.");
+        dialogueSystemStep1?.IncrementStep();
     }
 
     private void OnMotherboardPlacement()
     {
         LoggerTool.Log("Carte mère placée.");
+        dialogueSystemStep1?.IncrementStep();
     }
 
     private void OnCoquePlacement()
     {
         LoggerTool.Log("Coque placée.");
+        dialogueSystemStep1?.IncrementStep();
+        holder?.SetActive(false);
+        explodedView?.SetActive(true);
+        sciFiDoor1?.TriggerOpen();
     }
 
     private void OnPhase1()
@@ -263,11 +295,16 @@ public class GameManager : MonoBehaviour
     private void OnPhase3()
     {
         LoggerTool.Log("OnPhase3.", LoggerTool.Level.Temporised, 0.5);
+        sciFiDoor2?.TriggerOpen();
+        sciFiDoor3?.TriggerOpen(); //TODO Remove after part 3 implementation
     }
 
     private void OnIntroPart1()
     {
         LoggerTool.Log("OnIntroPart1.", LoggerTool.Level.Temporised);
+        dialogueSystemStep1?.IncrementStep();
+        holder?.SetActive(true);
+        partsFolder?.SetActive(true);
     }
 
     private void OnIntroPart2()
