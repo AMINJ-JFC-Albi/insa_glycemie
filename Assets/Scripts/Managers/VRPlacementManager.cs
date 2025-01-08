@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Tools;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -50,9 +51,15 @@ public class PlacementManager : MonoBehaviour
         handStates[HandSide.Left] = new HandState();
     }
 
+    bool alreadyInit = false;
+
     private void OnEnable()
     {
-        StartCoroutine(InitializeEvents());
+        if (!alreadyInit)
+        {
+            alreadyInit = true;
+            StartCoroutine(InitializeEvents());
+        }
     }
 
     private IEnumerator InitializeEvents()
@@ -102,24 +109,10 @@ public class PlacementManager : MonoBehaviour
         interactorLeft.selectExited.AddListener(args => HandleDrop(HandSide.Left));
     }
 
-
-    private void OnDisable()
-    {
-        foreach (PlacementPoint placementPoint in placementPoints)
-        {
-            List<Collider> colliders = placementPoint.Colliders;
-            if (colliders == null || colliders.Count == 0)
-            {
-                Debug.LogWarning("Un PlacementPoint ne contient pas de Collider valide !");
-                continue;
-            }
-        }
-    }
-
     private void HandleTriggerEnter(Collider collider, GameObject selfGO, HandSide hand)
     {
         var handState = handStates[hand];
-        if (handState.HeldObject != null && handState.CurrentOverlay == null)
+        if ((handState.HeldObject != null) && (handState.CurrentOverlay == null) && handState.HeldObject.TryGetComponent<IPlacementAction>(out var _))
         {
             handState.GOReplaced = selfGO;
             handState.CurrentOverlay = CreateOverlay(handState.HeldObject.gameObject, selfGO.transform, hand);
@@ -152,13 +145,19 @@ public class PlacementManager : MonoBehaviour
         if (handState.HeldObject != null && handState.CurrentOverlay != null)
         {
             string isCorrect = "INCORRECT";
-            if (ExtractText(handState.HeldObject.name) == ExtractText(handState.GOReplaced.name))
+            Destroy(handState.CurrentOverlay);
+            if (CompareTexts(handState.HeldObject.name, handState.GOReplaced.name))
             {
                 handState.GOReplaced.SetActive(false);
                 FinalizePlacement(handState.HeldObject, handState.CurrentOverlay);
                 isCorrect = "CORRECT";
+                SavePlacement("PLACE_OBJECT", $"{handState.HeldObject.name} ({isCorrect})");
+                GameManager.Instance.HandleNextState();
             }
-            SavePlacement("PLACE_OBJECT", $"{handState.HeldObject.name} ({isCorrect})");
+            else
+            {
+                SavePlacement("PLACE_OBJECT", $"{handState.HeldObject.name} ({isCorrect})");
+            }
         }
         else if(handState.HeldObject != null)
         {
@@ -169,11 +168,16 @@ public class PlacementManager : MonoBehaviour
         handState.GOReplaced = null;
     }
 
+    private static bool CompareTexts(string text1, string text2)
+    {
+        return ExtractText(text1) == ExtractText(text2);
+    }
+
     private static string ExtractText(string input)
     {
         string pattern = @"^(.*?)\s*\(";
         Match match = Regex.Match(input, pattern);
-        return match.Success ? match.Groups[1].Value.Trim() : input.Trim();
+        return match.Success ? match.Groups[1].Value.Trim().ToLower() : input.Trim().ToLower();
     }
 
     private GameObject CreateOverlay(GameObject heldObject, Transform placementPoint, HandSide hand)
@@ -205,7 +209,6 @@ public class PlacementManager : MonoBehaviour
     {
         if (heldObject.TryGetComponent<IPlacementAction>(out IPlacementAction action)) action.Execute(heldObject.gameObject, overlay, parentParts);
         else Debug.Log("Aucune Action implémenté!");
-        Destroy(overlay);
     }
 
     private void ApplyTransparentMaterial(GameObject obj)
@@ -219,7 +222,16 @@ public class PlacementManager : MonoBehaviour
     // Save Datas : "Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos"
     public void SavePlacement(string type, string objectName)
     {
-        string subStepName = GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString();
+        Enum subState = GameManager.Instance.mainStateMachine.GetCurrentSubState();
+        string subStepName;
+        if (subState != null)
+        {
+            subStepName = subState.ToString();
+        }
+        else
+        {
+            subStepName = "";
+        }
         string id = $"SUBSTEP_{GameManager.Instance.mainStateMachine.GetCurrentSubState()}";
         string timeStamp1 = GameManager.Instance.datas.CalculateSinceEntry(id).ToString();
         string timeStamp2 = GameManager.Instance.datas.CalculateTotalGhostTime(id).ToString();

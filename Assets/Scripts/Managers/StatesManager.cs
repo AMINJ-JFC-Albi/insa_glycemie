@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Tools;
 
 namespace States
 {
@@ -74,8 +76,11 @@ namespace States
                 TState newState = (TState)Enum.ToObject(typeof(TState), currentIndex + 1);
 
                 var transition = (CurrentState, newState);
+                LoggerTool.Log($"Try transition action ({CurrentState}, {newState})", LoggerTool.Level.Info);
                 if (transitionActions.TryGetValue(transition, out var onTransition))
                     onTransition?.Invoke();
+                else
+                    LoggerTool.Log($"Error transition action ({CurrentState}, {newState})", LoggerTool.Level.Warning);
 
                 CurrentState = newState;
             }
