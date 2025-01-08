@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -140,6 +142,7 @@ public class PlacementManager : MonoBehaviour
         if (args.interactableObject is XRGrabInteractable grabObject)
         {
             handState.HeldObject = grabObject;
+            SavePlacement("GRAB_OBJECT", handState.HeldObject.name);
         }
     }
 
@@ -148,12 +151,29 @@ public class PlacementManager : MonoBehaviour
         var handState = handStates[hand];
         if (handState.HeldObject != null && handState.CurrentOverlay != null)
         {
-            handState.GOReplaced.SetActive(false);
-            FinalizePlacement(handState.HeldObject, handState.CurrentOverlay);
+            string isCorrect = "INCORRECT";
+            if (ExtractText(handState.HeldObject.name) == ExtractText(handState.GOReplaced.name))
+            {
+                handState.GOReplaced.SetActive(false);
+                FinalizePlacement(handState.HeldObject, handState.CurrentOverlay);
+                isCorrect = "CORRECT";
+            }
+            SavePlacement("PLACE_OBJECT", $"{handState.HeldObject.name} ({isCorrect})");
+        }
+        else if(handState.HeldObject != null)
+        {
+            SavePlacement("DROP_OBJECT", handState.HeldObject.name);
         }
         handState.HeldObject = null;
         handState.CurrentOverlay = null;
         handState.GOReplaced = null;
+    }
+
+    private static string ExtractText(string input)
+    {
+        string pattern = @"^(.*?)\s*\(";
+        Match match = Regex.Match(input, pattern);
+        return match.Success ? match.Groups[1].Value.Trim() : input.Trim();
     }
 
     private GameObject CreateOverlay(GameObject heldObject, Transform placementPoint, HandSide hand)
@@ -194,5 +214,16 @@ public class PlacementManager : MonoBehaviour
         {
             renderer.material = transparentMaterial;
         }
+    }
+
+    // Save Datas : "Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos"
+    public void SavePlacement(string type, string objectName)
+    {
+        string subStepName = GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString();
+        string id = $"SUBSTEP_{GameManager.Instance.mainStateMachine.GetCurrentSubState()}";
+        string timeStamp1 = GameManager.Instance.datas.CalculateSinceEntry(id).ToString();
+        string timeStamp2 = GameManager.Instance.datas.CalculateTotalGhostTime(id).ToString();
+        GameManager.Instance.datas.AddData(DateTime.Now.ToString("yyyyMMddHHmmssfff"), 
+                                           type, $"{subStepName};;{timeStamp1};{timeStamp2};{objectName}");
     }
 }

@@ -25,6 +25,8 @@ public class ResetChildrenTransforms : MonoBehaviour
         {
             initialTransforms[child] = new TransformData(child.localPosition, child.localRotation, child.localScale);
         }
+
+        ResetObjects();
     }
 
     public void ResetObjects()
@@ -37,8 +39,11 @@ public class ResetChildrenTransforms : MonoBehaviour
                 entry.Key.localScale = entry.Value.Scale;
                 if (entry.Key.TryGetComponent<Rigidbody>(out var rb))
                 {
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
+                    if (!rb.isKinematic)
+                    {
+                        rb.linearVelocity = Vector3.zero;
+                        rb.angularVelocity = Vector3.zero;
+                    }
                 }
             }
         }

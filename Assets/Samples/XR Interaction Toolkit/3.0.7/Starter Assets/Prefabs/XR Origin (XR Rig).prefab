@@ -960,10 +960,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bc72d2ecc8add47b2fe00d40318500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LeftHand: {fileID: 548834893544927179}
-  m_RightHand: {fileID: 4371799101689358726}
-  m_LeftController: {fileID: 202364687}
-  m_RightController: {fileID: 1670256624}
+  m_LeftHand: {fileID: 0}
+  m_RightHand: {fileID: 0}
+  m_LeftController: {fileID: 548834893544927179}
+  m_RightController: {fileID: 4371799101689358726}
   m_TrackedHandModeStarted:
     m_PersistentCalls:
       m_Calls: []

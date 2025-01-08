@@ -84,6 +84,7 @@ public class CylinderCollider : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (!showGizmos) return;
@@ -122,6 +123,7 @@ public class CylinderCollider : MonoBehaviour
             Gizmos.DrawLine(start, start + Vector3.up * height);
         }
     }
+#endif
 
     // Nettoyer les colliders enfants à la destruction
     private void OnDestroy()
