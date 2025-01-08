@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System;
 using Tools;
 using States;
+using System.Security.Cryptography;
 
 public class GameManager : MonoBehaviour
 {
-    private enum MainState
+    internal enum MainState
     {
         Tuto,
         Part1,
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
         Part4
     }
 
-    private enum Part1State
+    internal enum Part1State
     {
         Intro,
         Aiguille,
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
         Coque
     }
 
-    private enum Part2State
+    internal enum Part2State
     {
         Intro,
         Phase1,
@@ -32,17 +33,29 @@ public class GameManager : MonoBehaviour
         Phase3
     }
 
-    private StateMachine<MainState> mainStateMachine;
+    internal StateMachine<MainState> mainStateMachine;
+    internal DataCollectorManager datas;
+
+    private string oldID, currentID, oldSubID, currentSubID;
+    private string oldStepName, newStepName, oldSubStepName, newSubStepName;
     private EventsManager eventsManager;
+
+    internal static GameManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
         eventsManager = gameObject.AddComponent<EventsManager>();
+        datas = new("Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos", ';');
+        datas.LoadData();
 
         InitializeStateMachine();
         RegisterEvents();
-
-        LoggerTool.Log("Initialized.");
+        FirstActions();
     }
 
     void Update()
@@ -92,8 +105,8 @@ public class GameManager : MonoBehaviour
             { Part2State.Phase3, OnPhase3 }
         };
 
-        var part1StateMachine = new StateMachine<Part1State>(Part1State.Intro, part1StateActions, part1TransitionsActions);
-        var part2StateMachine = new StateMachine<Part2State>(Part2State.Intro, part2StateActions);
+        var part1StateMachine = new StateMachine<Part1State>(Part1State.Intro, part1StateActions, part1TransitionsActions, onStateExecute: false);
+        var part2StateMachine = new StateMachine<Part2State>(Part2State.Intro, part2StateActions, onStateExecute : false);
 
         var subStateMachines = new Dictionary<MainState, IStateMachine>
         {
@@ -117,8 +130,79 @@ public class GameManager : MonoBehaviour
 
     private void HandleNextState()
     {
-        if (mainStateMachine.IsLastSubState()) mainStateMachine.IncrementState();
-        else mainStateMachine.IncrementSubState();
+        if (mainStateMachine.IsLastSubState())
+        {
+            HandleNextStep();
+        }
+        else
+        {
+            HandleNextSubStep();
+        }
+        datas.SaveData();
+    }
+
+    private void HandleNextStep(string infos = "")
+    {
+        oldID = $"NEXT_STEP_{oldStepName};{newStepName}";
+        oldStepName = GameManager.Instance.mainStateMachine.CurrentStringState();
+        newStepName = mainStateMachine.IncrementState().ToString();
+        currentID = $"NEXT_STEP_{oldStepName};{newStepName}";
+        SaveNextStep(oldStepName, newStepName, oldID, currentID, infos);
+    }
+
+    private void HandleNextSubStep(string infos = "")
+    {
+        oldSubID = $"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}";
+        oldSubStepName = GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString();
+        mainStateMachine.IncrementSubState();
+        newSubStepName = GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString();
+        currentSubID = $"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}";
+        SaveNextSubStep(oldSubStepName, newSubStepName, oldSubID, currentSubID, infos);
+    }
+
+    // Save Datas : "Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos"
+    internal void SaveGhostSubStepTime()
+    {
+        GameManager.Instance.datas.EditGhostData($"SUBSTEP_{GameManager.Instance.mainStateMachine.GetCurrentSubState()}");
+    }
+
+    internal void SaveNextStep(string oldStepName, string newStepName, string oldID, string currentID, string infos = "")
+    {
+        if (oldStepName != newStepName)
+        {
+            GameManager.Instance.datas.AddData($"NEXT_STEP_{oldStepName};{newStepName}", "NEXT_STEP", "");
+            string timeStamp2 = GameManager.Instance.datas.CalculateTotalTime(currentID).ToString();
+            string timeStamp1;
+            if (oldID == "NEXT_STEP_;")
+                timeStamp1 = timeStamp2;
+            else
+                timeStamp1 = GameManager.Instance.datas.CalculateTimeDifference(oldID, currentID).ToString();
+            GameManager.Instance.datas.EditData($"NEXT_STEP_{oldStepName};{newStepName}", "NEXT_STEP", $"{oldStepName};{newStepName};{timeStamp1};{timeStamp2};{infos}");
+        }
+    }
+
+    internal void SaveNextSubStep(string oldSubStepName, string newSubStepName, string oldID, string currentID, string infos = "")
+    {
+        if (oldSubStepName != newSubStepName)
+        {
+            Debug.Log($"{oldSubStepName}, {newSubStepName}, {oldID}, {currentID}");
+            GameManager.Instance.datas.AddData($"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}", "NEXT_SUBSTEP", "");
+            string timeStamp2 = GameManager.Instance.datas.CalculateTotalTime(currentID).ToString();
+            string timeStamp1;
+            if (oldID == "NEXT_SUBSTEP_;")
+                timeStamp1 = timeStamp2;
+            else
+                timeStamp1 = GameManager.Instance.datas.CalculateTimeDifference(oldID, currentID).ToString();
+            GameManager.Instance.datas.EditData($"NEXT_SUBSTEP_{oldSubStepName};{newSubStepName}", "NEXT_SUBSTEP", $"{oldSubStepName};{newSubStepName};{timeStamp1};{timeStamp2};{infos}");
+            SaveGhostSubStepTime();
+        }
+    }
+
+    // Actions :
+    private void FirstActions()
+    {
+        LoggerTool.Log("First Actions.");
+        datas.InitializeStartTime();
     }
 
     private void OnTuto()
