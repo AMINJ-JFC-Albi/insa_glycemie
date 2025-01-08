@@ -6,5 +6,5 @@ public interface IStateMachine
 
     void Update();
     void ChangeState(Enum newState);
-    void IncrementState();
+    Enum IncrementState();
 }
