@@ -914,16 +914,55 @@ MonoBehaviour:
   answCTMP: {fileID: 6569291382405505473}
   buttonC: {fileID: 4227075385325183849}
   datas:
-  - question: "Ici se touve l'intitul\xE9 des questions"
-    answerA: "R\xE9ponse A"
-    answerB: "R\xE9ponse B"
-    answerC: "R\xE9ponse C"
-    goodAnswer: 0
-  - question: "Qu'est ce qui influence le taux de glyc\xE9mie ?"
-    answerA: "Parac\xE9tamol"
-    answerB: Amidon
-    answerC: Glucose
+  - question: "O\xF9 le capteur mesure-t-il le glucose ?"
+    answerA: Dans les cellules sanguines
+    answerB: Dans la peau
+    answerC: Dans le liquide interstitiel
     goodAnswer: 2
+  - question: "Le niveau de glucose est indiqu\xE9 dans quelle unit\xE9 ?"
+    answerA: mg/g
+    answerB: mg/dl
+    answerC: g/l
+    goodAnswer: 1
+  - question: Y a-t-il une batterie dans le capteur de glucose ?
+    answerA: Oui
+    answerB: Non
+    answerC: Je ne sais pas
+    goodAnswer: 0
+  - question: " Pourquoi un capteur ne peut-il \xEAtre utilis\xE9 que pendant deux
+      semaines ?"
+    answerA: "Parce que la batterie sera vide \xE0 ce moment-l\xE0"
+    answerB: "Parce que l\u2019\xE9lectrode enzymatique qui transforme le sucre est 
+      \xE9puis\xE9e "
+    answerC: "Parce que le capteur est abim\xE9 "
+    goodAnswer: 1
+  - question: "Le capteur mesure-t-il le glucose de la m\xEAme mani\xE8re que si
+      vous  pr\xE9levez une goutte de sang de votre doigt ? "
+    answerA: "Non, dans le sang on mesure la glyc\xE9mie capillaire"
+    answerB: " Oui, c'est exactement la m\xEAme analyse"
+    answerC: Non, dans le sang on mesure le fructose
+    goodAnswer: 0
+  - question: "\xC0 quelle fr\xE9quence le capteur met-il \xE0 jour le niveau de
+      glucose ?"
+    answerA: Toutes les 10 minutes
+    answerB: Toutes les heures
+    answerC: Toutes les minutes
+    goodAnswer: 2
+  - question: " Le niveau de glucose est-il le m\xEAme si vous le mesurez dans le
+      liquide  interstitiel ou dans le sang ?"
+    answerA: "Oui, c'est exactement le m\xEAme"
+    answerB: "Le niveau de glucose est toujours plus \xE9lev\xE9 dans le sang"
+    answerC: Non, dans le sang le niveau monte plus vite et descend plus  lentement
+    goodAnswer: 2
+  - question: "L\u2019\xE9quipe m\xE9dicale peut-elle recevoir des alertes du capteur
+      ?"
+    answerA: Oui
+    answerB: Non
+    answerC: Je nesais pas
+    goodAnswer: 0
+  winObject: {fileID: 0}
+  loseObject: {fileID: 0}
+  titleObject: {fileID: 1987252483723040271}
 --- !u!1 &6596840709138002660
 GameObject:
   m_ObjectHideFlags: 0
