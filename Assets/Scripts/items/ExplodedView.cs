@@ -69,7 +69,7 @@ public class ExplodedView : MonoBehaviour
     private bool isToggling = false;
     private bool anyPartSelectedFlag = false; // Tracks selection state
 
-
+    private bool firstPartSelected = false;
 
     private void Awake()
     {
@@ -80,6 +80,11 @@ public class ExplodedView : MonoBehaviour
     {
         if (IsExplodedView)
         {
+            if (!firstPartSelected)
+            {
+                firstPartSelected = true;
+                GameManager.Instance.mainStateMachine.IncrementState();
+            }
             if (parts[partIndex].IsSelected) DeselectPart(partIndex);
             else SelectPart(partIndex);
         }

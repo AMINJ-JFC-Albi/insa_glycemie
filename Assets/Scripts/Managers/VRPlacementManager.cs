@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Tools;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -146,13 +144,15 @@ public class PlacementManager : MonoBehaviour
         {
             string isCorrect = "INCORRECT";
             Destroy(handState.CurrentOverlay);
-            if (CompareTexts(handState.HeldObject.name, handState.GOReplaced.name))
+            if (TextTool.CompareTexts(handState.HeldObject.name, handState.GOReplaced.name))
             {
                 handState.GOReplaced.SetActive(false);
                 FinalizePlacement(handState.HeldObject, handState.CurrentOverlay);
                 isCorrect = "CORRECT";
                 SavePlacement("PLACE_OBJECT", $"{handState.HeldObject.name} ({isCorrect})");
-                GameManager.Instance.HandleNextState();
+                GameManager.Instance.step1CheckList.CheckID(TextTool.ExtractText(handState.HeldObject.name));
+                GameManager.Instance.dialogueSystemStep1.ShowDialogue();
+                if (GameManager.Instance.step1CheckList.IsAllChecked()) GameManager.Instance.HandleNextState();
             }
             else
             {
@@ -166,18 +166,6 @@ public class PlacementManager : MonoBehaviour
         handState.HeldObject = null;
         handState.CurrentOverlay = null;
         handState.GOReplaced = null;
-    }
-
-    private static bool CompareTexts(string text1, string text2)
-    {
-        return ExtractText(text1) == ExtractText(text2);
-    }
-
-    private static string ExtractText(string input)
-    {
-        string pattern = @"^(.*?)\s*\(";
-        Match match = Regex.Match(input, pattern);
-        return match.Success ? match.Groups[1].Value.Trim().ToLower() : input.Trim().ToLower();
     }
 
     private GameObject CreateOverlay(GameObject heldObject, Transform placementPoint, HandSide hand)

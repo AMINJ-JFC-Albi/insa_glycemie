@@ -46,7 +46,6 @@ namespace States
 
         public void ChangeState(TState newState)
         {
-            TState oldState = CurrentState;
             if (CurrentState.Equals(newState)) return;
 
             var transition = (CurrentState, newState);
