@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     internal enum MainState
     {
-        Tuto,
         Part1,
         Part2,
         Part3,
@@ -18,10 +17,8 @@ public class GameManager : MonoBehaviour
     internal enum Part1State
     {
         Intro,
-        Aiguille,
-        Protection,
-        Carte,
-        Coque
+        Placement,
+        ExplodedView
     }
 
     internal enum Part2State
@@ -34,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     internal StateMachine<MainState> mainStateMachine;
     internal DataCollectorManager datas;
+    internal CheckList step1CheckList;
 
     private string oldID, currentID, oldSubID, currentSubID;
     private string oldStepName, newStepName, oldSubStepName, newSubStepName;
@@ -45,12 +43,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject holder;
     [SerializeField] private GameObject partsFolder;
     [SerializeField] private GameObject explodedView;
-    [SerializeField] private DialogueSystem dialogueSystemStep1;
+    [SerializeField] internal DialogueSystem dialogueSystemStep1;
     [SerializeField] private SciFiDoor sciFiDoor1, sciFiDoor2, sciFiDoor3;
 
     private void Awake()
     {
         Instance = this;
+
+        step1CheckList = new(GetHolderIds(holder));
     }
 
     void Start()
@@ -74,42 +74,49 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private List<string> GetHolderIds(GameObject holder)
+    {
+        List<string> ids = new();
+        if (holder != null)
+        {
+            foreach(Transform child in holder.transform)
+            {
+                ids.Add(TextTool.ExtractText(child.name));
+            }
+        }
+        return ids;
+    } 
+
     private void InitializeStateMachine()
     {
         var mainStateActions = new Dictionary<MainState, Action>
         {
-            { MainState.Tuto, null },
             { MainState.Part1, null },
             { MainState.Part2, null },
-            { MainState.Part3, null },
+            { MainState.Part3, HandleNextState },
             { MainState.Part4, null },
         };
 
         var mainTransitionsActions = new Dictionary<(MainState, MainState), Action>
         {
-            { (MainState.Tuto, MainState.Part1), OnIntroPart1 },
-            { (MainState.Part1, MainState.Part2), OnIntroPart2 },
-            { (MainState.Part2, MainState.Part3), null },
-            { (MainState.Part3, MainState.Part4), null },
+            { (MainState.Part1, MainState.Part2), ShowRoom2 },
+            { (MainState.Part2, MainState.Part3), ShowRoom3 },
+            { (MainState.Part3, MainState.Part4), ShowRoom4 },
             { (MainState.Part4, MainState.Part4), null }
         };
 
         var part1StateActions = new Dictionary<Part1State, Action>
         {
             { Part1State.Intro, null },
-            { Part1State.Aiguille, null },
-            { Part1State.Protection, null },
-            { Part1State.Carte, null },
-            { Part1State.Coque, null }
+            { Part1State.Placement, null },
+            { Part1State.ExplodedView, null }
         };
 
         var part1TransitionsActions = new Dictionary<(Part1State, Part1State), Action>
         {
-            { (Part1State.Intro, Part1State.Aiguille), OnAiguillePlacement },
-            { (Part1State.Aiguille, Part1State.Protection), OnProtectionPlacement },
-            { (Part1State.Protection, Part1State.Carte), OnMotherboardPlacement },
-            { (Part1State.Carte, Part1State.Coque), OnCoquePlacement },
-            { (Part1State.Coque, Part1State.Coque), null }
+            { (Part1State.Intro, Part1State.Placement), ShowPlacement },
+            { (Part1State.Placement, Part1State.ExplodedView), ShowExplodedView },
+            { (Part1State.ExplodedView, Part1State.ExplodedView), null }
         };
 
         var part2StateActions = new Dictionary<Part2State, Action>
@@ -143,9 +150,10 @@ public class GameManager : MonoBehaviour
             { MainState.Part2, typeof(Part2State) }
         };
 
-        mainStateMachine = new StateMachine<MainState>(MainState.Tuto, mainStateActions, mainTransitionsActions, subStateMachines, subStateTypes);
+        mainStateMachine = new StateMachine<MainState>(MainState.Part1, mainStateActions, mainTransitionsActions, subStateMachines, subStateTypes);
     }
 
+    #region show
     private void RegisterEvents()
     {
         eventsManager.RegisterEvent("NextState", () => HandleNextState());
@@ -238,6 +246,7 @@ public class GameManager : MonoBehaviour
             SaveGhostSubStepTime();
         }
     }
+    #endregion
 
     // Actions :
     private void FirstActions()
@@ -255,31 +264,39 @@ public class GameManager : MonoBehaviour
         explodedView?.SetActive(false);
     }
 
-    private void OnAiguillePlacement()
+    private void ShowPlacement()
     {
-        LoggerTool.Log("Aiguille placée.");
-        dialogueSystemStep1?.IncrementStep();
+        LoggerTool.Log("ShowPlacement.");
+        dialogueSystemStep1?.ShowNextDialogue();
+        holder?.SetActive(true);
+        partsFolder?.SetActive(true);
     }
 
-    private void OnProtectionPlacement()
+    private void ShowExplodedView()
     {
-        LoggerTool.Log("Protection placée.");
-        dialogueSystemStep1?.IncrementStep();
-    }
-
-    private void OnMotherboardPlacement()
-    {
-        LoggerTool.Log("Carte mère placée.");
-        dialogueSystemStep1?.IncrementStep();
-    }
-
-    private void OnCoquePlacement()
-    {
-        LoggerTool.Log("Coque placée.");
-        dialogueSystemStep1?.IncrementStep();
+        LoggerTool.Log("ShowExplodedView.");
+        dialogueSystemStep1?.ShowNextDialogue();
         holder?.SetActive(false);
         explodedView?.SetActive(true);
+    }
+
+    private void ShowRoom2()
+    {
+        LoggerTool.Log("ShowRoom2.");
+        dialogueSystemStep1?.ShowNextDialogue();
         sciFiDoor1?.TriggerOpen();
+    }
+
+    private void ShowRoom3()
+    {
+        LoggerTool.Log("ShowRoom3.");
+        sciFiDoor2?.TriggerOpen();
+    }
+
+    private void ShowRoom4()
+    {
+        LoggerTool.Log("ShowRoom4.");
+        sciFiDoor3?.TriggerOpen();
     }
 
     private void OnPhase1()
@@ -297,18 +314,5 @@ public class GameManager : MonoBehaviour
         LoggerTool.Log("OnPhase3.", LoggerTool.Level.Temporised, 0.5);
         sciFiDoor2?.TriggerOpen();
         sciFiDoor3?.TriggerOpen(); //TODO Remove after part 3 implementation
-    }
-
-    private void OnIntroPart1()
-    {
-        LoggerTool.Log("OnIntroPart1.", LoggerTool.Level.Temporised);
-        dialogueSystemStep1?.IncrementStep();
-        holder?.SetActive(true);
-        partsFolder?.SetActive(true);
-    }
-
-    private void OnIntroPart2()
-    {
-        LoggerTool.Log("OnIntroPart2.", LoggerTool.Level.Temporised);
     }
 }

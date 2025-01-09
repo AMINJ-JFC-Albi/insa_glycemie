@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Text;
+
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -63,7 +65,15 @@ public class DialogueSystem : MonoBehaviour
         if (progressionStep >= texts.Count)
             dialogueTMP.text = "";
         else
-            dialogueTMP.text = texts[progressionStep];
+            dialogueTMP.text = ParseText(texts[progressionStep]);
+    }
+
+    public string ParseText(string text)
+    {
+        StringBuilder sb = new();
+        foreach(string line in text.Split("[endline]")) sb.AppendLine(line
+            .Replace("[checklist]", GameManager.Instance.step1CheckList.ToString()));
+        return sb.ToString();
     }
 
     public void ShowNextDialogue()
