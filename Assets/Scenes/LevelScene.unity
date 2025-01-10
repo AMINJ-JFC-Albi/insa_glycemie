@@ -6601,6 +6601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225037679}
   - component: {fileID: 225037680}
+  - component: {fileID: 225037681}
   m_Layer: 0
   m_Name: Room1
   m_TagString: Untagged
@@ -6652,6 +6653,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc200446e695c6f42b38ba96fbdded08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listTTS:
+  - {fileID: 8300000, guid: 60631ea10af986e4eb0b13e0d4a34afa, type: 3}
+  - {fileID: 8300000, guid: fd2546ea320ab08438956d47e7acbf59, type: 3}
+  - {fileID: 8300000, guid: 15857d77fdaa745439f9eb78275d769b, type: 3}
   dialogueTMP: {fileID: 1922062235}
   texts:
   - "Bienvenue, Gardien. Apr\xE8s une bataille acharn\xE9e, le capteur de glyc\xE9mie,
@@ -6665,6 +6670,103 @@ MonoBehaviour:
     voir sa vue d\xE9taill\xE9e."
   - "Bravo ! Ton capteur est maintenant reconstruit. Dirige-toi vers la prochaine
     salle, o\xF9 je viendrai t\u2019aider \xE0 l\u2019installer."
+--- !u!82 &225037681
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225037678}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &230689748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17736,6 +17838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc200446e695c6f42b38ba96fbdded08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listTTS:
+  - {fileID: 8300000, guid: 60631ea10af986e4eb0b13e0d4a34afa, type: 3}
+  - {fileID: 8300000, guid: fd2546ea320ab08438956d47e7acbf59, type: 3}
   dialogueTMP: {fileID: 1630760937}
   texts:
   - "Installe-toi sur le fauteuil recouvert d'une b\xE2che jaune."
