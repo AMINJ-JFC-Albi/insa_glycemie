@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Tools;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -32,6 +33,9 @@ public class PlacementManager : MonoBehaviour
     [SerializeField] private NearFarInteractor interactorLeft;
 
     [SerializeField] private Material transparentMaterial;
+
+    [SerializeField]
+    public bool showOverlay = true;
 
     private class HandState
     {
@@ -109,11 +113,17 @@ public class PlacementManager : MonoBehaviour
 
     private void HandleTriggerEnter(Collider collider, GameObject selfGO, HandSide hand)
     {
+        LoggerTool.Log("TRIGGER ENTER");
         var handState = handStates[hand];
         if ((handState.HeldObject != null) && (handState.CurrentOverlay == null) && handState.HeldObject.TryGetComponent<IPlacementAction>(out var _))
         {
+            LoggerTool.Log(selfGO.name, LoggerTool.Level.Warning);
             handState.GOReplaced = selfGO;
             handState.CurrentOverlay = CreateOverlay(handState.HeldObject.gameObject, selfGO.transform, hand);
+        }
+        else
+        {
+            LoggerTool.Log("ERREUR : " + selfGO.name, LoggerTool.Level.Warning);
         }
     }
 
@@ -189,7 +199,13 @@ public class PlacementManager : MonoBehaviour
             if (!child.TryGetComponent<MeshRenderer>(out MeshRenderer _)) Destroy(child.gameObject);
         }
 
-        ApplyTransparentMaterial(overlay);
+        if (showOverlay)
+            ApplyTransparentMaterial(overlay);
+        else
+            foreach (Renderer renderer in overlay.GetComponentsInChildren<Renderer>())
+            {
+                renderer.enabled = false;
+            }
         return overlay;
     }
 

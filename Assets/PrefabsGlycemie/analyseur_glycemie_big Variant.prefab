@@ -520,7 +520,7 @@ RectTransform:
   m_GameObject: {fileID: 1333512801625035090}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.00075, y: 0.00075, z: 0.00075}
+  m_LocalScale: {x: 0.0006, y: 0.0006, z: 0.0006}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1086861481545372394}
@@ -533,7 +533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.675}
+  m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4686584187660640078
@@ -2684,26 +2684,34 @@ MonoBehaviour:
     finalPosition: {x: 0.3, y: 0, z: 0}
     offset: {x: 0, y: 0.1, z: 0}
     title: Cache Haut
-    desc: "Description d\xE9taill\xE9e du cache haut"
-    image: {fileID: 0}
+    desc: "Le cache haut prot\xE8ge les composants internes du capteur contre les
+      \xE9l\xE9ments ext\xE9rieurs comme la poussi\xE8re et l'humidit\xE9. "
+    image: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
   - partTransform: {fileID: 1616709756312266633}
     finalPosition: {x: 0.15, y: 0, z: 0}
     offset: {x: 0, y: 0.1, z: 0}
     title: "Carte \xE9lectronique"
-    desc: "Description d\xE9taill\xE9e de la carte \xE9lectronique"
+    desc: "La carte \xE9lectronique analyse les signaux transmis par le capteur et
+      les convertit en donn\xE9es exploitables (mg/dl). Elle inclut une alimentation
+      pour son fonctionnement, ainsi qu'un module de connectivit\xE9 pour transmettre
+      les donn\xE9es."
     image: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
   - partTransform: {fileID: 4835848868232230710}
     finalPosition: {x: -0.15, y: 0, z: 0}
     offset: {x: 0, y: 0.1, z: 0}
     title: Base capteur
-    desc: "Description d\xE9taill\xE9e de la base capteur"
-    image: {fileID: 0}
+    desc: "La base du capteur sert de support principal. Elle contient l'\xE9lectrode
+      et assure le contact avec le liquide interstitiel."
+    image: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
   - partTransform: {fileID: 8849419356981153601}
     finalPosition: {x: -0.3, y: 0, z: 0}
-    offset: {x: 0, y: 0.175, z: 0}
+    offset: {x: 0, y: 0.3, z: 0}
     title: Porte aiguille
-    desc: "Description d\xE9taill\xE9e du porte aiguille"
-    image: {fileID: 0}
+    desc: "L'aiguille, \xE9quip\xE9e d'une \xE9lectrode enzymatique, est ins\xE9r\xE9e
+      sous la peau pour mesurer le glucose dans le liquide interstitiel. Le porte-aiguille
+      assure une insertion stable et pr\xE9cise, minimisant l'inconfort et garantissant
+      des mesures fiables."
+    image: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
   infos: {fileID: 1333512801625035090}
   title: {fileID: 7866934359965780446}
   desc: {fileID: 4961521315832421589}

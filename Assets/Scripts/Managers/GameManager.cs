@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System;
 using Tools;
 using States;
+using static GameManager;
+using System.Collections;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,6 +51,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] internal DialogueSystem dialogueSystemStep1;
     [SerializeField] internal DialogueSystem dialogueSystemStep2;
     [SerializeField] private SciFiDoor sciFiDoor1, sciFiDoor2, sciFiDoor3;
+    [SerializeField] private GameObject chairCloth;
+    [SerializeField] private GameObject holderWipes, holderApplicateur, holderAnalyseurGlycemie, holderSmartphone;
+    [SerializeField] private GameObject analyseurGlycemie;
+    [SerializeField] private GameObject waiting15SecMsg;
 
     private void Awake()
     {
@@ -134,11 +141,11 @@ public class GameManager : MonoBehaviour
 
         var part2TransitionsActions = new Dictionary<(Part2State, Part2State), Action>
         {
-            { (Part2State.Fauteuil, Part2State.NettoyerZone), ShowNextDialogueStep2 },
-            { (Part2State.NettoyerZone, Part2State.CapteurDnsApplicateur), ShowNextDialogueStep2 },
-            { (Part2State.CapteurDnsApplicateur, Part2State.PlacerApplicateur), ShowNextDialogueStep2 },
-            { (Part2State.PlacerApplicateur, Part2State.ClicCapteur), ShowNextDialogueStep2 },
-            { (Part2State.ClicCapteur, Part2State.ConnexionCapteur), ShowNextDialogueStep2 },
+            { (Part2State.Fauteuil, Part2State.NettoyerZone), ShowNettoyerZone },
+            { (Part2State.NettoyerZone, Part2State.CapteurDnsApplicateur), ShowCapteurDnsApplicateur },
+            { (Part2State.CapteurDnsApplicateur, Part2State.PlacerApplicateur), ShowPlacerApplicateur },
+            { (Part2State.PlacerApplicateur, Part2State.ClicCapteur), ShowClicCapteur },
+            { (Part2State.ClicCapteur, Part2State.ConnexionCapteur), ShowConnexionCapteur },
             { (Part2State.ConnexionCapteur, Part2State.ConnexionCapteur), null }
         };
 
@@ -172,6 +179,16 @@ public class GameManager : MonoBehaviour
         if (!skipTutorial)
         {
             skipTutorial = true;
+            HandleNextState();
+        }
+    }
+
+    private bool clicCapteur = false;
+    public void SkipCapteur()
+    {
+        if (!clicCapteur)
+        {
+            clicCapteur = true;
             HandleNextState();
         }
     }
@@ -255,6 +272,69 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void ShowNettoyerZone()
+    {
+        ShowNextDialogueStep2();
+        holderWipes?.SetActive(true);
+        holderApplicateur?.SetActive(false);
+        holderAnalyseurGlycemie?.SetActive(false);
+    }
+    private void ShowCapteurDnsApplicateur()
+    {
+        CustomEnable(false, true, true, false, false, false);
+        ShowTmp15SecMessage();
+        ShowNextDialogueStep2();
+    }
+    private void ShowPlacerApplicateur()
+    {
+        CustomEnable(false, false, true, false, true, false);
+        ShowNextDialogueStep2();
+    }
+    private void ShowClicCapteur()
+    {
+        CustomEnable(false, false, false, true, false, false);
+        ShowNextDialogueStep2();
+    }
+    private void ShowConnexionCapteur()
+    {
+        CustomEnable(false, false, false, false, false, true);
+        ShowNextDialogueStep2();
+    }
+
+    private void CustomEnable(bool enableWipes, bool enableAnalyseurGlycemieHolder, bool enableAnalyseurGlycemieGrab, bool enableAnalyseurGlycemieInteract, bool enableApplicateur, bool enableSmartphoone)
+    {
+
+        holderWipes?.SetActive(enableWipes);
+        if (holderAnalyseurGlycemie != null)
+        {
+            if (holderAnalyseurGlycemie.TryGetComponent<SphereCollider>(out SphereCollider sc)) sc.enabled = enableAnalyseurGlycemieHolder;
+            if (holderAnalyseurGlycemie.TryGetComponent<MeshRenderer>(out MeshRenderer mr)) mr.enabled = enableAnalyseurGlycemieHolder;
+        }
+        if (analyseurGlycemie != null)
+        {
+            if (analyseurGlycemie.TryGetComponent<XRGrabInteractable>(out XRGrabInteractable xrgi)) xrgi.enabled = enableAnalyseurGlycemieGrab;
+            if (analyseurGlycemie.TryGetComponent<XRSimpleInteractable>(out XRSimpleInteractable xrsi)) xrsi.enabled = enableAnalyseurGlycemieInteract;
+        }
+        holderApplicateur?.SetActive(enableApplicateur);
+        holderSmartphone?.SetActive(enableSmartphoone);
+    }
+
+    private void ShowTmp15SecMessage()
+    {
+        StartCoroutine(ShowTimed15SecMessage());
+    }
+
+    private IEnumerator ShowTimed15SecMessage()
+    {
+        float startTime = Time.time;
+        waiting15SecMsg?.SetActive(true);
+        while (Time.time < startTime + 2f)
+        {
+            yield return null;
+        }
+        waiting15SecMsg?.SetActive(false);
+    }
+
     // Actions :
     private void FirstActions()
     {
@@ -292,6 +372,8 @@ public class GameManager : MonoBehaviour
         LoggerTool.Log("ShowRoom2.");
         dialogueSystemStep1?.ShowNextDialogue();
         sciFiDoor1?.TriggerOpen();
+        chairCloth?.SetActive(true);
+        CustomEnable(false, false, false, false, false, false);
     }
 
     private void ShowNextDialogueStep2()
