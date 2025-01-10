@@ -2,6 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Diagnostics.CodeAnalysis;
+using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -78,11 +84,45 @@ public class FadeTeleportEditor : Editor
 public class FadeTeleport : MonoBehaviour
 {
     [SerializeField] private GameObject fadeQuadPrefab;
+    [SerializeField] private Transform teleportTransform;
     [SerializeField] private Color fadeColor = Color.black;
     [SerializeField] private Vector3 quadOffset = new(0, 0, 0.5f);
+    [SerializeField] private GameObject[] objectsToDisactive;
+    [SerializeField] private GameObject[] objectsToActive;
 
     private Material fadeMaterial;
     private GameObject fadeQuadInstance;
+    private bool oneTime = true;
+
+    public void StartVRTeleportSequence(SelectEnterEventArgs args)
+    {
+        if (oneTime)
+        {
+            oneTime = false;
+            if (TryGetComponent<XRSimpleInteractable>(out XRSimpleInteractable xrsi)) xrsi.enabled = false;
+
+            Transform player = args.interactorObject.transform.parent.parent.parent;
+
+            StartTeleportSequence(player, teleportTransform.position, teleportTransform.rotation, 1.0f, () =>
+            {
+                // Réinitialiser du déplacement de l'XROrigin
+                if (player.TryGetComponent<XROrigin>(out XROrigin xrOrigin)) xrOrigin.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+                if (objectsToActive != null) foreach (GameObject go in objectsToActive) go.SetActive(true);
+                if (objectsToDisactive != null) foreach (GameObject go in objectsToDisactive)
+                    {
+                        if (go.TryGetComponent<FadeTeleport>(out var _))
+                        {
+                            if (go.TryGetComponent<MeshRenderer>(out MeshRenderer mr)) mr.enabled = false;
+                            if (go.TryGetComponent<MeshCollider>(out MeshCollider mc)) mc.enabled = false;
+                        }
+                        else go.SetActive(false);
+                    }
+
+                GameManager.Instance.HandleNextState();
+            });
+        }
+    }
 
     public void StartTeleportSequence(Transform player, float fadeDuration, Action customAction = null)
     {
@@ -131,6 +171,7 @@ public class FadeTeleport : MonoBehaviour
         fadeQuadInstance.transform.SetParent(cameraTransform);
         fadeQuadInstance.transform.localPosition = quadOffset;
         fadeQuadInstance.transform.localRotation = Quaternion.identity;
+        fadeQuadInstance.transform.localScale = new Vector3(3, 3, 1);
     }
 
     private IEnumerator FadeToBlack(float fadeDuration)
