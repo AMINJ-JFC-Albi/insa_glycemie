@@ -23,10 +23,12 @@ public class GameManager : MonoBehaviour
 
     internal enum Part2State
     {
-        Intro,
-        Phase1,
-        Phase2,
-        Phase3
+        Fauteuil,
+        NettoyerZone,
+        CapteurDnsApplicateur,
+        PlacerApplicateur,
+        ClicCapteur,
+        ConnexionCapteur
     }
 
     internal StateMachine<MainState> mainStateMachine;
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject partsFolder;
     [SerializeField] private GameObject explodedView;
     [SerializeField] internal DialogueSystem dialogueSystemStep1;
+    [SerializeField] internal DialogueSystem dialogueSystemStep2;
     [SerializeField] private SciFiDoor sciFiDoor1, sciFiDoor2, sciFiDoor3;
 
     private void Awake()
@@ -121,22 +124,26 @@ public class GameManager : MonoBehaviour
 
         var part2StateActions = new Dictionary<Part2State, Action>
         {
-            { Part2State.Intro, null },
-            { Part2State.Phase1, null },
-            { Part2State.Phase2, null },
-            { Part2State.Phase3, null }
+            { Part2State.Fauteuil, null },
+            { Part2State.NettoyerZone, null },
+            { Part2State.CapteurDnsApplicateur, null },
+            { Part2State.PlacerApplicateur, null },
+            { Part2State.ClicCapteur, null },
+            { Part2State.ConnexionCapteur, null }
         };
 
         var part2TransitionsActions = new Dictionary<(Part2State, Part2State), Action>
         {
-            { (Part2State.Intro, Part2State.Phase1), OnPhase1 },
-            { (Part2State.Phase1, Part2State.Phase2), OnPhase2 },
-            { (Part2State.Phase2, Part2State.Phase3), OnPhase3 },
-            { (Part2State.Phase3, Part2State.Phase3), null }
+            { (Part2State.Fauteuil, Part2State.NettoyerZone), ShowNextDialogueStep2 },
+            { (Part2State.NettoyerZone, Part2State.CapteurDnsApplicateur), ShowNextDialogueStep2 },
+            { (Part2State.CapteurDnsApplicateur, Part2State.PlacerApplicateur), ShowNextDialogueStep2 },
+            { (Part2State.PlacerApplicateur, Part2State.ClicCapteur), ShowNextDialogueStep2 },
+            { (Part2State.ClicCapteur, Part2State.ConnexionCapteur), ShowNextDialogueStep2 },
+            { (Part2State.ConnexionCapteur, Part2State.ConnexionCapteur), null }
         };
 
         var part1StateMachine = new StateMachine<Part1State>(Part1State.Intro, part1StateActions, part1TransitionsActions, onStateExecute: false);
-        var part2StateMachine = new StateMachine<Part2State>(Part2State.Intro, part2StateActions, part2TransitionsActions, onStateExecute : false);
+        var part2StateMachine = new StateMachine<Part2State>(Part2State.Fauteuil, part2StateActions, part2TransitionsActions, onStateExecute : false);
 
         var subStateMachines = new Dictionary<MainState, IStateMachine>
         {
@@ -287,9 +294,15 @@ public class GameManager : MonoBehaviour
         sciFiDoor1?.TriggerOpen();
     }
 
+    private void ShowNextDialogueStep2()
+    {
+        dialogueSystemStep2?.ShowNextDialogue();
+    }
+
     private void ShowRoom3()
     {
         LoggerTool.Log("ShowRoom3.");
+        dialogueSystemStep2?.ShowNextDialogue();
         sciFiDoor2?.TriggerOpen();
     }
 
