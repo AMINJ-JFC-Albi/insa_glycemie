@@ -12,7 +12,6 @@ public class PatchColliders : MonoBehaviour
     {
         if (chair.TryGetComponent<MeshCollider>(out var collider))
         {
-            Debug.LogWarning($"Patch Chair ({enable})");
             collider.excludeLayers = enable ? ~0 : 0;
         }
     }
