@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Tools;
 using UnityEngine;
 
 public class UnifiedColliderEventManager : MonoBehaviour
@@ -16,7 +15,6 @@ public class UnifiedColliderEventManager : MonoBehaviour
         if (other.name == "SM_Chair") return; //TODO Patch with layers Colliders
         if (activeObjects.Count == 0)
         {
-            LoggerTool.Log($"OnTriggerEnter: {other.name} -> {gameObject.name}", LoggerTool.Level.Warning);
             OnTriggerEnterEvent?.Invoke(other, gameObject);
         }
         activeObjects.Add(other);
@@ -31,7 +29,6 @@ public class UnifiedColliderEventManager : MonoBehaviour
 
         if (activeObjects.Count == 0)
         {
-            LoggerTool.Log($"OnTriggerExit: {other.name} -> {gameObject.name}", LoggerTool.Level.Warning);
             OnTriggerExitEvent?.Invoke(other, gameObject);
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Tools;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -117,7 +116,6 @@ public class PlacementManager : MonoBehaviour
         if ((handState.HeldObject != null) && (handState.CurrentOverlay == null) && handState.HeldObject.TryGetComponent<IPlacementAction>(out var _))
         {
             if (selfGO.transform.parent == handState.HeldObject.transform) return;
-            LoggerTool.Log($"HandleTriggerEnter: {handState.HeldObject.name} -> {selfGO.name}", LoggerTool.Level.Warning);
             handState.GOReplaced = selfGO;
             handState.CurrentOverlay = CreateOverlay(handState.HeldObject.gameObject, selfGO.transform, hand);
         }
@@ -138,7 +136,6 @@ public class PlacementManager : MonoBehaviour
         HandState handState = handStates[hand];
         if (args.interactableObject is XRGrabInteractable grabObject)
         {
-            LoggerTool.Log(grabObject.name + " " + hand.ToString(), LoggerTool.Level.Warning);
             handState.HeldObject = grabObject;
             SavePlacement("GRAB_OBJECT", handState.HeldObject.name);
         }
@@ -151,7 +148,6 @@ public class PlacementManager : MonoBehaviour
         {
             string isCorrect = "INCORRECT";
             Destroy(handState.CurrentOverlay);
-            LoggerTool.Log($"HandleDrop: {handState.HeldObject.name} -> {handState.GOReplaced.name}", LoggerTool.Level.Warning);
             if (TextTool.CompareTexts(handState.HeldObject.name, handState.GOReplaced.name))
             {
                 handState.GOReplaced.SetActive(false);
