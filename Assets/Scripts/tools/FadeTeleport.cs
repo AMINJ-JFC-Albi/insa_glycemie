@@ -108,7 +108,15 @@ public class FadeTeleport : MonoBehaviour
                 // Réinitialiser du déplacement de l'XROrigin
                 if (player.TryGetComponent<XROrigin>(out XROrigin xrOrigin)) xrOrigin.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
 
-                if (objectsToActive != null) foreach (GameObject go in objectsToActive) go.SetActive(true);
+                if (objectsToActive != null) foreach (GameObject go in objectsToActive)
+                    {
+                        if (go.TryGetComponent<FadeTeleport>(out var _))
+                        {
+                            if (go.TryGetComponent<MeshRenderer>(out MeshRenderer mr)) mr.enabled = true;
+                            if (go.TryGetComponent<MeshCollider>(out MeshCollider mc)) mc.enabled = true;
+                        }
+                        else go.SetActive(true);
+                    }
                 if (objectsToDisactive != null) foreach (GameObject go in objectsToDisactive)
                     {
                         if (go.TryGetComponent<FadeTeleport>(out var _))
@@ -122,6 +130,36 @@ public class FadeTeleport : MonoBehaviour
                 GameManager.Instance.HandleNextState();
             });
         }
+    }
+
+    public void StartVRTeleportSequence(Transform player)
+    {
+        StartTeleportSequence(player, teleportTransform.position, teleportTransform.rotation, 1.0f, () =>
+        {
+            // Réinitialiser du déplacement de l'XROrigin
+            if (player.TryGetComponent<XROrigin>(out XROrigin xrOrigin)) xrOrigin.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+            if (objectsToActive != null) foreach (GameObject go in objectsToActive)
+                {
+                    if (go.TryGetComponent<FadeTeleport>(out var _))
+                    {
+                        if (go.TryGetComponent<MeshRenderer>(out MeshRenderer mr)) mr.enabled = true;
+                        if (go.TryGetComponent<MeshCollider>(out MeshCollider mc)) mc.enabled = true;
+                    }
+                    else go.SetActive(true);
+                }
+            if (objectsToDisactive != null) foreach (GameObject go in objectsToDisactive)
+                {
+                    if (go.TryGetComponent<FadeTeleport>(out var _))
+                    {
+                        if (go.TryGetComponent<MeshRenderer>(out MeshRenderer mr)) mr.enabled = false;
+                        if (go.TryGetComponent<MeshCollider>(out MeshCollider mc)) mc.enabled = false;
+                    }
+                    else go.SetActive(false);
+                }
+
+            GameManager.Instance.HandleNextState();
+        });
     }
 
     public void StartTeleportSequence(Transform player, float fadeDuration, Action customAction = null)

@@ -35,16 +35,17 @@ public class ResetChildrenTransforms : MonoBehaviour
         {
             if (entry.Key != null && entry.Key.gameObject.activeInHierarchy)
             {
-                entry.Key.SetLocalPositionAndRotation(entry.Value.Position, entry.Value.Rotation);
-                entry.Key.localScale = entry.Value.Scale;
-                if (entry.Key.TryGetComponent<Rigidbody>(out var rb))
+                if (entry.Key.gameObject.TryGetComponent<Rigidbody>(out var rb))
                 {
+                    if (rb.isKinematic && !rb.useGravity) continue;
                     if (!rb.isKinematic)
                     {
                         rb.linearVelocity = Vector3.zero;
                         rb.angularVelocity = Vector3.zero;
                     }
                 }
+                entry.Key.SetLocalPositionAndRotation(entry.Value.Position, entry.Value.Rotation);
+                entry.Key.localScale = entry.Value.Scale;
             }
         }
     }
