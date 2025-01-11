@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 
 public class UnifiedColliderEventManager : MonoBehaviour
 {
     public List<Collider> Colliders;
-
     private HashSet<Collider> activeObjects = new HashSet<Collider>();
 
     public delegate void TriggerEvent(Collider collider, GameObject selfGO);
@@ -14,8 +13,10 @@ public class UnifiedColliderEventManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.name == "SM_Chair") return; //TODO Patch with layers Colliders
         if (activeObjects.Count == 0)
         {
+            LoggerTool.Log($"OnTriggerEnter: {other.name} -> {gameObject.name}", LoggerTool.Level.Warning);
             OnTriggerEnterEvent?.Invoke(other, gameObject);
         }
         activeObjects.Add(other);
@@ -23,14 +24,15 @@ public class UnifiedColliderEventManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (activeObjects.Contains(other))
-        {
-            activeObjects.Remove(other);
+        if (!activeObjects.Contains(other))
+            return;
 
-            if (activeObjects.Count == 0)
-            {
-                OnTriggerExitEvent?.Invoke(other, gameObject);
-            }
+        activeObjects.Remove(other);
+
+        if (activeObjects.Count == 0)
+        {
+            LoggerTool.Log($"OnTriggerExit: {other.name} -> {gameObject.name}", LoggerTool.Level.Warning);
+            OnTriggerExitEvent?.Invoke(other, gameObject);
         }
     }
 
@@ -39,7 +41,7 @@ public class UnifiedColliderEventManager : MonoBehaviour
         Colliders = colliders;
     }
 
-    internal void AddColliders(Collider collider)
+    internal void AddCollider(Collider collider)
     {
         Colliders ??= new();
         Colliders.Add(collider);

@@ -74,7 +74,7 @@ public class CylinderCollider : MonoBehaviour
                 grab.colliders.Add(boxCollider);
             }
 
-            ucem.AddColliders(boxCollider);
+            ucem.AddCollider(boxCollider);
 
             // Taguer l'objet pour faciliter le nettoyage
             colliderObj.tag = "CylinderColliderChild";

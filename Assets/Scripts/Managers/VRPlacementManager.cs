@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Tools;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using static GameManager;
 
 public class PlacementManager : MonoBehaviour
 {
@@ -113,17 +113,13 @@ public class PlacementManager : MonoBehaviour
 
     private void HandleTriggerEnter(Collider collider, GameObject selfGO, HandSide hand)
     {
-        LoggerTool.Log("TRIGGER ENTER");
         var handState = handStates[hand];
         if ((handState.HeldObject != null) && (handState.CurrentOverlay == null) && handState.HeldObject.TryGetComponent<IPlacementAction>(out var _))
         {
-            LoggerTool.Log(selfGO.name, LoggerTool.Level.Warning);
+            if (selfGO.transform.parent == handState.HeldObject.transform) return;
+            LoggerTool.Log($"HandleTriggerEnter: {handState.HeldObject.name} -> {selfGO.name}", LoggerTool.Level.Warning);
             handState.GOReplaced = selfGO;
             handState.CurrentOverlay = CreateOverlay(handState.HeldObject.gameObject, selfGO.transform, hand);
-        }
-        else
-        {
-            LoggerTool.Log("ERREUR : " + selfGO.name, LoggerTool.Level.Warning);
         }
     }
 
@@ -142,6 +138,7 @@ public class PlacementManager : MonoBehaviour
         HandState handState = handStates[hand];
         if (args.interactableObject is XRGrabInteractable grabObject)
         {
+            LoggerTool.Log(grabObject.name + " " + hand.ToString(), LoggerTool.Level.Warning);
             handState.HeldObject = grabObject;
             SavePlacement("GRAB_OBJECT", handState.HeldObject.name);
         }
@@ -154,15 +151,52 @@ public class PlacementManager : MonoBehaviour
         {
             string isCorrect = "INCORRECT";
             Destroy(handState.CurrentOverlay);
+            LoggerTool.Log($"HandleDrop: {handState.HeldObject.name} -> {handState.GOReplaced.name}", LoggerTool.Level.Warning);
             if (TextTool.CompareTexts(handState.HeldObject.name, handState.GOReplaced.name))
             {
                 handState.GOReplaced.SetActive(false);
                 FinalizePlacement(handState.HeldObject, handState.CurrentOverlay);
                 isCorrect = "CORRECT";
                 SavePlacement("PLACE_OBJECT", $"{handState.HeldObject.name} ({isCorrect})");
+                //TODO : Tout ce qui suit est à déplacer dans le GameManager et IPlacementAction (cela n'a pas été fait par manque de temps)
+                if (GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString() == Part2State.NettoyerZone.ToString())
+                {
+                    handState.HeldObject.gameObject.SetActive(false);
+                }
+                if (GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString() == Part2State.CapteurDnsApplicateur.ToString())
+                {
+                    handState.HeldObject.gameObject.SetActive(false);
+                    if (hand == HandSide.Left)
+                    {
+                        Destroy(handStates[HandSide.Right].CurrentOverlay);
+                        handStates[HandSide.Right].CurrentOverlay = null;
+                    }
+                    if (hand == HandSide.Right)
+                    {
+                        Destroy(handStates[HandSide.Left].CurrentOverlay);
+                        handStates[HandSide.Left].CurrentOverlay = null;
+                    }
+                    handState.GOReplaced.transform.parent.gameObject.SetActive(false);
+                    ForceDropObjects();
+                    handState.GOReplaced.transform.parent.name = "applicateur_et_analyseur_glycemie";
+                    if (handState.GOReplaced.transform.parent.TryGetComponent<ShowAnalyseurGlycemie>(out ShowAnalyseurGlycemie sag)) sag.Show();
+                    handState.GOReplaced.transform.parent.gameObject.SetActive(true);
+                }
+                if (GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString() == Part2State.PlacerApplicateur.ToString())
+                {
+                    ForceDropObjects();
+                    handState.HeldObject.name = "applicateur";
+                    if (handState.HeldObject.TryGetComponent<ShowAnalyseurGlycemie>(out ShowAnalyseurGlycemie sag)) sag.Hide();
+                    if (handState.GOReplaced.TryGetComponent<TeleportObject>(out TeleportObject to)) to.Teleport();
+                }
+                if (GameManager.Instance.mainStateMachine.GetCurrentSubState().ToString() == Part2State.ConnexionCapteur.ToString())
+                {
+                    handState.HeldObject.gameObject.SetActive(false);
+                }
                 GameManager.Instance.step1CheckList.CheckID(TextTool.ExtractText(handState.HeldObject.name));
                 GameManager.Instance.dialogueSystemStep1.ShowDialogue();
                 if (GameManager.Instance.step1CheckList.IsAllChecked()) GameManager.Instance.HandleNextState();
+                //Fin TODO
             }
             else
             {
@@ -176,6 +210,25 @@ public class PlacementManager : MonoBehaviour
         handState.HeldObject = null;
         handState.CurrentOverlay = null;
         handState.GOReplaced = null;
+    }
+    internal void ForceDropObjects()
+    {
+        if (interactorRight.hasSelection)
+        {
+            var interactable = interactorRight.firstInteractableSelected;
+            if (interactable != null)
+            {
+                interactorRight.EndManualInteraction();
+            }
+        }
+        if (interactorLeft.hasSelection)
+        {
+            var interactable = interactorLeft.firstInteractableSelected;
+            if (interactable != null)
+            {
+                interactorLeft.EndManualInteraction();
+            }
+        }
     }
 
     private GameObject CreateOverlay(GameObject heldObject, Transform placementPoint, HandSide hand)

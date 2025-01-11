@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using Tools;
 using States;
-using static GameManager;
 using System.Collections;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -55,6 +54,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject holderWipes, holderApplicateur, holderAnalyseurGlycemie, holderSmartphone;
     [SerializeField] private GameObject analyseurGlycemie;
     [SerializeField] private GameObject waiting15SecMsg;
+    [SerializeField] private GameObject player;
 
     private void Awake()
     {
@@ -385,6 +385,7 @@ public class GameManager : MonoBehaviour
     {
         LoggerTool.Log("ShowRoom3.");
         dialogueSystemStep2?.ShowNextDialogue();
+        if ((dialogueSystemStep2 != null) && dialogueSystemStep2.TryGetComponent<FadeTeleport>(out FadeTeleport ft)) ft.StartVRTeleportSequence(player.transform);
         sciFiDoor2?.TriggerOpen();
     }
 
