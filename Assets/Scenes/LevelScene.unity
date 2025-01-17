@@ -17993,8 +17993,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listTTS:
-  - {fileID: 8300000, guid: f91c2bfecdf3e024da1217d1a6d1b880, type: 3}
-  - {fileID: 8300000, guid: 33ae154fd9469ec419b9cbdbe0602aca, type: 3}
+  - {fileID: 8300000, guid: 1419bc8e37b72ee47b5c4d1df29bbcca, type: 3}
+  - {fileID: 8300000, guid: 251d6c88894c2744691a0255447aec41, type: 3}
+  - {fileID: 8300000, guid: 352940588cdfaa143ad972ea9f2afdcf, type: 3}
+  - {fileID: 8300000, guid: a067c89ef6b305345b8e4ce1bfce3e19, type: 3}
+  - {fileID: 8300000, guid: dffaf75e0bf460046a4bd4153c50fbe1, type: 3}
+  - {fileID: 8300000, guid: a11b5f7527b44f242bd1e567c5149073, type: 3}
+  - {fileID: 8300000, guid: 1a054b345ed31ad4aae3bc6564528a88, type: 3}
   dialogueTMP: {fileID: 1630760937}
   texts:
   - "Installe-toi sur le fauteuil recouvert d'une b\xE2che jaune."
