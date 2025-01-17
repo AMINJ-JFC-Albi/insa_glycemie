@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject analyseurGlycemie;
     [SerializeField] private GameObject waiting15SecMsg;
     [SerializeField] private GameObject player;
+    [SerializeField] private AudioSource audioSourceRoom4;
 
     private void Awake()
     {
@@ -393,6 +394,7 @@ public class GameManager : MonoBehaviour
     {
         LoggerTool.Log("ShowRoom4.");
         sciFiDoor3?.TriggerOpen();
+        audioSourceRoom4.Play();
     }
 
     private void OnPhase1()

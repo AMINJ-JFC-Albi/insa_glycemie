@@ -74,6 +74,10 @@ public class QuestionSystem : MonoBehaviour
     [SerializeField] private GameObject loseObject;
     [SerializeField] private GameObject titleObject;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSourceSuccess;
+    [SerializeField] private AudioSource audioSourceFailed;
+
     private int progressionStep = 0;
     private int correctAnswers = 0;
     private DateTime startTime;
@@ -176,11 +180,24 @@ public class QuestionSystem : MonoBehaviour
         titleObject.SetActive(false);
 
         bool win = correctAnswers >= (datas.Count/2);
+        playResultSound(win);
         string resultString = win ? "WIN" : "LOSE";
         SaveFinalResult($"{correctAnswers}/{datas.Count} ({resultString})");
         winObject.SetActive(win);
         loseObject.SetActive(!win);
         GameManager.Instance.datas.SaveData();
+    }
+
+    private void playResultSound(bool win)
+    {
+        if (win)
+        {
+            audioSourceSuccess.Play();
+        }
+        else
+        {
+            audioSourceFailed.Play();
+        }
     }
 
     // Save Datas : "Name;OldState;NewState;TimeStamp;TimeStampSinceStart;Infos"

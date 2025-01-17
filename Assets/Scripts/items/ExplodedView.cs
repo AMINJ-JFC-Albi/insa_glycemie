@@ -62,6 +62,11 @@ public class ExplodedView : MonoBehaviour
     [SerializeField] private GameObject imgGO;
     [SerializeField] private GameObject[] arrows;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] audioClips;
+
+
     public bool IsExplodedView { get; private set; } = false;
 
     public float transitionSpeed = 2f; // Speed for smooth transitions
@@ -151,11 +156,16 @@ public class ExplodedView : MonoBehaviour
         anyPartSelectedFlag = true;
 
         UpdateInfosUI(part, partIndex);
-
+        PlayTtsPart(partIndex);
         Vector3 offsetPosition = part.partTransform.position + part.offset;
         StartCoroutine(MovePartSmoothly(part.partTransform, offsetPosition));
     }
 
+    private void PlayTtsPart(int partIndex)
+    {
+        audioSource.clip = audioClips[partIndex];
+        audioSource.Play();
+    }
     private void DeselectAllParts()
     {
         int i = 0;
