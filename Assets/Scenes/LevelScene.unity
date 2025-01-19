@@ -6672,7 +6672,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca9ec7372a343494eb9707ba0af490f5, type: 3}
   - {fileID: 8300000, guid: da47c86f23a9b0d4f8c71106cb657424, type: 3}
   - {fileID: 8300000, guid: 9cfb114ee9650e94db8d7b5d38d7c6e7, type: 3}
-  - {fileID: 8300000, guid: d57404310d938eb4abb50bf3ef3ab590, type: 3}
+  - {fileID: 8300000, guid: 15857d77fdaa745439f9eb78275d769b, type: 3}
   dialogueTMP: {fileID: 1922062235}
   texts:
   - "Bienvenue, Gardien. Apr\xE8s une bataille acharn\xE9e, le capteur de glyc\xE9mie,
@@ -37472,7 +37472,7 @@ PrefabInstance:
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 809813622}
+      objectReference: {fileID: 225037681}
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: audioClips.Array.size
       value: 4
@@ -37484,11 +37484,11 @@ PrefabInstance:
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: c01270122f96b3e4c8ad2287ff8dad3b, type: 3}
+      objectReference: {fileID: 8300000, guid: 8078064e326f38f478ed708c8abb27c8, type: 3}
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 8078064e326f38f478ed708c8abb27c8, type: 3}
+      objectReference: {fileID: 8300000, guid: c01270122f96b3e4c8ad2287ff8dad3b, type: 3}
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: 'audioClips.Array.data[3]'
       value: 
@@ -37537,7 +37537,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.000017
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4330135814248979263, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -37554,11 +37555,6 @@ PrefabInstance:
 --- !u!4 &809813620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1298036706057822292, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
-  m_PrefabInstance: {fileID: 809813619}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &809813622 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4330135814248979263, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
   m_PrefabInstance: {fileID: 809813619}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &810279784
@@ -59263,7 +59259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "F\xE9licitations! Vous \xEAtes arriv\xE9 jusqu'\xE0 votre vaisseau, mais
+  m_text: "F\xE9licitations ! Vous \xEAtes arriv\xE9 jusqu'\xE0 votre vaisseau, mais
     son syst\xE8me de s\xE9curit\xE9 automatique s'est activ\xE9. D\xE9sactivez-le
     en r\xE9pondant aux questions affich\xE9es \xE0 l'int\xE9rieur."
   m_isRightToLeft: 0

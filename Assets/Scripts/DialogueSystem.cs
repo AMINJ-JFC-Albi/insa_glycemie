@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -69,14 +70,39 @@ public class DialogueSystem : MonoBehaviour
     public void ShowDialogue()
     {
         if (progressionStep >= texts.Count)
+        {
             dialogueTMP.text = "";
+        }
         else
+        {
             dialogueTMP.text = ParseText(texts[progressionStep]);
+        }
 
-        if (progressionStep < listTTS.Length) 
-            audioSource.clip = listTTS[progressionStep];
-            audioSource.Play();
+        if (progressionStep < listTTS.Length)
+        {
+            if (progressionStep == 0)
+            {
+                StartCoroutine(PlayAudioWithDelay(3f));
+            }
+            else
+            {
+                PlayAudio();
+            }
+        }
     }
+
+    private void PlayAudio()
+    {
+        audioSource.clip = listTTS[progressionStep];
+        audioSource.Play();
+    }
+
+    private IEnumerator PlayAudioWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayAudio();
+    }
+
 
     public string ParseText(string text)
     {
