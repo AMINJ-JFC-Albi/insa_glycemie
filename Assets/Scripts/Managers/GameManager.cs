@@ -5,6 +5,7 @@ using Tools;
 using States;
 using System.Collections;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -394,10 +395,22 @@ public class GameManager : MonoBehaviour
     {
         LoggerTool.Log("ShowRoom4.");
         sciFiDoor3?.TriggerOpen();
+        PlayAudioWithDelay(3f);
         audioSourceRoom4.Play();
     }
 
-    private void OnPhase1()
+    private void PlayAudio()
+    {
+            audioSourceRoom4.Play();
+    }
+
+    private IEnumerator PlayAudioWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayAudio();
+    }
+
+private void OnPhase1()
     {
         LoggerTool.Log("OnPhase1.", LoggerTool.Level.Temporised, 0.5);
     }
