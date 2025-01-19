@@ -79,11 +79,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         mainStateMachine.Update();
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            eventsManager.TriggerEvent("NextState");
-        }
     }
 
     private List<string> GetHolderIds(GameObject holder)
