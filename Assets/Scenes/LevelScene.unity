@@ -17997,19 +17997,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 251d6c88894c2744691a0255447aec41, type: 3}
   - {fileID: 8300000, guid: 352940588cdfaa143ad972ea9f2afdcf, type: 3}
   - {fileID: 8300000, guid: a067c89ef6b305345b8e4ce1bfce3e19, type: 3}
-  - {fileID: 8300000, guid: dffaf75e0bf460046a4bd4153c50fbe1, type: 3}
+  - {fileID: 8300000, guid: bfcaeb9560198e546be1c81fb3cb1c4a, type: 3}
   - {fileID: 8300000, guid: a11b5f7527b44f242bd1e567c5149073, type: 3}
-  - {fileID: 8300000, guid: 1a054b345ed31ad4aae3bc6564528a88, type: 3}
+  - {fileID: 8300000, guid: 33ae154fd9469ec419b9cbdbe0602aca, type: 3}
   dialogueTMP: {fileID: 1630760937}
   texts:
   - "Installe-toi sur le fauteuil recouvert d'une b\xE2che jaune."
   - "Nettoyer une zone du bras \xE0 l'aide de lingettes alcoolis\xE9s"
   - Mettre le capteur dans l'applicateur
   - "Placer l'applicateur sur la zone nettoy\xE9e"
-  - Appuyer sur le bouton au milieu du capteur
+  - Assurez-vous que le capteur est correctement mis en place
   - Connecter le transmetteur au capteur
-  - "Votre capteur est plac\xE9 sur votre main gauche. Vous pouvez passer \xE0 la
-    zone suivante."
+  - "Le capteur, qui met \xE0 jour le glucose toutes les minutes, mesure les niveaux
+    dans le liquide interstitiel, diff\xE9rents de ceux du sang : la glyc\xE9mie
+    capillaire varie plus rapidement. Limit\xE9 \xE0 deux semaines d'utilisation,
+    il s'\xE9puise \xE0 cause de l'\xE9lectrode enzymatique. Votre capteur est install\xE9,
+    dirigez-vous vers votre vaisseau !"
 --- !u!114 &420620440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25837,6 +25840,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6056354264036807939, guid: 5301215597e6b6440ae976baa51ed7b0, type: 3}
   m_PrefabInstance: {fileID: 644885660}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &645130001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645130002}
+  - component: {fileID: 645130003}
+  m_Layer: 0
+  m_Name: AmbienceWind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645130002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645130001}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.73, y: 2.71, z: 34.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546274491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &645130003
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645130001}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ed76be4af449a894590be377ae1a5223, type: 3}
+  m_Resource: {fileID: 8300000, guid: ed76be4af449a894590be377ae1a5223, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &645390747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37488,11 +37620,16 @@ PrefabInstance:
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: c01270122f96b3e4c8ad2287ff8dad3b, type: 3}
+      objectReference: {fileID: 8300000, guid: 32031770322aef042b037ec019234169, type: 3}
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: 'audioClips.Array.data[3]'
       value: 
       objectReference: {fileID: 8300000, guid: d16753306a2dc134d8450ba0fa94f7dd, type: 3}
+    - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
+      propertyPath: parts.Array.data[2].desc
+      value: La base du capteur sert de support principal. Elle assure le contact
+        avec le liquide interstitiel.
+      objectReference: {fileID: 0}
     - target: {fileID: 1317907404779128466, guid: c148829a9a2299c478e3b640c88c985c, type: 3}
       propertyPath: parts.Array.data[0].image
       value: 
@@ -44287,7 +44424,7 @@ MonoBehaviour:
   analyseurGlycemie: {fileID: 7870544853833701525}
   waiting15SecMsg: {fileID: 808252240}
   player: {fileID: 298006421}
-  audioSourceRoom4: {fileID: 1723316562}
+  audioSourceRoom4: {fileID: 1546274492}
 --- !u!4 &988605597
 Transform:
   m_ObjectHideFlags: 0
@@ -68616,6 +68753,7 @@ Transform:
   m_Children:
   - {fileID: 1723316561}
   - {fileID: 1571176117}
+  - {fileID: 645130002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1546274492
@@ -68628,8 +68766,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 54471d985acef5f439741ef28703222e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 54471d985acef5f439741ef28703222e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -69657,6 +69795,10 @@ PrefabInstance:
     - target: {fileID: 8554849818814595224, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669975207262135205, guid: e76d6fad5cf7920429de0de065e596fe, type: 3}
+      propertyPath: m_text
+      value: "R\xE9pondez au questionnaire suivant pour d\xE9verrouiller le vaisseau"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
