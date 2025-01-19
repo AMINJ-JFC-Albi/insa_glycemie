@@ -46,6 +46,7 @@ public class DialogueSystem : MonoBehaviour
 
     private AudioSource audioSource;
     private int progressionStep = 0;
+    private bool isSecondTextShow = false; 
 
     void Start()
     {
@@ -80,14 +81,26 @@ public class DialogueSystem : MonoBehaviour
 
         if (progressionStep < listTTS.Length)
         {
-            if (progressionStep == 0)
-            {
-                StartCoroutine(PlayAudioWithDelay(3f));
-            }
-            else
+            HandleAudioPlayback();
+        }
+    }
+    private void HandleAudioPlayback()
+    {
+        if (progressionStep == 0)
+        {
+            StartCoroutine(PlayAudioWithDelay(3f));
+        }
+        else if (progressionStep == 1)
+        {
+            if (!isSecondTextShow)
             {
                 PlayAudio();
+                isSecondTextShow = true;
             }
+        }
+        else
+        {
+            PlayAudio();
         }
     }
 
