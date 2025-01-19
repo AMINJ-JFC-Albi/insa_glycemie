@@ -395,8 +395,7 @@ public class GameManager : MonoBehaviour
     {
         LoggerTool.Log("ShowRoom4.");
         sciFiDoor3?.TriggerOpen();
-        PlayAudioWithDelay(3f);
-        audioSourceRoom4.Play();
+        PlayAudioWithDelay(20f);
     }
 
     private void PlayAudio()
