@@ -33,6 +33,8 @@ public class SciFiDoor : MonoBehaviour
     public float openDistance = 0.012f;
     public float padlockRotationSpeed = 100f; // Vitesse de rotation du padlock (degrés par seconde)
     public Quaternion rotationPadlock = Quaternion.Euler(0, 0, -90); // Rotation de +90 degrés pour le padlock
+    public GameObject antiTeleportGround;
+    public GameObject roomToShow;
 
     private Vector3 leftDoorStartPosition;
     private Vector3 rightDoorStartPosition;
@@ -47,6 +49,9 @@ public class SciFiDoor : MonoBehaviour
         leftDoorStartPosition = doorLeft.localPosition;
         rightDoorStartPosition = doorRight.localPosition;
         padlockStartRotation = padlock.rotation; // Enregistrer la rotation initiale du padlock
+        if (antiTeleportGround == null) Debug.LogWarning("antiTeleportGround not set !");
+        if (roomToShow == null) Debug.LogWarning("roomToShow not set !");
+        else roomToShow.SetActive(false);
     }
 
     void Update()
@@ -60,11 +65,15 @@ public class SciFiDoor : MonoBehaviour
         else if (isOpening && !isClosing)
         {
             OpenDoors();
+            if (antiTeleportGround != null) antiTeleportGround.SetActive(false);
+            if (roomToShow != null) roomToShow.SetActive(true);
         }
         // Si la porte est en train de se fermer
         else if (!isOpening && isClosing)
         {
             CloseDoors();
+            if(antiTeleportGround != null) antiTeleportGround.SetActive(true);
+            if (roomToShow != null) roomToShow.SetActive(false);
         }
     }
 
