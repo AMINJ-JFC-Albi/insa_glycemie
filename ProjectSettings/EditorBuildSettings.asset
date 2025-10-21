@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:15d4ead10904f52e2ef54b995dc0ed64d68994aca64b5766becaa45f42bf4ee2
-size 699
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LevelScene.unity
+    guid: 92c720bf62e901b4ebdbd614b91c7d3b
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e30d00b0246a8e644aef3495e815dda4, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b3b38a808392000459c0da83f1e17a58, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 0cd11b4b99d444d468e73c76ac4fb640, type: 2}
+  m_UseUCBPForAssetBundles: 0
