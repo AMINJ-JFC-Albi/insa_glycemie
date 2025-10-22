@@ -181,7 +181,7 @@ public class DataCollectorManager {
             string json = JsonConvert.SerializeObject(dataEntries, Formatting.Indented);
             File.WriteAllText(jsonFilePath, json);
 #if UNITY_EDITOR
-            Debug.Log("Data saved to: " + jsonFilePath);
+            LoggerTool.Log("Data saved to: " + jsonFilePath);
 #endif
 
             // Save CSV
@@ -194,11 +194,11 @@ public class DataCollectorManager {
             }
             File.WriteAllText(csvFilePath, csvContent.ToString());
 #if UNITY_EDITOR
-            Debug.Log("Data saved to: " + csvFilePath);
+            LoggerTool.Log("Data saved to: " + csvFilePath);
 #endif
         }
         catch (Exception e) {
-            Debug.LogError("Error saving data: " + e.Message);
+            LoggerTool.LogError("Error saving data: " + e.Message);
         }
     }
 
