@@ -130,7 +130,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454066073181672184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b7390e88c6e14b48bbc000b45a2051c, type: 3}
   m_Name: 
@@ -894,6 +894,8 @@ MonoBehaviour:
   winObject: {fileID: 0}
   loseObject: {fileID: 0}
   titleObject: {fileID: 1987252483723040271}
+  audioSourceSuccess: {fileID: 0}
+  audioSourceFailed: {fileID: 0}
 --- !u!1 &6778167141497199061
 GameObject:
   m_ObjectHideFlags: 0

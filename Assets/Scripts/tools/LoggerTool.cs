@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace Tools {
     public static class LoggerTool {
@@ -15,6 +12,10 @@ namespace Tools {
 
         private static Dictionary<Level, DateTime> lastLogTimes = new Dictionary<Level, DateTime>();
 
+        public static void LogError(string message, double waitingTime = 1) {
+            Log(message, Level.Error, waitingTime);
+        }
+        
         public static void Log(string message, Level level = Level.Info, double waitingTime = 1) {
             if (level == Level.Temporised) {
                 if (lastLogTimes.TryGetValue(level, out DateTime lastLogTime)) {
