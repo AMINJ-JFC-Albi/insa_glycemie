@@ -1,20 +1,18 @@
 using System;
 using System.Collections.Generic;
 
-namespace States
-{
-    public class StateMachine<TState> : IStateMachine where TState : Enum
-    {
-        private Dictionary<TState, Action> stateActions;
-        private Dictionary<(TState, TState), Action> transitionActions;
-        private Dictionary<TState, IStateMachine> subStateMachines;
-        private Dictionary<TState, Type> subStateTypes;
+namespace States {
+    public class StateMachine<TState> : IStateMachine where TState : Enum {
+        private readonly Dictionary<TState, Action> stateActions;
+        private readonly Dictionary<(TState, TState), Action> transitionActions;
+        private readonly Dictionary<TState, IStateMachine> subStateMachines;
+        private readonly Dictionary<TState, Type> subStateTypes;
 
-        public TState CurrentState { get; private set; }
+        private TState currentState { get; set; }
 
-        public string CurrentStringState() => CurrentState.ToString();
+        public string CurrentStringState() => currentState.ToString();
 
-        Enum IStateMachine.CurrentState { get => (Enum)CurrentState; }
+        Enum IStateMachine.CurrentState => (Enum)currentState;
 
         public StateMachine(
             TState initialState,
@@ -22,89 +20,74 @@ namespace States
             Dictionary<(TState, TState), Action> transitionActions = null,
             Dictionary<TState, IStateMachine> subStateMachines = null,
             Dictionary<TState, Type> subStateTypes = null,
-            bool onStateExecute = true)
-        {
+            bool onStateExecute = true) {
             this.stateActions = stateActions ?? new Dictionary<TState, Action>();
             this.transitionActions = transitionActions ?? new Dictionary<(TState, TState), Action>();
             this.subStateMachines = subStateMachines ?? new Dictionary<TState, IStateMachine>();
             this.subStateTypes = subStateTypes ?? new Dictionary<TState, Type>();
 
-            CurrentState = initialState;
-            if (stateActions.TryGetValue(CurrentState, out var onState) && onStateExecute)
+            currentState = initialState;
+            if (stateActions != null && stateActions.TryGetValue(currentState, out var onState) && onStateExecute)
                 onState?.Invoke();
         }
 
-        public void ChangeState(Enum newState)
-        {
-            if (newState is TState typedState)
-            {
+        public void ChangeState(Enum newState) {
+            if (newState is TState typedState) {
                 ChangeState(typedState);
             }
         }
 
-        public void ChangeState(TState newState)
-        {
-            if (CurrentState.Equals(newState)) return;
+        private void ChangeState(TState newState) {
+            if (currentState.Equals(newState)) return;
 
-            var transition = (CurrentState, newState);
+            (TState CurrentState, TState newState) transition = (currentState, newState);
             if (transitionActions.TryGetValue(transition, out var onTransition))
                 onTransition?.Invoke();
 
-            CurrentState = newState;
+            currentState = newState;
         }
 
-        public void Update()
-        {
-            if (stateActions.TryGetValue(CurrentState, out var onState))
+        public void Update() {
+            if (stateActions.TryGetValue(currentState, out var onState))
                 onState?.Invoke();
-            if (subStateMachines.TryGetValue(CurrentState, out var subStateMachine))
-            {
+            if (subStateMachines.TryGetValue(currentState, out var subStateMachine)) {
                 subStateMachine.Update();
             }
         }
 
-        public Enum IncrementState()
-        {
-            int currentIndex = Convert.ToInt32(CurrentState);
+        public Enum IncrementState() {
+            int currentIndex = Convert.ToInt32(currentState);
             int maxIndex = Enum.GetValues(typeof(TState)).Length - 1;
 
-            if (currentIndex < maxIndex)
-            {
+            if (currentIndex < maxIndex) {
                 TState newState = (TState)Enum.ToObject(typeof(TState), currentIndex + 1);
 
-                var transition = (CurrentState, newState);
+                (TState CurrentState, TState newState) transition = (currentState, newState);
                 if (transitionActions.TryGetValue(transition, out var onTransition))
                     onTransition?.Invoke();
 
-                CurrentState = newState;
-            }
-            else
-            {
-                stateActions[CurrentState]?.Invoke();
+                currentState = newState;
+            } else {
+                stateActions[currentState]?.Invoke();
             }
 
-            return CurrentState;
+            return currentState;
         }
 
-        public Enum GetCurrentSubState()
-        {
-            if (subStateMachines.TryGetValue(CurrentState, out var subStateMachine))
-            {
+        public Enum GetCurrentSubState() {
+            if (subStateMachines.TryGetValue(currentState, out var subStateMachine)) {
                 return subStateMachine.CurrentState;
             }
 
             return null;
         }
 
-        public bool IsLastSubState()
-        {
-            if (subStateMachines.TryGetValue(CurrentState, out var subStateMachine))
-            {
+        public bool IsLastSubState() {
+            if (subStateMachines.TryGetValue(currentState, out var subStateMachine)) {
                 int currentIndex = Convert.ToInt32(subStateMachine.CurrentState);
 
                 // Récupère le type de la sous-machine et calcule l'index maximum
-                if (subStateTypes.TryGetValue(CurrentState, out var subStateType))
-                {
+                if (subStateTypes.TryGetValue(currentState, out var subStateType)) {
                     int maxIndex = Enum.GetValues(subStateType).Length - 1;
                     return currentIndex >= maxIndex;
                 }
@@ -115,10 +98,8 @@ namespace States
         }
 
 
-        public void IncrementSubState()
-        {
-            if (subStateMachines.TryGetValue(CurrentState, out var subStateMachine))
-            {
+        public void IncrementSubState() {
+            if (subStateMachines.TryGetValue(currentState, out var subStateMachine)) {
                 subStateMachine.IncrementState();
             }
         }

@@ -1,7 +1,6 @@
 using System;
 
-public interface IStateMachine
-{
+public interface IStateMachine {
     Enum CurrentState { get; }
 
     void Update();
