@@ -14,13 +14,13 @@ namespace RevealScene {
         private static readonly int BaseMapID = Shader.PropertyToID("_BaseMap");
         private static readonly int EmissionMapID = Shader.PropertyToID("_EmissionMap");
         private static readonly int HaveEmission = Shader.PropertyToID("_HaveEmission");
-        
+
         [SerializeField] private Shader revealShader;
 
         [SerializeField] private float revealDuration = 10f;
         [SerializeField] private float waveSpeed = 3f;
         [SerializeField] private float startRadius = 0f;
-        
+
 
         void Update() { //DEBUG!!! test à supprimer après
             InputDevice leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
@@ -49,22 +49,29 @@ namespace RevealScene {
             List<Renderer> renderers = new List<Renderer>();
             foreach (GameObject go in SceneManager.GetActiveScene().GetRootGameObjects()) {
                 foreach (Renderer rend in go.GetComponentsInChildren<Renderer>(true)) {
-                    Material originalMat = rend.material;
-                    Material revealMat = new Material(revealShader);
+                    Material[] originalMats = rend.materials;
+                    Material[] revealMats = new Material[originalMats.Length];
+                    int i = 0;
+                    foreach (Material originalMat in originalMats) {
+                        Material revealMat = new Material(revealShader);
 
-                    if (rend.material.HasProperty(BaseColorID))
-                        revealMat.SetColor(BaseColorID, rend.material.GetColor(BaseColorID));
-                    
-                    if (rend.material.HasProperty(BaseMapID)) {
-                        revealMat.SetTexture(BaseMapID, rend.material.GetTexture(BaseMapID));
-                    }
-                    
-                    if (originalMat.HasProperty(EmissionMapID)) {
-                        revealMat.SetTexture(EmissionMapID, originalMat.GetTexture(EmissionMapID));
-                        revealMat.SetFloat(HaveEmission, originalMat.IsKeywordEnabled("_EMISSION") ? 1 : 0);
+                        if (originalMat.HasProperty(BaseColorID))
+                            revealMat.SetColor(BaseColorID, originalMat.GetColor(BaseColorID));
+
+                        if (originalMat.HasProperty(BaseMapID)) {
+                            revealMat.SetTexture(BaseMapID, originalMat.GetTexture(BaseMapID));
+                        }
+
+                        if (originalMat.HasProperty(EmissionMapID)) {
+                            revealMat.SetTexture(EmissionMapID, originalMat.GetTexture(EmissionMapID));
+                            revealMat.SetFloat(HaveEmission, originalMat.IsKeywordEnabled("_EMISSION") ? 1 : 0);
+                        }
+
+                        revealMats[i] = revealMat;
+                        i++;
                     }
 
-                    rend.material = revealMat;
+                    rend.materials = revealMats;
                     renderers.Add(rend);
                 }
             }
@@ -77,7 +84,7 @@ namespace RevealScene {
                 waveRadius += waveSpeed * Time.deltaTime;
                 elapsed += Time.deltaTime;
 
-                foreach (Material mat in renderers.Select(rend => rend.material)) {
+                foreach (Material mat in renderers.SelectMany(rend => rend.materials)) {
                     if (mat.HasProperty(WaveCenterID))
                         mat.SetVector(WaveCenterID, center);
                     if (mat.HasProperty(WaveRadiusID))
