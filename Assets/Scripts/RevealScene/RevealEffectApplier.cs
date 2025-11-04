@@ -1,76 +1,100 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.XR.CoreUtils;
+using UnityEngine.XR;
 
 namespace RevealScene {
-    public class RevealEffectAllObjects : MonoBehaviour {
-        public Shader revealShader;
-        private Renderer[] allRenderers;
-        private Material[] revealMaterials;
-        
-        public float waveSpeed = 5f;
-        private float waveRadius = 0f;
-        
-        private static readonly int Color = Shader.PropertyToID("_BaseColor");
-        private static readonly int MainTex = Shader.PropertyToID("_MainTex");
-        private static readonly int WaveCenter = Shader.PropertyToID("_WaveCenter");
-        private static readonly int WaveRadius = Shader.PropertyToID("_WaveRadius");
-        
-        private static readonly int ColorID = Shader.PropertyToID("_Color");
-        private static readonly int MainTexID = Shader.PropertyToID("_MainTex");
-        private static readonly int AlbedoID = Shader.PropertyToID("_Albedo");
+    public class RevealEffectApplier : MonoBehaviour {
+        private static readonly int WaveCenterID = Shader.PropertyToID("_WaveCenter");
+        private static readonly int WaveRadiusID = Shader.PropertyToID("_WaveRadius");
+        private static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
         private static readonly int BaseMapID = Shader.PropertyToID("_BaseMap");
         private static readonly int EmissionMapID = Shader.PropertyToID("_EmissionMap");
         private static readonly int HaveEmission = Shader.PropertyToID("_HaveEmission");
 
-        void Start() {
-            // Trouve tous les Renderers dans la scène
-            allRenderers = FindObjectsByType<Renderer>(FindObjectsSortMode.None);
-            revealMaterials = new Material[allRenderers.Length];
+        [SerializeField] private Shader revealShader;
 
-            for (int i = 0; i < allRenderers.Length; i++) {
-                Material originalMat = allRenderers[i].material;
-                Material revealMat = new Material(revealShader);
+        [SerializeField] private float revealDuration = 10f;
+        [SerializeField] private float waveSpeed = 3f;
+        [SerializeField] private float startRadius = 0f;
 
-                // Copie la couleur et la texture du matériau original si possible
-                if (originalMat.HasProperty(Color))
-                    revealMat.SetColor(Color, originalMat.GetColor(Color));
-                if (originalMat.HasProperty(MainTex)) //DEBUG!!! Pas utilisé ? Mais je ne vois pas de bug pour le moment
-                    revealMat.SetTexture(MainTex, originalMat.GetTexture(MainTex));
-                
-                    
-                if (originalMat.HasProperty(ColorID))
-                    revealMat.SetColor(ColorID, originalMat.GetColor(ColorID));
-                    
-                if (originalMat.HasProperty(AlbedoID))
-                    revealMat.SetColor(AlbedoID, originalMat.GetColor(AlbedoID));
-                    
-                if (originalMat.HasProperty(BaseMapID)) {
-                    revealMat.SetTexture(BaseMapID, originalMat.GetTexture(BaseMapID));
-                }
-                
-                if (originalMat.HasProperty(MainTexID)) {
-                    revealMat.SetTexture(MainTexID, originalMat.GetTexture(MainTexID));
-                }
-                
-                if (originalMat.HasProperty(EmissionMapID)) {
-                    revealMat.SetTexture(EmissionMapID, originalMat.GetTexture(EmissionMapID));
-                    revealMat.SetFloat(HaveEmission, originalMat.IsKeywordEnabled("_EMISSION") ? 1 : 0);
-                }
 
-                // Assigne le matériau "reveal"
-                allRenderers[i].material = revealMat;
-                revealMaterials[i] = revealMat;
+        void Update() { //DEBUG!!! test à supprimer après
+            InputDevice leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+
+            if (!leftHand.isValid) return;
+            if (leftHand.TryGetFeatureValue(CommonUsages.primaryButton, out bool xPressed) && xPressed) {
+                OnButtonPressed();
             }
         }
-        
-        void Update() {
-            waveRadius += waveSpeed * Time.deltaTime;
 
-            for (int i = 0; i < allRenderers.Length; i++) {
-                if(revealMaterials[i].HasProperty(WaveCenter))
-                    revealMaterials[i].SetVector(WaveCenter, transform.position);
-                if(revealMaterials[i].HasProperty(WaveRadius))
-                    revealMaterials[i].SetFloat(WaveRadius, waveRadius);
+        private void Awake() {
+            DontDestroyOnLoad(gameObject);
+        }
+
+        public void OnButtonPressed() {
+            StartCoroutine(LoadAndRevealSceneCoroutine("LevelScene"));
+        }
+
+        private IEnumerator LoadAndRevealSceneCoroutine(string sceneName) {
+            // On charge la scène en additive
+            AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName);
+            while (asyncOp is { isDone: false }) // On attend qu'elle soit correctement chargé
+                yield return null;
+
+            // On récupère tous les matériaux de la nouvelle scène et on leur applique le shader graph DEBUG!!! Attendre un peu avant de lancer l'animation ?
+            List<Renderer> renderers = new List<Renderer>();
+            foreach (GameObject go in SceneManager.GetActiveScene().GetRootGameObjects()) {
+                foreach (Renderer rend in go.GetComponentsInChildren<Renderer>(true)) {
+                    Material[] originalMats = rend.materials;
+                    Material[] revealMats = new Material[originalMats.Length];
+                    int i = 0;
+                    foreach (Material originalMat in originalMats) {
+                        Material revealMat = new Material(revealShader);
+
+                        if (originalMat.HasProperty(BaseColorID))
+                            revealMat.SetColor(BaseColorID, originalMat.GetColor(BaseColorID));
+
+                        if (originalMat.HasProperty(BaseMapID)) {
+                            revealMat.SetTexture(BaseMapID, originalMat.GetTexture(BaseMapID));
+                        }
+
+                        if (originalMat.HasProperty(EmissionMapID)) {
+                            revealMat.SetTexture(EmissionMapID, originalMat.GetTexture(EmissionMapID));
+                            revealMat.SetFloat(HaveEmission, originalMat.IsKeywordEnabled("_EMISSION") ? 1 : 0);
+                        }
+
+                        revealMats[i] = revealMat;
+                        i++;
+                    }
+
+                    rend.materials = revealMats;
+                    renderers.Add(rend);
+                }
+            }
+
+            // On commence l'animation de révélation
+            Vector3 center = FindFirstObjectByType<XROrigin>().transform.position;
+            float waveRadius = startRadius;
+            float elapsed = 0f;
+            while (waveRadius < 1000f) {
+                waveRadius += waveSpeed * Time.deltaTime;
+                elapsed += Time.deltaTime;
+
+                foreach (Material mat in renderers.SelectMany(rend => rend.materials)) {
+                    if (mat.HasProperty(WaveCenterID))
+                        mat.SetVector(WaveCenterID, center);
+                    if (mat.HasProperty(WaveRadiusID))
+                        mat.SetFloat(WaveRadiusID, waveRadius);
+                }
+
+                yield return null;
+                // On arrête la vague après un certain temps
+                if (elapsed > revealDuration)
+                    break;
             }
         }
     }
