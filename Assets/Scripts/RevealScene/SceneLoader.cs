@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Portal;
+using PortalOLD;
 using UnityEngine.XR;
 
 namespace RevealScene {
@@ -35,7 +35,7 @@ namespace RevealScene {
                 yield return null;
 
             // La scène est maintenant active, à voir quoi faire après
-            PortalManager.Instance.Init();
+            PortalManagerOLD.Instance.Init();
         }
 
     }
