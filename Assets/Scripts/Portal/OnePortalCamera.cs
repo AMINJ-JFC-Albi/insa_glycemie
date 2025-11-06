@@ -49,9 +49,6 @@ namespace PortalOLD {
 
             // Boucle pour la position et rotation de la caméra du portail
             while (true) {
-                camTransform.position = playerCamera.position;
-                camTransform.rotation = playerCamera.rotation;
-                
                 Vector3 posInMainPortalSpace = otherPortal.InverseTransformPoint(playerCamera.position);
                 posInMainPortalSpace = new Vector3(-posInMainPortalSpace.x, posInMainPortalSpace.y, -posInMainPortalSpace.z);
                 camTransform.position = portal.TransformPoint(posInMainPortalSpace);
