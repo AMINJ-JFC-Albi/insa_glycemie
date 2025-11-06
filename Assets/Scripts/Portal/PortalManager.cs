@@ -30,8 +30,8 @@ namespace PortalOLD {
         }
 
         private void Start() {
-            portal1.Activate(portalShader, portal1.transform, true);
-            //portal1.Activate(portalShader, portal1.transform, true);
+            portal1.Activate(portalShader, portal2.transform, false);
+            portal2.Activate(portalShader, portal1.transform, true);
         }
     }
 }
