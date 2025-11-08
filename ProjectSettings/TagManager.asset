@@ -4,13 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Placeable
-  - CylinderColliderChild
+  - Anchor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Item
+  - 
   - Water
   - UI
   - 
