@@ -1,19 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 namespace Door {
     public class LockDoor : MonoBehaviour {
         private XRGrabInteractable grab;
-        private bool isLocked = true;
+        private XRSocketInteractor socket;
+        private Rigidbody rb;
         
         private void Awake() {
             grab = GetComponent<XRGrabInteractable>();
+            socket = GetComponentInChildren<XRSocketInteractor>();
+            rb = GetComponent<Rigidbody>();
             grab.enabled = false;
+            
+            socket.selectEntered.AddListener(KeyInLock);
+        }
+        
+        private void KeyInLock(SelectEnterEventArgs arg0) {
+            StartCoroutine(arg0.interactableObject.transform.GetComponent<Key>().IsInLock(socket, this));
         }
         
         public void UnlockDoor() {
-            isLocked = false;
             grab.enabled = true;
+            rb.isKinematic = false;
         }
     }
 }

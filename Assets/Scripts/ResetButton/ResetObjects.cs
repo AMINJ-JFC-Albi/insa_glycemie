@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace ResetButton {
-    // Reset la position et la rotation des objets à leurs valeurs initiales lors de l'appui du bouton
+    // Reset la position et la rotation des objets ï¿½ leurs valeurs initiales lors de l'appui du bouton
     public class ResetObjects : MonoBehaviour {
         [SerializeField] private InitialTransform[] objectsToReset;
 
@@ -12,7 +12,7 @@ namespace ResetButton {
         }
 
         private static void ResetObjectPosition(InitialTransform objTransform) {
-            //DEBUG!!! interdire la téléportation si l'objet est détruit, déjà utilisé ou autre... (si en main ?)
+            //DEBUG!!! interdire la tÃ©lÃ©portation si l'objet est dÃ©truit, dÃ©jÃ  utilisÃ© ou autre... (si en main ?)
             Transform transform = objTransform.transform;
             Rigidbody rb = objTransform.GetComponent<Rigidbody>();
             
