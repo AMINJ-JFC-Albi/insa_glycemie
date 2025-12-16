@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChoiceRoom.unity
     guid: 55bfb294c23c7d24e9b59ca6efc09ee4
+  - enabled: 1
+    path: Assets/Scenes/ScenarioGlucoseSensor.unity
+    guid: db3ef6802135d854c95187fc2697f771
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
