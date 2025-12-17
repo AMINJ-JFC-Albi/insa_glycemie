@@ -16134,7 +16134,7 @@ MonoBehaviour:
   rb: {fileID: 1856387635}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2048
   snapOffset: 0.01
   snapPoint: {fileID: 776687505}
 --- !u!114 &1856387634
