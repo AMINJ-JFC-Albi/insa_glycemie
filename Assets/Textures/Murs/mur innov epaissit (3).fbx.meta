@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2060429f7a8658149aff4967efc0ffd9
+guid: 3b1f9d8b0003b9646a3c8563aaa3f91d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: asphalt_06_disp_1k
-    second: {fileID: 2800000, guid: dd772b558bcc68d4b8c8b2215edc6d34, type: 3}
+    second: {fileID: 2800000, guid: 6a57ff82d48e6bf49950c54c4c73496b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
