@@ -7,6 +7,8 @@ public class SlotManager : MonoBehaviour
     public GameObject[] requiredObjects;
     public BigPoster bigPoster;
 
+    public TaskManager taskManager;
+
     public void ValidateSlots()
 {
     bool allFilled = true;
@@ -24,7 +26,11 @@ public class SlotManager : MonoBehaviour
     if (allFilled)
     {
         Debug.Log("Tous les slots sont remplis ! BigPoster activable.");
+
         bigPoster.EnableGrab();
+
+        taskManager.StartSteps();
+
     }
     else
     {
