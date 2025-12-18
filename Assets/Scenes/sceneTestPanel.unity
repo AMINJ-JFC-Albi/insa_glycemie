@@ -12678,7 +12678,7 @@ Transform:
   m_GameObject: {fileID: 1307082260}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.454, y: -0.231, z: -0.0001}
+  m_LocalPosition: {x: -0.321, y: -0.231, z: -0.0001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13574,6 +13574,7 @@ GameObject:
   - component: {fileID: 1410291864}
   - component: {fileID: 1410291869}
   - component: {fileID: 1410291868}
+  - component: {fileID: 1410291870}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -13828,6 +13829,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1410291870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410291863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a757defc679f747b363934174074d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LingetteNotifier
+  paintables:
+  - {fileID: 1415706546}
+  - {fileID: 1710451971}
+  distanceThreshold: 0.1
 --- !u!1 &1415706540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3806124328225297802, guid: c324a48638ae38641a75496da5f76815, type: 3}
@@ -13867,9 +13884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c335a80c070874292a990a930b214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintWetSubtle
-  matHumide: {fileID: 2100000, guid: d79139a874ba7894d936378185ca2bb6, type: 2}
-  lingettesAutorisees:
-  - {fileID: 1410291863}
+  colorSec: {r: 0.906, g: 0.725, b: 0.615, a: 1}
+  colorHumide: {r: 0.851, g: 0.639, b: 0.498, a: 1}
   targetWetness: 1
   wetSpeed: 0.5
   taskManager: {fileID: 7084370}
@@ -16973,9 +16989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c335a80c070874292a990a930b214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintWetSubtle
-  matHumide: {fileID: 2100000, guid: d79139a874ba7894d936378185ca2bb6, type: 2}
-  lingettesAutorisees:
-  - {fileID: 1410291863}
+  colorSec: {r: 0.906, g: 0.725, b: 0.615, a: 1}
+  colorHumide: {r: 0.851, g: 0.639, b: 0.498, a: 1}
   targetWetness: 1
   wetSpeed: 0.5
   taskManager: {fileID: 7084370}
@@ -19006,7 +19021,7 @@ Transform:
   m_GameObject: {fileID: 1856387632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.18, y: 0.736, z: 2.749}
+  m_LocalPosition: {x: -2.18, y: 0.997, z: 2.749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
