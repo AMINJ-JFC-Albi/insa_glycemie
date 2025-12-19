@@ -50,33 +50,27 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-   private void UpdateStep()
-{
-    for (int i = 0; i < steps.Count; i++)
+    private void UpdateStep()
     {
-        bool isCurrent = (i == currentStep);
-
-        foreach (GameObject obj in steps[i].objectsToActivate)
+        // Activer uniquement les objets de l'étape courante
+        foreach (GameObject obj in steps[currentStep].objectsToActivate)
         {
             if (obj.TryGetComponent<XRGrabInteractable>(out var grab))
             {
-                // Désactiver puis réactiver pour "rafraîchir" le grab
-                grab.enabled = false;
-                grab.enabled = isCurrent;
+                grab.enabled = true;
             }
             else
             {
-                Debug.LogWarning($"L'objet {obj.name} dans l'étape {steps[i].stepName} n'a pas de XRGrabInteractable !");
+                Debug.LogWarning($"L'objet {obj.name} n'a pas de XRGrabInteractable !");
             }
         }
-    }
 
-    // Mettre à jour les quads
-    for (int i = 0; i < taskQuads.Count; i++)
-    {
-        if (i < currentStep) taskQuads[i].SetState(TaskState.Completed);
-        else if (i == currentStep) taskQuads[i].SetState(TaskState.InProgress);
-        else taskQuads[i].SetState(TaskState.NotStarted);
+        // Mettre à jour les quads
+        for (int i = 0; i < taskQuads.Count; i++)
+        {
+            if (i < currentStep) taskQuads[i].SetState(TaskState.Completed);
+            else if (i == currentStep) taskQuads[i].SetState(TaskState.InProgress);
+            else taskQuads[i].SetState(TaskState.NotStarted);
+        }
     }
-}
 }
