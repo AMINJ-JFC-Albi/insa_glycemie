@@ -18,17 +18,28 @@ public class LingetteNotifier : MonoBehaviour
     }
 
     void Update()
+{
+    if (grab != null && grab.isSelected)
     {
-        if (grab != null && grab.isSelected) // la lingette est tenue
+        PaintWetSimple closest = null;
+        float closestDist = float.MaxValue;
+
+        foreach (var paintable in paintables)
         {
-            foreach (var paintable in paintables)
+            float dist = Vector3.Distance(transform.position, paintable.transform.position);
+
+            if (dist < distanceThreshold && dist < closestDist)
             {
-                float dist = Vector3.Distance(transform.position, paintable.transform.position);
-                if (dist < distanceThreshold)
-                {
-                    paintable.AddWetness(Time.deltaTime);
-                }
+                closestDist = dist;
+                closest = paintable;
             }
         }
+
+        if (closest != null)
+        {
+            closest.AddWetness(Time.deltaTime);
+        }
     }
+}
+
 }
