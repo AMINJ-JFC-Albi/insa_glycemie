@@ -160,7 +160,9 @@ MonoBehaviour:
     objectsToActivate:
     - {fileID: 1410291863}
   - stepName: "Pr\xE9paration"
-    objectsToActivate: []
+    objectsToActivate:
+    - {fileID: 866814047}
+    - {fileID: 1968777909}
   - stepName: Pose
     objectsToActivate: []
   - stepName: "V\xE9rification"
@@ -8643,7 +8645,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -8754,11 +8756,6 @@ MonoBehaviour:
   bottleGrab: {fileID: 2122121380}
   capGrab: {fileID: 866814053}
   capRigidbody: {fileID: 866814054}
-  degreesPerStep: 90
-  liftPerStep: 0.01
-  stepsToRelease: 5
-  hapticAmplitude: 0.5
-  hapticDuration: 0.1
 --- !u!1 &875916805
 GameObject:
   m_ObjectHideFlags: 0
@@ -12781,15 +12778,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3806124328225297802, guid: c324a48638ae38641a75496da5f76815, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1415706547}
-    - targetCorrespondingSourceObject: {fileID: 6812214878612333955, guid: c324a48638ae38641a75496da5f76815, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1710451970}
-    - targetCorrespondingSourceObject: {fileID: 6812214878612333955, guid: c324a48638ae38641a75496da5f76815, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1710451971}
-    - targetCorrespondingSourceObject: {fileID: 6812214878612333955, guid: c324a48638ae38641a75496da5f76815, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1710451972}
     - targetCorrespondingSourceObject: {fileID: 6027365092517065241, guid: c324a48638ae38641a75496da5f76815, type: 3}
       insertIndex: -1
       addedObject: {fileID: 516287711}
@@ -13584,7 +13572,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LingetteNotifier
   paintables:
   - {fileID: 1415706546}
-  - {fileID: 1710451971}
   distanceThreshold: 0.1
 --- !u!1 &1415706540 stripped
 GameObject:
@@ -13625,10 +13612,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c335a80c070874292a990a930b214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintWetSubtle
-  colorSec: {r: 0.906, g: 0.725, b: 0.615, a: 1}
-  colorHumide: {r: 0.851, g: 0.639, b: 0.498, a: 1}
+  matSec: {fileID: -6478536213147159724, guid: c324a48638ae38641a75496da5f76815, type: 3}
+  matHumide: {fileID: 2100000, guid: d79139a874ba7894d936378185ca2bb6, type: 2}
   targetWetness: 1
   wetSpeed: 0.2
+  dryTime: 10
   taskManager: {fileID: 7084370}
 --- !u!54 &1415706547
 Rigidbody:
@@ -16691,77 +16679,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706763199}
   m_CullTransparentMesh: 1
---- !u!1 &1710451965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6812214878612333955, guid: c324a48638ae38641a75496da5f76815, type: 3}
-  m_PrefabInstance: {fileID: 1356621015}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1710451970
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710451965}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5930780525738733651, guid: c324a48638ae38641a75496da5f76815, type: 3}
---- !u!114 &1710451971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710451965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c335a80c070874292a990a930b214d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PaintWetSubtle
-  colorSec: {r: 0.906, g: 0.725, b: 0.615, a: 1}
-  colorHumide: {r: 0.851, g: 0.639, b: 0.498, a: 1}
-  targetWetness: 1
-  wetSpeed: 0.2
-  taskManager: {fileID: 7084370}
---- !u!54 &1710451972
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710451965}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1716503063
 GameObject:
   m_ObjectHideFlags: 0
