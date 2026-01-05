@@ -3444,6 +3444,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380326601}
   m_CullTransparentMesh: 0
+--- !u!4 &384733762 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4261644529799817345, guid: b01d14259730ffb4d8ac128873a69bfc, type: 3}
+  m_PrefabInstance: {fileID: 2122121378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &390495154
 GameObject:
   m_ObjectHideFlags: 0
@@ -13693,8 +13698,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846495c273343b94092858cc017dc626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttachCGM
-  enfantAFixer: {fileID: 408850249}
-  parentGrab: {fileID: 1968777909}
+  nomPeau: GEO-leg_lower_male_primitive_realistic.L.001
+  partieMobile: {fileID: 384733762}
+  applicateur: {fileID: 0}
+  distanceRetractionMobile: -0.1
+  distanceAppuiApplicateur: -0.05
+  angleMaxPeau: 30
+  angleMinPeau: 150
 --- !u!1 &1435126988
 GameObject:
   m_ObjectHideFlags: 0
@@ -19981,7 +19991,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2122121379}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 65143923358772628, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_Name
@@ -19989,15 +19999,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0019
+      value: 1.6434
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0123
+      value: 0.9003
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0018997192
+      value: 2.2627
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20009,11 +20019,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20034,15 +20044,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 65143923358772628, guid: a438258363491174fb7b11912fad0a51, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2021144081}
+    - targetCorrespondingSourceObject: {fileID: 65143923358772628, guid: a438258363491174fb7b11912fad0a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2021144082}
+    - targetCorrespondingSourceObject: {fileID: 65143923358772628, guid: a438258363491174fb7b11912fad0a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2021144083}
     - targetCorrespondingSourceObject: {fileID: 932189987454166122, guid: a438258363491174fb7b11912fad0a51, type: 3}
       insertIndex: -1
       addedObject: {fileID: 684898424}
   m_SourcePrefab: {fileID: 100100000, guid: a438258363491174fb7b11912fad0a51, type: 3}
---- !u!4 &2021144080 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4513821341263090507, guid: a438258363491174fb7b11912fad0a51, type: 3}
-  m_PrefabInstance: {fileID: 2021144079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &2021144081
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20070,6 +20081,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2021144082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408850249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb6db2c0828f944f862b5aa972a3f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildFollowParent
+  parentObj: {fileID: 2122121379}
+--- !u!114 &2021144083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408850249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846495c273343b94092858cc017dc626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::attachCGM
+  nomPeau: GEO-leg_lower_male_primitive_realistic.L.001
+  partieMobile: {fileID: 384733762}
+  applicateur: {fileID: 2122121379}
+  distanceRetractionMobile: 0.01
+  distanceAppuiApplicateur: -0.01
+  angleMaxPeau: 175
+  angleMinPeau: 150
 --- !u!1 &2033906165
 GameObject:
   m_ObjectHideFlags: 0
@@ -21037,7 +21080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3091944930467111329, guid: b01d14259730ffb4d8ac128873a69bfc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: 0.0197
       objectReference: {fileID: 0}
     - target: {fileID: 7342847772291227632, guid: b01d14259730ffb4d8ac128873a69bfc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21081,10 +21124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8880434499843607509, guid: b01d14259730ffb4d8ac128873a69bfc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2021144080}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6530530864563788712, guid: b01d14259730ffb4d8ac128873a69bfc, type: 3}
       insertIndex: -1
@@ -21230,7 +21270,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
-  m_ForceGravityOnDetach: 0
+  m_ForceGravityOnDetach: 1
   m_RetainTransformParent: 1
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
@@ -21513,3 +21553,4 @@ SceneRoots:
   - {fileID: 1410291867}
   - {fileID: 1356621015}
   - {fileID: 2122121378}
+  - {fileID: 2021144079}

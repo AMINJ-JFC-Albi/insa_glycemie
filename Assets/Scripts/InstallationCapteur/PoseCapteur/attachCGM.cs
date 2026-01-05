@@ -1,61 +1,102 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class attachCGM : MonoBehaviour
 {
-    [Header("Enfant à coller")]
-    public GameObject enfantAFixer;   // L'enfant du parent à coller
-    [Header("Parent grabbable")]
-    public GameObject parentGrab;     // L'objet tenu dans la main
+    [Header("Nom Zone Peau")]
+    public string nomPeau = "Peau";
+    
+    [Header("Partie Mobile")]
+    public Transform partieMobile;
+    
+    [Header("Applicateur")]
+    public Transform applicateur;
+
+    [Header("Rétraction & Appui")]
+    public float distanceRetractionMobile = 0.1f;
+    public float distanceAppuiApplicateur = 0.05f;
+    
+    [Header("Angle Tolérance Peau")]
+    public float angleMaxPeau = 175f;
+    public float angleMinPeau = 150f;
 
     private bool dejaPlace = false;
+    private Coroutine currentAnimation;
+
+    public TaskManager taskManager;
 
     void OnCollisionEnter(Collision collision)
     {
-        if (dejaPlace) return;
-        if (collision.rigidbody == null) return;
+        if (collision.gameObject.name != nomPeau || dejaPlace) return;
 
         ContactPoint contact = collision.contacts[0];
+        
+        // ✅ 1️⃣ VÉRIFIE ANGLE PEAU
+        float anglePeau = Vector3.Angle(contact.normal, -transform.up);
+        if (anglePeau > angleMaxPeau && anglePeau < angleMinPeau) 
+        {
+            Debug.Log($"❌ Angle pas bon");
+            return;
+        }
 
-        // 1️⃣ Instancier le clone indépendant
-        GameObject clone = Instantiate(enfantAFixer);
-        clone.transform.SetParent(null, true); // retirer toute hiérarchie
-        clone.transform.position = contact.point;
-
-        // 2️⃣ Rotation globale alignée avec la surface
-        clone.transform.rotation = Quaternion.FromToRotation(Vector3.up, contact.normal) * clone.transform.rotation;
-
-        // 3️⃣ Ajouter Rigidbody kinematic
-        Rigidbody rb = clone.GetComponent<Rigidbody>();
-        if (rb == null) rb = clone.AddComponent<Rigidbody>();
+        // ✅ 2️⃣ FIXE CAPTEUR PEAU
+        transform.position = contact.point;
+        transform.up = contact.normal;
+        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb == null) rb = gameObject.AddComponent<Rigidbody>();
         rb.isKinematic = true;
+        rb.linearVelocity = Vector3.zero;
 
-        // 4️⃣ Ajouter FixedJoint pour fixation définitive
-        FixedJoint joint = clone.AddComponent<FixedJoint>();
-        joint.connectedBody = collision.rigidbody;
-        joint.breakForce = Mathf.Infinity;
-        joint.breakTorque = Mathf.Infinity;
+        // ✅ 3️⃣ DÉSACTIVE ChildFollowParent
+        ChildFollowParent followScript = GetComponent<ChildFollowParent>();
+        if (followScript != null) 
+        {
+            followScript.enabled = false;
+            Debug.Log("ChildFollowParent désactivé");
+        }
 
-        // 5️⃣ Désactiver le collider et supprimer l'objet original pour ne pas bloquer le parent
-        StartCoroutine(DestroyOriginalNextFrame());
+        // ✅ 4️⃣ Animation Y LOCAL
+        if (partieMobile != null && applicateur != null)
+        {
+            if (currentAnimation != null) StopCoroutine(currentAnimation);
+            currentAnimation = StartCoroutine(AnimationComplete());
+        }
 
         dejaPlace = true;
-
-        Debug.Log("Clone fixé, parent grab reste intact et manipulable.");
+        Debug.Log($"✅ Capteur FIXÉ sur {nomPeau} (angle: {anglePeau:F1}°)");
     }
-
-    IEnumerator DestroyOriginalNextFrame()
+    
+    IEnumerator AnimationComplete()
     {
-        yield return null; // attendre la fin de la frame
-
-        if (enfantAFixer != null)
+        // ✅ AXE Y LOCAL parfait
+        Vector3 startMobileLocal = partieMobile.localPosition;
+        Vector3 endMobileLocal = startMobileLocal + Vector3.down * distanceRetractionMobile;
+        
+        Vector3 startAppuiLocal = applicateur.localPosition;
+        Vector3 endAppuiLocal = startAppuiLocal + Vector3.down * distanceAppuiApplicateur;
+        
+        float duration = 0.3f;
+        float elapsed = 0f;
+        
+        while (elapsed < duration)
         {
-            // Désactiver le collider pour ne pas bloquer le parent
-            Collider col = enfantAFixer.GetComponent<Collider>();
-            if (col != null) col.enabled = false;
-
-            // Détruire l'enfant collé
-            Destroy(enfantAFixer);
+            elapsed += Time.deltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, elapsed / duration);
+            
+            partieMobile.localPosition = Vector3.Lerp(startMobileLocal, endMobileLocal, t);
+            applicateur.localPosition = Vector3.Lerp(startAppuiLocal, endAppuiLocal, t);
+            
+            yield return null;
         }
+        
+        partieMobile.localPosition = endMobileLocal;
+        applicateur.localPosition = endAppuiLocal;
+        currentAnimation = null;
+        
+        Debug.Log("✅ Animation terminée");
+
+        taskManager?.NextStep();
     }
 }
