@@ -12,6 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a5694c1543410d9cb11fbbb5331ac4, type: 3}
   m_Name: 2-Porte
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.ObjectiveData
-  objectiveId: 
-  title: 2
-  conversation: {fileID: 0}
+  objectiveId: Door
+  title: "D\xE9verrouiller la porte s\xE9curis\xE9e du bureau"
+  conversationName: ???
+  conversationAvatar: {fileID: 0}
+  conversation:
+  - sender: 0
+    messageId: 2-1
+    content: Commence par regarder le post-it sur le bureau.
+  - sender: 0
+    messageId: 2-2
+    content: Maintenant, fouille bien le labo. La notice est en plusieurs morceaux.
+  - sender: 0
+    messageId: 2-3
+    content: "Suis les \xE9tapes de la notice dans l\u2019ordre. C\u2019est important."
+  - sender: 0
+    messageId: 2-4
+    content: "Renseigne le nom du faux patient, tu le trouveras \xE9crit sur le mannequin."
+  - sender: 0
+    messageId: 2-5
+    content: "D\xE9finit la fr\xE9quence de mise \xE0 jour, elle est indiqu\xE9e
+      sur la notice du capteur."
+  - sender: 0
+    messageId: 2-6
+    content: "Mets le nom du m\xE9decin, tu l\u2019as d\xE9j\xE0 vu : sur la porte
+      du bureau, dans l\u2019intro ou sur la porte du labo."

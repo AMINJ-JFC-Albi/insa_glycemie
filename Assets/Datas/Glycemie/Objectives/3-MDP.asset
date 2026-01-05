@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a5694c1543410d9cb11fbbb5331ac4, type: 3}
   m_Name: 3-MDP
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.ObjectiveData
-  objectiveId: 
-  title: 3
-  conversation: {fileID: 0}
+  objectiveId: Password
+  title: Trouver le mot de passe des dossiers patients
+  conversationName: ???
+  conversationAvatar: {fileID: 0}
+  conversation:
+  - sender: 0
+    messageId: 3-1
+    content: Regarde le casier vert. Il y a un indice utile pour le cryptex
+  - sender: 0
+    messageId: 3-2
+    content: "Pour le mot de passe du dossier patient, les chiffres correspondent
+      \xE0 des lettres : par exemple 1 devient C, 10 devient E. Applique la m\xEAme
+      logique aux autres chiffres et mets les lettres dans le bon ordre pour former
+      le mot de passe."

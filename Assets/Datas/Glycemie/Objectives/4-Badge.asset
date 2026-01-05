@@ -12,6 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a5694c1543410d9cb11fbbb5331ac4, type: 3}
   m_Name: 4-Badge
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.ObjectiveData
-  objectiveId: 
-  title: 4
-  conversation: {fileID: 0}
+  objectiveId: Badge
+  title: "S\u2019authentifier sur le tablette avec le badge"
+  conversationName: ???
+  conversationAvatar: {fileID: 0}
+  conversation:
+  - sender: 0
+    messageId: 4-1
+    content: "Regarde le post-it sur mon bureau pour t\u2019aider \xE0 d\xE9monter
+      le capteur."
+  - sender: 0
+    messageId: 4-2
+    content: "Associe chaque pi\xE8ce \xE0 sa fonction correctement."
+  - sender: 0
+    messageId: 4-3
+    content: "Utilise la cl\xE9 sur la cloche."
+  - sender: 0
+    messageId: 4-4
+    content: "Lis l\u2019affiche au mur, juste au-dessus de la cloche."
+  - sender: 0
+    messageId: 4-5
+    content: "Le tiroir \xE0 manivelle est maintenant accessible, prends le badge."
+  - sender: 0
+    messageId: 4-6
+    content: Passe le badge sur le lecteur et attends la validation.

@@ -9,7 +9,8 @@ namespace HoloWatch {
         [TextArea(1, 3)] public string title;
         
         [Header("Conversations")]
-        public string conversationName;
+        public string conversationName = "???";
+        public Sprite conversationAvatar;
         public List<ChatMessage> conversation;
     }
 }
