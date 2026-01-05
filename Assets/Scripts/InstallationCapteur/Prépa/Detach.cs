@@ -13,6 +13,9 @@ public class Detach : MonoBehaviour
     private Vector3 localOffset;
     private Quaternion rotationOffset;
 
+    public TaskManager taskManager;
+
+
     void Start()
     {
         // Calcul offset local par rapport à la bouteille
@@ -52,6 +55,7 @@ public class Detach : MonoBehaviour
             if (capGrab.isSelected)
             {
                 capOnBottle = false;
+                taskManager?.NextStep();
 
                 // Le Rigidbody reste non kinematic mais fortement stabilisé
                 capRigidbody.useGravity = false;
@@ -71,6 +75,7 @@ public class Detach : MonoBehaviour
                 capRigidbody.linearDamping = 0.5f;
                 capRigidbody.angularDamping = 0.05f;
             }
+
         }
     }
 }
