@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a5694c1543410d9cb11fbbb5331ac4, type: 3}
   m_Name: 1-Entrer
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.ObjectiveData
-  objectiveId: 
-  title: 1
-  conversation: {fileID: 0}
+  objectiveId: Enter
+  title: Entrer dans le labo
+  conversationName: ???
+  conversationAvatar: {fileID: 0}
+  conversation:
+  - sender: 0
+    messageId: 1-1
+    content: "Relis son message. Tout est d\xE9j\xE0 indiqu\xE9."
