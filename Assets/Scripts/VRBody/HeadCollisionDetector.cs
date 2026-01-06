@@ -13,7 +13,7 @@ namespace VRBody {
         private List<RaycastHit> PreformDetection(Vector3 position, float distance, LayerMask mask) {
             List<RaycastHit> detectedHits = new List<RaycastHit>();
 
-            List<Vector3> directions = new List<Vector3> { transform.forward, transform.right, -transform.right };
+            List<Vector3> directions = new List<Vector3> { transform.forward, transform.right, -transform.right, -transform.forward, transform.up, -transform.up };
 
             foreach (Vector3 dir in directions) {
                 if (Physics.Raycast(position, dir, out RaycastHit hit, distance, mask)) {
@@ -47,7 +47,7 @@ namespace VRBody {
             Gizmos.color = c;
             Gizmos.DrawWireSphere(transform.position, detectionDistance);
 
-            List<Vector3> directions = new List<Vector3> { transform.forward, transform.right, -transform.right };
+            List<Vector3> directions = new List<Vector3> { transform.forward, transform.right, -transform.right, -transform.forward, transform.up, -transform.up };
             Gizmos.color = Color.magenta;
             foreach (Vector3 dir in directions) {
                 Gizmos.DrawRay(transform.position, dir);

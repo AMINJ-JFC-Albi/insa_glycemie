@@ -396,6 +396,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.SpatialKeyboard
                     if (submitOnEnter)
                     {
                         Submit();
+                        Clear();
                     }
                     else
                     {

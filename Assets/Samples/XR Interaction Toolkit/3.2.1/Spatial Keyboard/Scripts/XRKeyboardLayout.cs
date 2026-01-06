@@ -1,4 +1,6 @@
 #if TEXT_MESH_PRO_PRESENT || (UGUI_2_0_PRESENT && UNITY_6000_0_OR_NEWER)
+using System.Collections.Generic;
+
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.SpatialKeyboard
 {
     /// <summary>
@@ -6,6 +8,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.SpatialKeyboard
     /// </summary>
     public class XRKeyboardLayout : MonoBehaviour
     {
+        
         [SerializeField]
         XRKeyboardConfig m_DefaultKeyMapping;
 
@@ -50,6 +53,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.SpatialKeyboard
         void Start()
         {
             PopulateKeys();
+            Init();
         }
 
         /// <summary>
@@ -105,6 +109,18 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.SpatialKeyboard
                 key.shiftDisplayIcon = mapping.shiftDisplayIcon;
 
                 key.SetButtonInteractable(!mapping.disabled);
+            }
+        }
+        
+        [SerializeField] private KeyFunction keyFunction;
+        [SerializeField] private XRKeyboard keyboard;
+        [SerializeField] private XRKeyboardKey key;
+
+        [SerializeField] private List<XRKeyboardKey> disabledKeys;
+
+        private void Init() {
+            foreach (XRKeyboardKey keyboardKey in disabledKeys) {
+                keyboardKey.SetButtonInteractable(false);
             }
         }
     }
