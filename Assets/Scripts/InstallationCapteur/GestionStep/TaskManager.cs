@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -39,7 +41,6 @@ public class TaskManager : MonoBehaviour
         UpdateStep();
     }
 
-    
 
     public void NextStep()
     {
@@ -47,6 +48,10 @@ public class TaskManager : MonoBehaviour
         {
             currentStep++;
             UpdateStep();
+        }
+        else
+        {
+            majTaskSQuad();
         }
     }
 
@@ -65,12 +70,44 @@ public class TaskManager : MonoBehaviour
             }
         }
 
-        // Mettre à jour les quads
+        if (currentStep == 4)
+        {
+            foreach (GameObject obj in steps[currentStep].objectsToActivate)
+            {
+                if (obj.TryGetComponent<ProximityButtonHandler>(out var buttonHandler)) {
+                    buttonHandler.StartButton();
+                }
+            }
+        }
+        if (currentStep == 5)
+        {
+            foreach (GameObject obj in steps[currentStep].objectsToActivate)
+            {
+                if (obj.TryGetComponent<Paramétrage>(out var options))
+                {
+                    Debug.Log("lancmeent Option");
+                    StartCoroutine(ShowLancementOption(options));
+                }
+            }
+     }
+
+     majTaskSQuad();
+
+    }
+
+    void majTaskSQuad()
+    {
         for (int i = 0; i < taskQuads.Count; i++)
         {
             if (i < currentStep) taskQuads[i].SetState(TaskState.Completed);
             else if (i == currentStep) taskQuads[i].SetState(TaskState.InProgress);
             else taskQuads[i].SetState(TaskState.NotStarted);
         }
+    }
+
+    private IEnumerator ShowLancementOption(Paramétrage option)
+    {
+        yield return new WaitForSeconds(5f);
+        option.StartingOption();
     }
 }
