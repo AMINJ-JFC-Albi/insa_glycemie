@@ -16,8 +16,9 @@ public class ProximityButtonHandler : MonoBehaviour
     private float timer = 0f;
     private bool stepCompleted = false;
 
-    void Start()
+    public void StartButton()
     {
+        button.interactable = true;
         button.onClick.AddListener(OnButtonPressed);
     }
 
