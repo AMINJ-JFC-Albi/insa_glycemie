@@ -92,7 +92,9 @@ namespace VrHands {
             foreach (Finger finger in fingersToAnimate) {
                 string fingerName = finger.Type.ToString();
                 float animationBlendValue = finger.Target;
-                handAnimator.SetFloat(fingerName, animationBlendValue);
+                if (handAnimator) {
+                    handAnimator.SetFloat(fingerName, animationBlendValue);
+                }
             }
         }
     }

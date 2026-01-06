@@ -61,7 +61,7 @@ namespace RFID {
         }
 
         private void Success() {
-            Debug.Log("OUI !!!");
+            TabletManager.Instance.GoToSecondStep();
         }
     }
 }
