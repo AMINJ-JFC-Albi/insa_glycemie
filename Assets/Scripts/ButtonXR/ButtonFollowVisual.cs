@@ -1,10 +1,11 @@
-﻿using NavKeypad;
+﻿using Audio;
+using NavKeypad;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-namespace Keypad {
+namespace ButtonXR {
     public class ButtonFollowVisual : MonoBehaviour {
         [SerializeField] private Transform visualTarget;
         [SerializeField] private Vector3 localAxis;
@@ -67,8 +68,7 @@ namespace Keypad {
                     keypadButton.PressButton();
                 } else {
                     // C'est le tapeRecorder
-                    Debug.Log("audio !!!");
-                    //PLAY AUDIO !!! (que faire si rappuis ? Relancer au début, rien tant que déjà en cours, arrêter...)
+                    GetComponentInParent<AudioTransmitter>().Play();
                 }
             }
         }
