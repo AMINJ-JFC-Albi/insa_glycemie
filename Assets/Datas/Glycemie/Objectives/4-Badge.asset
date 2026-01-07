@@ -19,7 +19,7 @@ MonoBehaviour:
   conversation:
   - sender: 0
     messageId: 4-1
-    content: "Regarde le post-it sur mon bureau pour t\u2019aider \xE0 d\xE9monter
+    content: "Regarde le post-it sur le bureau pour t\u2019aider \xE0 d\xE9monter
       le capteur."
   - sender: 0
     messageId: 4-2

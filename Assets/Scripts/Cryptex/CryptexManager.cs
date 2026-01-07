@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using HoloWatch;
 using UnityEngine;
 
 namespace Cryptex {
@@ -21,13 +23,14 @@ namespace Cryptex {
                     return false;
                 }
             }
-
+            
             return true;
         }
 
         private void OpenCryptex() {
             enabled = false;
             Debug.Log("Cryptex opened!");
+            HolowatchUI.Instance.SetNextHints("Password", new List<string>() {"3-2"});
         }
     }
 }

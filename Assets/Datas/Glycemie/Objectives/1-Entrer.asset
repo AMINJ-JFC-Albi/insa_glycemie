@@ -19,4 +19,4 @@ MonoBehaviour:
   conversation:
   - sender: 0
     messageId: 1-1
-    content: "Relis son message. Tout est d\xE9j\xE0 indiqu\xE9."
+    content: "Relis le message d'Ignatius. Tout est d\xE9j\xE0 indiqu\xE9."
