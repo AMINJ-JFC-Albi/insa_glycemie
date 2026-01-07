@@ -7367,6 +7367,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f987e56f5c36e264e888555e47dec1bc, type: 3}
+--- !u!1 &878682092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5162356030215288089, guid: f987e56f5c36e264e888555e47dec1bc, type: 3}
+  m_PrefabInstance: {fileID: 878682091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &878682093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2216814198869864760, guid: f987e56f5c36e264e888555e47dec1bc, type: 3}
+  m_PrefabInstance: {fileID: 878682091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878682092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754d27665ba38d44b9c1633441bdd691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &888636339 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8072890477496077224, guid: 085ce58b196caa446a8545c9dd388793, type: 3}
@@ -14393,6 +14409,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f82abdd31bfe9b749b21edfda28e5130, type: 3}
+--- !u!114 &1911784348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130, type: 3}
+  m_PrefabInstance: {fileID: 1911784347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911784349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acde65f5db6773e49ad668404cf55472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1911784349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6649476715428208663, guid: f82abdd31bfe9b749b21edfda28e5130, type: 3}
+  m_PrefabInstance: {fileID: 1911784347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1912946111
 GameObject:
   m_ObjectHideFlags: 0
@@ -14477,6 +14509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1917173797}
+  - component: {fileID: 1917173798}
   m_Layer: 0
   m_Name: Outil
   m_TagString: Untagged
@@ -14501,6 +14534,38 @@ Transform:
   - {fileID: 521590839}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1917173798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917173796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d875927e614c24eb4d4e3b00f1115e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JoystickImageSelector
+  joystick: {fileID: 878682093}
+  targetImage: {fileID: 1942459801}
+  spriteGrid:
+  - rowSprites:
+    - {fileID: 21300000, guid: cdcfe079bcec914468f744236ed2570e, type: 3}
+    - {fileID: 21300000, guid: d00a52cda2bc7234da06238cdff40909, type: 3}
+    - {fileID: 21300000, guid: bda1badc10850df4c810a658c56c9f5c, type: 3}
+  - rowSprites:
+    - {fileID: 21300000, guid: ca3939d03a1c1414684b1bb82b23b361, type: 3}
+    - {fileID: 21300000, guid: 84a15318fa38daa48a7ccf0765a96edb, type: 3}
+    - {fileID: 21300000, guid: 022c97bb07d7cb344b22d6563bd3e355, type: 3}
+  - rowSprites:
+    - {fileID: 21300000, guid: 8c0d716f00e5bff4ea87c976227c2e94, type: 3}
+    - {fileID: 21300000, guid: 0b6ab161bfbbe3c47a6ae3a8648ca260, type: 3}
+    - {fileID: 21300000, guid: e2ff541a97dd75b409568e4f71677355, type: 3}
+  number_images: {fileID: 1318180207}
+  resultText: {fileID: 1384236564}
+  joystickObject: {fileID: 878682092}
+  buttonObject: {fileID: 1911784349}
+  gripButton: {fileID: 1911784348}
 --- !u!1 &1941775764
 GameObject:
   m_ObjectHideFlags: 0
