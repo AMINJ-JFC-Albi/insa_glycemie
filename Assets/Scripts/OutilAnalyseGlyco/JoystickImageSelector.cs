@@ -23,6 +23,9 @@ public class JoystickImageSelector : MonoBehaviour
     [Header("Grille de sprites")]
     public List<SpriteRow> spriteGrid;
 
+    [Header("Sprite Explication")]
+    public Sprite image_explication;
+
     [Header("UI Text index image")]
     public TextMeshProUGUI number_images;
 
@@ -30,22 +33,22 @@ public class JoystickImageSelector : MonoBehaviour
     public TextMeshProUGUI resultText;
 
     [Header("Objets XR à manipuler")]
-    public GameObject joystickObject;  // joystick complet
-    public GameObject buttonObject;    // bouton XR
+    public GameObject joystickObject;
+    public GameObject buttonObject;
 
     [Header("XR Grip Button")]
-    public XRGripButton gripButton;    // bouton XR
+    public XRGripButton gripButton;
 
     private int currentRow = 0;
     private int currentColumn = 0;
     private bool calibrationDone = false;
-    private bool waitingForRetry = false; // bloque le joystick jusqu'au retry
+    private bool waitingForRetry = false;
 
     void Start()
     {
         if (targetImage == null || spriteGrid.Count == 0) return;
 
-        // Trouver la position initiale du sprite actuel
+        // Trouver la position correspondant au sprite déjà affiché
         for (int r = 0; r < spriteGrid.Count; r++)
         {
             for (int c = 0; c < spriteGrid[r].rowSprites.Count; c++)
@@ -60,14 +63,16 @@ public class JoystickImageSelector : MonoBehaviour
             }
         }
 
-        // Listener sur le GripButton
+        // 🔥 Synchronisation IMAGE → JOYSTICK au démarrage
+        SetJoystickFromImage();
+
         if (gripButton != null)
             gripButton.onPress.AddListener(OnGripButtonPressed);
     }
 
     void Update()
     {
-        if (calibrationDone || waitingForRetry) return; // bloque le joystick si on attend retry
+        if (calibrationDone || waitingForRetry) return;
         if (joystick == null || spriteGrid.Count == 0) return;
 
         Vector2 input = joystick.value;
@@ -101,18 +106,29 @@ public class JoystickImageSelector : MonoBehaviour
         }
     }
 
-    // Méthode appelée par le listener du GripButton
+    // 🔁 Conversion IMAGE → JOYSTICK (utilisé une seule fois au Start)
+    void SetJoystickFromImage()
+    {
+        if (joystick == null) return;
+
+        int columnCount = spriteGrid[0].rowSprites.Count;
+        int rowCount = spriteGrid.Count;
+
+        float x = Mathf.Lerp(-1f, 1f, currentColumn / (float)(columnCount - 1));
+        float y = Mathf.Lerp(1f, -1f, currentRow / (float)(rowCount - 1));
+
+        joystick.value = new Vector2(x, y);
+    }
+
     private void OnGripButtonPressed()
     {
         if (calibrationDone) return;
 
         if (waitingForRetry)
         {
-            // Reset après mauvais calibrage
             if (resultText != null)
                 resultText.text = "Re-calibrage des données de simulation\nen mode manuel obligatoire";
 
-            // Réactive le joystick pour réessayer
             if (joystick != null)
                 joystick.enabled = true;
 
@@ -125,14 +141,16 @@ public class JoystickImageSelector : MonoBehaviour
 
     private void ValidateCalibration()
     {
-        bool goodImage = (currentRow == 1 && currentColumn == 1); // définir l'image correcte
+        bool goodImage = (currentRow == 1 && currentColumn == 1);
 
         if (goodImage)
         {
             if (resultText != null)
                 resultText.text = "Re-calibrage des données réussi !";
 
-            DisableInteractions(); // bloque joystick + bouton
+            targetImage.sprite = image_explication;
+
+            DisableInteractions();
             calibrationDone = true;
         }
         else
@@ -140,7 +158,6 @@ public class JoystickImageSelector : MonoBehaviour
             if (resultText != null)
                 resultText.text = "Mauvais calibrage. Appuyer sur le bouton pour recommencer";
 
-            // bloque uniquement le joystick
             if (joystick != null)
                 joystick.enabled = false;
 
@@ -150,7 +167,6 @@ public class JoystickImageSelector : MonoBehaviour
 
     private void DisableInteractions()
     {
-        // Bloquer le joystick XR
         if (joystickObject != null)
         {
             XRJoystick joystickComp = joystickObject.GetComponent<XRJoystick>();
@@ -166,7 +182,6 @@ public class JoystickImageSelector : MonoBehaviour
                 grab.enabled = false;
         }
 
-        // Bloquer le bouton XR
         if (buttonObject != null)
         {
             XRGrabInteractable grabComp = buttonObject.GetComponent<XRGrabInteractable>();
@@ -182,7 +197,6 @@ public class JoystickImageSelector : MonoBehaviour
                 rb.isKinematic = true;
         }
 
-        // Désactiver ce script pour sécuriser
         this.enabled = false;
     }
 
