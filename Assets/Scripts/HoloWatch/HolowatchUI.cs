@@ -135,7 +135,7 @@ namespace HoloWatch {
 
         public void StartObjective(string objectiveId, bool isMainObjective = false) {
             ObjectiveData obj = currentStory.objectives.Find(o => o.objectiveId == objectiveId);
-            if (obj == null) {
+            if (!obj) {
                 if (isMainObjective && currentStory.mainObjective.objectiveId == objectiveId) {
                     obj = currentStory.mainObjective;
                 } else {

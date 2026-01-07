@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     public Transform rightAnchorHoloWatch;
     public Transform leftAnchorHoloWatch;
     
-    private List<string> objIds;
+    public List<string> objIds;
 
     private void Awake() {
         if (Instance == null) {
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
         HolowatchUI.Instance.AddMessage(objIds[0], "PS");
         HolowatchUI.Instance.SetNextHints(objIds[1], new List<string>() {"1-1"});
     }
-    
+
     public void LoadScene(string sceneName) {
         StartCoroutine(LoadSceneVR(sceneName));
     }
