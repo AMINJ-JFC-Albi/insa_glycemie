@@ -24392,10 +24392,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TapeRecorder
       objectReference: {fileID: 0}
-    - target: {fileID: 7718132163498357919, guid: e7c5bc57f9f8042419787f9f203eaeeb, type: 3}
-      propertyPath: m_Name
-      value: Interactible
-      objectReference: {fileID: 0}
     - target: {fileID: 7737245931186326321, guid: e7c5bc57f9f8042419787f9f203eaeeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.53
