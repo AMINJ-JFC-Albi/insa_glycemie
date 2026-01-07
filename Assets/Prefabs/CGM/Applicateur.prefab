@@ -118,7 +118,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cb5a141c7bb564f40ba3078ec8365a36, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 10974c19a44cb3440ae67df700f3642d, type: 2}
+      objectReference: {fileID: 2100000, guid: 442f54e7834b573469c8ff6659893996, type: 2}
     - target: {fileID: 919132149155446097, guid: cb5a141c7bb564f40ba3078ec8365a36, type: 3}
       propertyPath: m_Name
       value: app_partiehaute
@@ -189,6 +189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: app_artiebasse
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5c051fefaf839b34d894de613282615e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -258,7 +262,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 202a4287fad27354496755f1e9609fd0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f50f50c5b22e16f4e869a88e5dd76bc5, type: 2}
+      objectReference: {fileID: 2100000, guid: a159b7fff5e4d0d43a364e3c65d0cd66, type: 2}
     - target: {fileID: 919132149155446097, guid: 202a4287fad27354496755f1e9609fd0, type: 3}
       propertyPath: m_Name
       value: PartieMobile
