@@ -27,7 +27,7 @@ public class TabletManager : MonoBehaviour {
     public void Start() {
         firstStep.SetActive(true);
         secondStep.SetActive(false);
-        //thirdStep.SetActive(false);
+        thirdStep.SetActive(false);
     }
     
     public void GoToSecondStep() {
@@ -42,7 +42,7 @@ public class TabletManager : MonoBehaviour {
         cleaned = cleaned.Normalize(NormalizationForm.FormC);
         if (secondStep.activeSelf && string.Equals(cleaned.Trim(), "care", System.StringComparison.OrdinalIgnoreCase)) {
             secondStep.SetActive(false);
-            //thirdStep.SetActive(true);
+            thirdStep.SetActive(true);
         }
     }
 }
