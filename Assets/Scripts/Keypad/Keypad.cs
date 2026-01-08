@@ -106,14 +106,19 @@ namespace NavKeypad {
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
-            
+        }
+
+        public void AccessGrantedDoor() {
             HolowatchUI.Instance.AddMessage("GlycemieMain", "Urgence");
             HolowatchUI.Instance.CompleteObjective("Door");
             HolowatchUI.Instance.StartObjective("Password");
-            HolowatchUI.Instance.SetNextHints("Password", new List<string>() {"3-1"});
+            HolowatchUI.Instance.SetNextHints("Password", new List<string>() { "3-1" });
             HolowatchUI.Instance.StartObjective("Badge");
-            HolowatchUI.Instance.SetNextHints("Badge", new List<string>() {"4-1", "4-2"});
+            HolowatchUI.Instance.SetNextHints("Badge", new List<string>() { "4-1", "4-2" });
         }
-
+        
+        public void AccessGrantedCasier() {
+            GetComponentInParent<ConfigurableJoint>().zMotion = ConfigurableJointMotion.Limited;
+        }
     }
 }
