@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using HoloWatch;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 namespace Cryptex {
     public class CryptexManager : MonoBehaviour {
         [SerializeField] private CryptexWheel[] wheels;
-        [SerializeField] private string correctWord = "CAPILLAIRE";
-
+        [SerializeField] private GameObject retainer;
+        private string correctWord = "CAPILLAIRE";
+        
         private void Update() {
             if (IsCorrect()) {
                 OpenCryptex();
@@ -28,8 +30,25 @@ namespace Cryptex {
         }
 
         private void OpenCryptex() {
+            XRGrabInteractable retainerGrabInteractable = retainer.GetComponent<XRGrabInteractable>();
+            XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
+            
             enabled = false;
-            Debug.Log("Cryptex opened!");
+            retainer.transform.SetParent(null);
+            
+            Destroy(retainer.GetComponent<Collider>());
+            MeshCollider meshCollider = retainer.AddComponent<MeshCollider>();
+            meshCollider.convex = true;
+            
+            retainer.GetComponent<Rigidbody>().isKinematic = false;
+            retainerGrabInteractable.enabled = true;
+            foreach (CryptexWheel wheel in wheels) {
+                wheel.knob.enabled = false;
+                Destroy(wheel.GetComponent<Collider>());
+                meshCollider = wheel.gameObject.AddComponent<MeshCollider>();
+                meshCollider.convex = true;
+                grabInteractable.colliders.Add(meshCollider);
+            }
             HolowatchUI.Instance.SetNextHints("Password", new List<string>() {"3-2"});
         }
     }

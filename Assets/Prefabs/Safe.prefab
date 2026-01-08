@@ -775,9 +775,9 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_Handle: {fileID: 4533413117510693385}
   m_Value: 0.5
-  m_ClampedMotion: 0
-  m_MaxAngle: 90
-  m_MinAngle: -90
+  m_ClampedMotion: 1
+  m_MaxAngle: 5
+  m_MinAngle: -5
   m_AngleIncrement: 0
   m_PositionTrackedRadius: 0.05
   m_TwistSensitivity: 0
