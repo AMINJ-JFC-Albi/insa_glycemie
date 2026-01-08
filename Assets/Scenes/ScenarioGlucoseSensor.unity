@@ -1999,7 +1999,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1414880277912861113, guid: 231a3139ed0c15d4da5f455f291f7b22, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3861,6 +3862,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1422652406}
   m_SourcePrefab: {fileID: 100100000, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+--- !u!114 &1422652404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6271004297290664553, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+  m_PrefabInstance: {fileID: 1422652403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de6a06764ea4fbe8fe980a32a9a319e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Safe.SafeLocker
 --- !u!1 &1422652405 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6987974832134301070, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
@@ -4932,6 +4944,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457874896}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1483078848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.3528767
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.847348
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
+      propertyPath: m_Name
+      value: "Table D\xE9craft"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
 --- !u!1 &1541135913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7779,6 +7848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1668801504}
     m_Modifications:
+    - target: {fileID: 4305589181298075781, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
+      propertyPath: safelock
+      value: 
+      objectReference: {fileID: 1422652404}
     - target: {fileID: 7225919773926772895, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -7975,3 +8048,4 @@ SceneRoots:
   - {fileID: 1223175212}
   - {fileID: 747003605}
   - {fileID: 1301039323}
+  - {fileID: 1483078848}
