@@ -1,26 +1,9 @@
 fileFormatVersion: 2
-guid: 3cc1bfa741063664e8b13a63afcd062f
-AssetOrigin:
-  serializedVersion: 1
-  productId: 236782
-  packageName: UltimateXR - Virtual Reality Framework and Toolkit
-  packageVersion: 0.9.7
-  assetPath: Assets/UltimateXR/Art/Avatars/BigHands/BigHandLeftGeo.fbx
-  uploadId: 637431
+guid: 2ef574d3e0528d14697fafac411428d4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gloves
-    second: {fileID: 2100000, guid: dca924a5ef100074b8c9297fbb8fffbc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hands
-    second: {fileID: 2100000, guid: 25a2dab1f8d250944991ceefc0b073c3, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -113,14 +96,14 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4f04638f9de194c40aac8bd662b6ecdd, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
