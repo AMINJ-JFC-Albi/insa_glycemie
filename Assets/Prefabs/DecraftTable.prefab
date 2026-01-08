@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 6901984331896863616}
   - component: {fileID: 7545853037412010528}
   - component: {fileID: 1511351069839672533}
+  - component: {fileID: 8276006320003243823}
+  - component: {fileID: 231880735542853767}
   m_Layer: 13
   m_Name: DrawerUR
   m_TagString: Untagged
@@ -481,6 +483,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 56.00012, y: 36.000027, z: 3.31}
   m_Center: {x: -0.000024795534, y: 0.76278114, z: 3.8}
+--- !u!114 &8276006320003243823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262978419054754420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7d05e3c9894314bf8a0dbabb95f7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftDrawer
+  decraftType: 2
+--- !u!65 &231880735542853767
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262978419054754420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 56.00012, y: 36.000027, z: 68.000046}
+  m_Center: {x: -0.000024795534, y: 0.76278114, z: 35.817474}
 --- !u!1 &578273838125929066
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +576,8 @@ GameObject:
   - component: {fileID: 2639379193130273230}
   - component: {fileID: 4688192359977915075}
   - component: {fileID: 9214699805941850711}
+  - component: {fileID: 7208324946190928965}
+  - component: {fileID: 4530858500738557642}
   m_Layer: 13
   m_Name: DrawerDL
   m_TagString: Untagged
@@ -1001,6 +1039,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 56.01412, y: 42.281723, z: 3.31}
   m_Center: {x: 0.038883217, y: -2.1147013, z: 3.8}
+--- !u!114 &7208324946190928965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701556271271035833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7d05e3c9894314bf8a0dbabb95f7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftDrawer
+  decraftType: 1
+--- !u!65 &4530858500738557642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701556271271035833}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 56.01412, y: 42.281723, z: 73.80285}
+  m_Center: {x: 0.038883217, y: -2.1147013, z: 35.483746}
 --- !u!1 &1125006495825098428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1088,7 @@ GameObject:
   - component: {fileID: 2410281373179532493}
   - component: {fileID: 606022622039216489}
   - component: {fileID: 1253307291134994314}
+  - component: {fileID: 5781715464584951661}
   m_Layer: 7
   m_Name: aiguille
   m_TagString: Untagged
@@ -1284,6 +1357,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5029772228348168024, guid: a782d4234895e7c46956eb23f9b1b38d, type: 3}
+--- !u!114 &5781715464584951661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125006495825098428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddf6afd156d47e1ba03a34564a26dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftObject
+  decraftType: 1
 --- !u!1 &1249147733628730229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2177,8 @@ GameObject:
   - component: {fileID: 4196093759848066586}
   - component: {fileID: 6188936108504310695}
   - component: {fileID: 8207959560811454851}
+  - component: {fileID: 5401578583521930972}
+  - component: {fileID: 4986363196539153206}
   m_Layer: 13
   m_Name: DrawerUL
   m_TagString: Untagged
@@ -2552,6 +2640,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 56.00011, y: 36.00002, z: 3.31}
   m_Center: {x: 0.000022888184, y: 1.0655994, z: 3.8}
+--- !u!114 &5401578583521930972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511683657001410131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7d05e3c9894314bf8a0dbabb95f7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftDrawer
+  decraftType: 0
+--- !u!65 &4986363196539153206
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511683657001410131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 56.00011, y: 36.00002, z: 68.00004}
+  m_Center: {x: 0.000022888184, y: 1.0655994, z: 37.61021}
 --- !u!1 &3520326022073200225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2800,7 @@ GameObject:
   - component: {fileID: 1978170747912976691}
   - component: {fileID: 1014781351691752047}
   - component: {fileID: 5570893266322985747}
+  - component: {fileID: 7027742800165068031}
   m_Layer: 7
   m_Name: "Puce \xE9lectronique"
   m_TagString: Untagged
@@ -2947,6 +3070,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04, y: 0.04, z: 0.005418015}
   m_Center: {x: -0.000000059604645, y: -0.000000007450581, z: 0}
+--- !u!114 &7027742800165068031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651268020195883232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddf6afd156d47e1ba03a34564a26dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftObject
+  decraftType: 2
 --- !u!1 &5103667416637290645
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,6 +3673,8 @@ GameObject:
   - component: {fileID: 1860966531267281135}
   - component: {fileID: 6326059901621293977}
   - component: {fileID: 7088127958010970468}
+  - component: {fileID: 2655884964066138039}
+  - component: {fileID: 2274425751633638885}
   m_Layer: 13
   m_Name: DrawerDR
   m_TagString: Untagged
@@ -3998,6 +4136,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 56.014107, y: 42.28173, z: 3.31}
   m_Center: {x: 0.03883458, y: -2.114708, z: 3.8}
+--- !u!114 &2655884964066138039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819592393817208519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7d05e3c9894314bf8a0dbabb95f7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftDrawer
+  decraftType: 3
+--- !u!65 &2274425751633638885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819592393817208519}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 56.014107, y: 42.28173, z: 73.802864}
+  m_Center: {x: 0.03883458, y: -2.114708, z: 34.82205}
 --- !u!1 &5859928091120045086
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,6 +4220,7 @@ GameObject:
   - component: {fileID: 3574083074116713878}
   - component: {fileID: 8879672181683720776}
   - component: {fileID: 235393835292892737}
+  - component: {fileID: 8496804536612515229}
   m_Layer: 7
   m_Name: Capteur Partie Basse
   m_TagString: Untagged
@@ -4315,6 +4488,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2806858922794880101, guid: d59358af6746fe24197f2b9d293615f9, type: 3}
+--- !u!114 &8496804536612515229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5984489251373014193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddf6afd156d47e1ba03a34564a26dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftObject
+  decraftType: 3
 --- !u!1 &6004143329675581397
 GameObject:
   m_ObjectHideFlags: 0
@@ -4435,6 +4621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2085356383934523504}
+  - component: {fileID: 5149587605139222314}
   m_Layer: 0
   m_Name: DecraftTable
   m_TagString: Untagged
@@ -4467,6 +4654,19 @@ Transform:
   - {fileID: 4042884631186773436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &5149587605139222314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309604294830195166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f22f4e3e80742fd9efb1e49c349fff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftManager
+  targetJoint: {fileID: 3272764983742432538}
 --- !u!1 &6602197328658132867
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4793,7 @@ GameObject:
   - component: {fileID: 1447388933217624585}
   - component: {fileID: 8644941732239795629}
   - component: {fileID: 8929939143973942728}
+  - component: {fileID: 8358973590052849475}
   m_Layer: 7
   m_Name: Capteur Partie Haute
   m_TagString: Untagged
@@ -4859,6 +5060,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5208879343037863941, guid: 0fa218a0d3586ce4fbc0ca68872ef533, type: 3}
+--- !u!114 &8358973590052849475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6726715770052117984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddf6afd156d47e1ba03a34564a26dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Decraft.DecraftObject
+  decraftType: 0
 --- !u!1 &7087761911881771719
 GameObject:
   m_ObjectHideFlags: 0
