@@ -1,21 +1,21 @@
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 namespace Cryptex {
     public class CryptexWheel : MonoBehaviour {
         [SerializeField] private Vector3 rotationAxis = Vector3.up;
         [SerializeField] private int letterCount = 26;
 
-        private XRGrabInteractable grab;
+        public XRKnob knob;
         private float anglePerLetter;
         private float currentAngle;
 
         private void Awake() {
-            grab = GetComponent<XRGrabInteractable>();
+            knob = GetComponentInParent<XRKnob>();
             anglePerLetter = 360.0f / letterCount;
-
-            grab.selectExited.AddListener(OnRelease);
+    
+            knob.selectExited.AddListener(OnRelease);
         }
 
         public void OnRelease(SelectExitEventArgs args) {
