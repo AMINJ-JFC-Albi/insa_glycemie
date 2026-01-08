@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Safe;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +39,9 @@ public class JoystickImageSelector : MonoBehaviour
 
     [Header("XR Grip Button")]
     public XRGripButton gripButton;
+
+    [Header("SafeLocker")]
+    public SafeLocker safelock;
 
     private int currentRow = 0;
     private int currentColumn = 0;
@@ -149,6 +153,8 @@ public class JoystickImageSelector : MonoBehaviour
                 resultText.text = "Re-calibrage des données réussi !";
 
             targetImage.sprite = image_explication;
+
+            safelock.CanOpenSafe();
 
             DisableInteractions();
             calibrationDone = true;
