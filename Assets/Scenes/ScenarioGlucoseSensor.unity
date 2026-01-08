@@ -5661,7 +5661,8 @@ PrefabInstance:
       value: "Table D\xE9craft"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 112ce2a13c0ef134590c2939327583df, type: 3}
