@@ -27,7 +27,7 @@ namespace Door {
             
             HingeJoint joint = gameObject.AddComponent<HingeJoint>();
             joint.anchor = new Vector3(0, 0, 0);
-            joint.axis = new Vector3(0, 0, 1);
+            joint.axis = new Vector3(0, 1, 0);
             
             joint.useLimits = true;
             JointLimits limits = joint.limits;
@@ -38,7 +38,7 @@ namespace Door {
             socket.enabled = false;
             rb.isKinematic = true;
             
-            while (joint.angle <= 170f) {
+            while (joint.angle is <= 170f or >= 175f) {
                 yield return null;
             }
             
