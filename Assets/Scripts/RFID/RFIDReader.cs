@@ -10,6 +10,11 @@ namespace RFID {
         
         private Dictionary<int, Coroutine> attempts = new Dictionary<int, Coroutine>();
         private bool done;
+        
+        private void Start() {
+            indicatorMaterial.EnableKeyword("_EMISSION");
+            indicatorMaterial.SetColor("_EmissionColor", Color.red);
+        }
 
         void OnTriggerEnter(Collider other) {
             if (!other.CompareTag(badgeTag) || done) return;
