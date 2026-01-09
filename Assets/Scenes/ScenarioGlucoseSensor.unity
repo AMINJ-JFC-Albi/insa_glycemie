@@ -4522,6 +4522,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1453234180086727143, guid: dce359353fdbbb348a7fb405e07fc84c, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1676159843303588404, guid: dce359353fdbbb348a7fb405e07fc84c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.0007
@@ -4783,6 +4787,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4123941842155767456, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391354944909151787, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
+      propertyPath: m_UseDynamicAttach
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4449983827346866594, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
@@ -5135,6 +5143,54 @@ PrefabInstance:
     - target: {fileID: 6309604294830195166, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
       propertyPath: m_Name
       value: DecraftTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642254626386232228, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6969,6 +7025,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1489527934 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6543651529222121538, guid: a2594e06a5366914893b44fda4723804, type: 3}
+  m_PrefabInstance: {fileID: 421817634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1509907037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8038,6 +8105,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526369088476488984, guid: 6db270ceb61836f4aa6d810cc58230de, type: 3}
+      propertyPath: m_InputField
+      value: 
+      objectReference: {fileID: 1489527934}
     - target: {fileID: 1576013191016528734, guid: 6db270ceb61836f4aa6d810cc58230de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
