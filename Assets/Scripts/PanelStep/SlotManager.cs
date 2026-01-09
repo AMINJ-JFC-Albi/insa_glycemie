@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlotManager : MonoBehaviour
 {
-    public SnapToSlot[] requiredObjects;
+    public GameObject[] requiredObjects;
     public BigPoster bigPoster;
 
     public TaskManager taskManager;
@@ -13,8 +13,9 @@ public class SlotManager : MonoBehaviour
 {
     bool allFilled = true;
 
-    foreach (var snap in requiredObjects)
+    foreach (var var in requiredObjects)
     {
+        SnapToSlot snap = var.GetComponent<SnapToSlot>();
         if (snap == null || !snap.IsValid())
         {
             allFilled = false;
