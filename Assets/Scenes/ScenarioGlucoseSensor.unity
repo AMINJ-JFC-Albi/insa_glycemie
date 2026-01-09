@@ -5313,9 +5313,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4642154672735271909, guid: 0bff3850fb8b0914ba97ae33a25041c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1513909189}
-    - targetCorrespondingSourceObject: {fileID: 4642154672735271909, guid: 0bff3850fb8b0914ba97ae33a25041c1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1513909190}
   m_SourcePrefab: {fileID: 100100000, guid: 0bff3850fb8b0914ba97ae33a25041c1, type: 3}
 --- !u!1 &1253172440
 GameObject:
@@ -6149,17 +6146,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1854233527183545149, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1879568373446238061, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
       propertyPath: m_Name
       value: Safe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836543941494232243, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5365404853452357325, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
       propertyPath: m_Size.y
       value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5365404853452357325, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365404853452357325, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
       propertyPath: m_Center.y
-      value: 0.04
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477055982293739749, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487730857358924627, guid: f5616b68b98beb7439c41d4752c4b40d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7169,21 +7186,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &1513909190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513909187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a5dc6b8a854a92b77027a33032eb46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door.LockDoor
-  canTp:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1540111759
 PrefabInstance:
   m_ObjectHideFlags: 0
