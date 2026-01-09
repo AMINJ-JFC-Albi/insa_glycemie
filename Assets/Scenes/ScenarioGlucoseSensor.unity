@@ -9768,6 +9768,7 @@ Transform:
   m_PrefabInstance: {fileID: 1917297820}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1988154797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7921821493238152745, guid: 81d2d715b3faebe44a29f4d98ea1609d, type: 3}
@@ -9775,12 +9776,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1988154799
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1954683459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5754060345647867467, guid: ff1bbc1fd2c505349b3de2207fdc3b2a, type: 3}
   m_PrefabInstance: {fileID: 282476432}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1954683463
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9788,7 +9794,11 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1988154797}
+=======
+  m_GameObject: {fileID: 1954683459}
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 1954683459}
 >>>>>>> Stashed changes
@@ -9805,9 +9815,12 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: -0.0012506035, y: 0, z: 0.0045}
 =======
+=======
+>>>>>>> Stashed changes
   m_Size: {x: 0.02, y: 0.019999994, z: 0.019999996}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1979418132 stripped
@@ -9836,6 +9849,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020000001, y: 0.020000001, z: 0.019999996}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1001 &2032837611
 PrefabInstance:
@@ -10137,12 +10153,15 @@ Rigidbody:
   m_Constraints: 0
   m_CollisionDetection: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!4 &2032837618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6817525275121132084, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
   m_PrefabInstance: {fileID: 2032837611}
   m_PrefabAsset: {fileID: 0}
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &2087641314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3410185793394415013, guid: ff1bbc1fd2c505349b3de2207fdc3b2a, type: 3}
@@ -10169,6 +10188,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999994, z: 0.019999996}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &2102278483
 GameObject:
