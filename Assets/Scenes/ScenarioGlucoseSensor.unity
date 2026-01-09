@@ -405,8 +405,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178630694}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.393, y: 0.265, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.393, y: 0.265, z: -7}
   m_LocalScale: {x: 999.9997, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnapToSlot
   targetSlot: {fileID: 1239930184}
   snapDistance: 0.2
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   slotManager: {fileID: 1828796626}
 --- !u!114 &315952654
 MonoBehaviour:
@@ -1358,8 +1358,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394673126}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0.034, y: 0.262, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.034, y: 0.262, z: -7}
   m_LocalScale: {x: 999.9997, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1451,38 +1451,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1207518414444552378, guid: a2594e06a5366914893b44fda4723804, type: 3}
   m_PrefabInstance: {fileID: 421817634}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &455965733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 455965734}
-  m_Layer: 0
-  m_Name: NoticeCGM
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &455965734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455965733}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 1.86854, y: 0.57768, z: 7.19861}
-  m_LocalScale: {x: 1, y: 1, z: 0.001}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1774611239}
-  m_Father: {fileID: 1223175212}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &501697038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2498,7 +2466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnapToSlot
   targetSlot: {fileID: 394673127}
   snapDistance: 0.2
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   slotManager: {fileID: 1828796626}
 --- !u!114 &810811147
 MonoBehaviour:
@@ -3401,7 +3369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnapToSlot
   targetSlot: {fileID: 1852075054}
   snapDistance: 0.2
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   slotManager: {fileID: 1828796626}
 --- !u!114 &1089429894
 MonoBehaviour:
@@ -3581,8 +3549,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096749926}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.176, y: 0.26, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.176, y: 0.26, z: -7}
   m_LocalScale: {x: 999.9997, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4174,11 +4142,11 @@ Transform:
   m_Children:
   - {fileID: 1086379437}
   - {fileID: 1546258947}
-  - {fileID: 455965734}
   - {fileID: 2102278484}
   - {fileID: 1540111760}
   - {fileID: 1098685444}
   - {fileID: 1239342320}
+  - {fileID: 1774611239}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236041355 stripped
@@ -4394,8 +4362,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239930183}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.177, y: -0.071, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.177, y: -0.071, z: -7}
   m_LocalScale: {x: 999.9997, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4780,7 +4748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnapToSlot
   targetSlot: {fileID: 1096749927}
   snapDistance: 0.2
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   slotManager: {fileID: 1828796626}
 --- !u!114 &1299569316
 MonoBehaviour:
@@ -8580,6 +8548,10 @@ GameObject:
   - component: {fileID: 1774611242}
   - component: {fileID: 1774611241}
   - component: {fileID: 1774611240}
+  - component: {fileID: 1774611245}
+  - component: {fileID: 1774611244}
+  - component: {fileID: 1774611243}
+  - component: {fileID: 1774611246}
   m_Layer: 0
   m_Name: Notice
   m_TagString: Untagged
@@ -8595,9 +8567,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774611238}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.746, y: -0.341, z: -493}
-  m_LocalScale: {x: 1500, y: 1, z: 0.001}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 6.61454, y: 0.91867995, z: 6.70561}
+  m_LocalScale: {x: 1.5000001, y: 1, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1880767295}
@@ -8607,7 +8579,7 @@ Transform:
   - {fileID: 1096749927}
   - {fileID: 178630695}
   - {fileID: 1102713254}
-  m_Father: {fileID: 455965734}
+  m_Father: {fileID: 1223175212}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &1774611240
 BoxCollider:
@@ -8686,6 +8658,191 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774611238}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1774611243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774611238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_AttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 0
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_AttachEaseInTime: 0.15
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 0}
+  m_VelocityDamping: 1
+  m_VelocityScale: 1
+  m_AngularVelocityDamping: 1
+  m_AngularVelocityScale: 1
+  m_TrackPosition: 1
+  m_SmoothPosition: 0
+  m_SmoothPositionAmount: 8
+  m_TightenPosition: 0.1
+  m_TrackRotation: 1
+  m_SmoothRotation: 0
+  m_SmoothRotationAmount: 8
+  m_TightenRotation: 0.1
+  m_TrackScale: 1
+  m_SmoothScale: 0
+  m_SmoothScaleAmount: 8
+  m_TightenScale: 0.1
+  m_ThrowOnDetach: 1
+  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_ThrowVelocityScale: 1.5
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
+  m_FarAttachMode: 0
+  m_LimitLinearVelocity: 0
+  m_LimitAngularVelocity: 0
+  m_MaxLinearVelocityDelta: 10
+  m_MaxAngularVelocityDelta: 20
+--- !u!54 &1774611244
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774611238}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1774611245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774611238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f4b95c727366e4db939cdc3c52d373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttachChildren
+--- !u!114 &1774611246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774611238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ebde07fa45fb344aa8aa6909de76e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BigPoster
+  grabInteractable: {fileID: 1774611243}
+  rb: {fileID: 1774611244}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  snapOffset: 0.01
+  snapPoint: {fileID: 1102713254}
 --- !u!1 &1813503978
 GameObject:
   m_ObjectHideFlags: 0
@@ -8815,7 +8972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnapToSlot
   targetSlot: {fileID: 178630695}
   snapDistance: 0.2
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   slotManager: {fileID: 1828796626}
 --- !u!114 &1813503984
 MonoBehaviour:
@@ -9040,7 +9197,7 @@ MonoBehaviour:
   - {fileID: 810811140}
   - {fileID: 1299569309}
   - {fileID: 1813503978}
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   taskManager: {fileID: 1767278160}
 --- !u!1 &1852075053
 GameObject:
@@ -9066,8 +9223,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852075053}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.386, y: -0.071, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.386, y: -0.071, z: -7}
   m_LocalScale: {x: 999.9997, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9203,8 +9360,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880767294}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0.034, y: -0.071, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.034, y: -0.071, z: -7}
   m_LocalScale: {x: 999.9997, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9357,7 +9514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnapToSlot
   targetSlot: {fileID: 1880767295}
   snapDistance: 0.2
-  bigPoster: {fileID: 0}
+  bigPoster: {fileID: 1774611246}
   slotManager: {fileID: 1828796626}
 --- !u!114 &1897369593
 MonoBehaviour:
