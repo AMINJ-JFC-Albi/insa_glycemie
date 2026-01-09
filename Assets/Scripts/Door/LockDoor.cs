@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HoloWatch;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -11,6 +12,8 @@ namespace Door {
         private XRSocketInteractor socket;
         private Rigidbody rb;
         private bool firstUnlock = true;
+
+        public UnityEvent canTp;
         
         private void Awake() {
             grab = GetComponent<XRGrabInteractable>();
@@ -35,6 +38,7 @@ namespace Door {
             } else {
                 HolowatchUI.Instance.SetNextHints("Badge", new List<string>() {"4-4", "4-5"});
             }
+            canTp.Invoke();
         }
     }
 }
