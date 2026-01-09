@@ -3900,6 +3900,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3188039049897050244, guid: dce359353fdbbb348a7fb405e07fc84c, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[0].m_Text
+      value: Sujet Synth-C4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188039049897050244, guid: dce359353fdbbb348a7fb405e07fc84c, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Text
+      value: Sujet Synth-A9
+      objectReference: {fileID: 0}
     - target: {fileID: 3865677512255371941, guid: dce359353fdbbb348a7fb405e07fc84c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4038,6 +4046,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1232031826507021053, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
+      propertyPath: taskManager
+      value: 
+      objectReference: {fileID: 1767278160}
     - target: {fileID: 2487369837108194452, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4142,6 +4154,14 @@ PrefabInstance:
       propertyPath: taskManager
       value: 
       objectReference: {fileID: 1767278160}
+    - target: {fileID: 7464355826453213451, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
+      propertyPath: distanceAppuiApplicateur
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464355826453213451, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
+      propertyPath: distanceRetractionMobile
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -10100,6 +10120,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3806124328225297802, guid: 384b2cbd80e9b5648b7a2abf9387413e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2078885929}
+    - targetCorrespondingSourceObject: {fileID: -3806124328225297802, guid: 384b2cbd80e9b5648b7a2abf9387413e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2078885931}
   m_SourcePrefab: {fileID: 100100000, guid: 384b2cbd80e9b5648b7a2abf9387413e, type: 3}
 --- !u!1 &2078885928 stripped
 GameObject:
@@ -10124,6 +10147,28 @@ MonoBehaviour:
   wetSpeed: 0.5
   dryTime: 10
   taskManager: {fileID: 1767278160}
+--- !u!64 &2078885931
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078885928}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4924593389521806067, guid: 384b2cbd80e9b5648b7a2abf9387413e, type: 3}
 --- !u!1 &2102278483
 GameObject:
   m_ObjectHideFlags: 0
