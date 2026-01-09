@@ -3298,6 +3298,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1813503979}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &933224653 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6345948948329929940, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+  m_PrefabInstance: {fileID: 1239342319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &983586201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7257535348436146458, guid: ca9fd312c612b0d489765f9e1733a0eb, type: 3}
@@ -5119,6 +5124,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4237551521373722175, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237551521373722175, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: 'm_Colliders.Array.data[0]'
+      value: 
+      objectReference: {fileID: 933224653}
     - target: {fileID: 6309604294830195166, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
       propertyPath: m_Name
       value: DecraftTable
