@@ -38,9 +38,13 @@ namespace Door {
             socket.enabled = false;
             rb.isKinematic = true;
             
+            Debug.Log(joint.angle);
             while (!(joint.angle is >= 160f and <= 175f)) {
+                Debug.Log(joint.angle);
                 yield return null;
             }
+            Debug.Log("FINISHED !");
+            Debug.Log(joint.angle);
             
             grab.enabled = false;
             transform.SetParent(socket.transform.parent, true);
