@@ -46,6 +46,13 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(LoadSceneVR(sceneName));
     }
 
+    private bool oneTime;
+    public void FinalMessage() {
+        if (oneTime) return;
+        oneTime = true;
+        HolowatchUI.Instance.AddMessage(objIds[0], "Bravo");
+    }
+
     IEnumerator LoadSceneVR(string sceneName) {
         yield return new WaitForSeconds(0.5f);
 
