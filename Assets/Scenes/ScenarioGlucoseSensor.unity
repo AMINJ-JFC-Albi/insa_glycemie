@@ -5228,6 +5228,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8299423886525371478, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299423886525371478, guid: 04f75e58fbc24ae4d9e8914648ff2554, type: 3}
+      propertyPath: m_ThrowOnDetach
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10960,6 +10968,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 22779697775999580, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2032837619}
+    - targetCorrespondingSourceObject: {fileID: 22779697775999580, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2032837622}
   m_SourcePrefab: {fileID: 100100000, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
 --- !u!4 &2032837612 stripped
 Transform:
@@ -11186,6 +11197,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2477511411847689622, guid: 2600fc3e3f90e5142bf829b503d68c46, type: 3}
+--- !u!114 &2032837622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749509352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a5dc6b8a854a92b77027a33032eb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door.LockDoor
+  canTp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2070307045
 BoxCollider:
   m_ObjectHideFlags: 0
