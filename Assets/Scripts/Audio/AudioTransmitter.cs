@@ -11,9 +11,9 @@ namespace Audio {
         }
 
         public void Play() {
+            StartCoroutine(GetComponentInChildren<Subtitles>().Play());
             if (audioSource != null && audioClip != null) {
                 audioSource.PlayOneShot(audioClip);
-                StartCoroutine(GetComponent<Subtitles>().Play());
             }
         }
     }

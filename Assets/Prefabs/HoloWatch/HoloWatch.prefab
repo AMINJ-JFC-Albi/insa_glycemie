@@ -5355,7 +5355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.MessagingManager
   contactContainer: {fileID: 2149949611235460603}
   contactPrefab: {fileID: 8755277298537761740, guid: 373fca1a355911e41b4be7795e662bde, type: 3}
-  conversationNameText: {fileID: 0}
+  conversationNameText: {fileID: 5454267524824541686}
   helpButton: {fileID: 1638090969727244857}
   messageContainer: {fileID: 3801825508197712552}
   messagePrefab: {fileID: 301846151402429453, guid: b73c38c4639812e429467d96e6bd7e21, type: 3}
@@ -7022,7 +7022,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5838027448463716347}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 161541716267431994}
+        m_TargetAssemblyTypeName: HoloWatch.HolowatchUI, Assembly-CSharp
+        m_MethodName: SwitchMessagingPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9558607851219405
 MonoBehaviour:
   m_ObjectHideFlags: 0

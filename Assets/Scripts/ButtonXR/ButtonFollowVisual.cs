@@ -67,7 +67,6 @@ namespace ButtonXR {
                 if (keypadButton) {
                     keypadButton.PressButton();
                 } else {
-                    // C'est le tapeRecorder
                     GetComponentInParent<AudioTransmitter>().Play();
                 }
             }

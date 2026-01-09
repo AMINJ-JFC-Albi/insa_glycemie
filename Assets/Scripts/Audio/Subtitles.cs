@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Audio {
     public class Subtitles : MonoBehaviour {
-        private TMP_Text masterText;
-        private TMP_Text graphicText;
+        [SerializeField] private TMP_Text masterText;
+        [SerializeField] private TMP_Text graphicText;
         private Canvas canvas;
         
         private void Start() {
@@ -15,7 +15,6 @@ namespace Audio {
 
         public IEnumerator Play() {
             if (canvas.enabled) yield break;
-            
             Text("Oui ? Fait voir... mmmh intéressant.");
             canvas.enabled = true;
             yield return new WaitForSeconds(4f);

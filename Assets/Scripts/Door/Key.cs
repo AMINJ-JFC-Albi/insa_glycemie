@@ -38,7 +38,7 @@ namespace Door {
             socket.enabled = false;
             rb.isKinematic = true;
             
-            while (!(joint.angle is >= 170f and <= 175f)) {
+            while (!(joint.angle is >= 160f and <= 175f)) {
                 yield return null;
             }
             
