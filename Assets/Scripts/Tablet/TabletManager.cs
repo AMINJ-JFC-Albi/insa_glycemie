@@ -39,11 +39,8 @@ public class TabletManager : MonoBehaviour {
     
     public void GoToThirdStep() {
         string cleaned = Regex.Replace(textSecondStep.text ?? "", @"[\uFEFF\u00A0\u200B-\u200D]", "");
-        Debug.Log(cleaned);
         
         cleaned = cleaned.Normalize(NormalizationForm.FormC);
-        Debug.Log(secondStep.activeSelf);
-        Debug.Log(string.Equals(cleaned.Trim(), "care", System.StringComparison.OrdinalIgnoreCase));
         if (secondStep.activeSelf && string.Equals(cleaned.Trim(), "care", System.StringComparison.OrdinalIgnoreCase)) {
             secondStep.SetActive(false);
             thirdStep.SetActive(true);

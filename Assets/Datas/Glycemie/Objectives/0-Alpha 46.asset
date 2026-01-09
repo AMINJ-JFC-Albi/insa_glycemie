@@ -30,3 +30,6 @@ MonoBehaviour:
     messageId: Urgence
     content: "URGENCE : Chaque minute compte. Le dossier Alpha 46 doit \xEAtre r\xE9cup\xE9r\xE9
       avant qu\u2019il ne soit trop tard."
+  - sender: 0
+    messageId: Bravo
+    content: "Dossier bien transmis. Alpha 46 va pouvoir \xEAtre bien soign\xE9."
