@@ -1863,6 +1863,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bf0bbaedba60a4c9367d33dd0cfceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TabletManager
+--- !u!1 &452424659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452424660}
+  - component: {fileID: 452424661}
+  m_Layer: 0
+  m_Name: Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452424660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452424659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.416, y: -0.428, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2032837618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &452424661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452424659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.05, y: 0.05, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &501697038
 GameObject:
   m_ObjectHideFlags: 0
@@ -10873,6 +10926,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1668801504}
     m_Modifications:
+    - target: {fileID: 22779697775999580, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
+      propertyPath: m_Name
+      value: Couvercle
+      objectReference: {fileID: 0}
     - target: {fileID: 4305589181298075781, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: safelock
       value: 
@@ -10895,11 +10952,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7225919773926772895, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.94444454
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7225919773926772895, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7222222
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7225919773926772895, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10943,7 +11000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7225919773926772895, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8001857582812629541, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       propertyPath: m_Name
@@ -10955,6 +11012,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6817525275121132084, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1513909188}
+    - targetCorrespondingSourceObject: {fileID: 6817525275121132084, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 452424660}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 22779697775999580, guid: f51537deb62da7b4681059acd1dc4977, type: 3}
       insertIndex: -1
@@ -10990,7 +11050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 452424661}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -11057,7 +11118,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -11067,15 +11128,15 @@ MonoBehaviour:
   m_SmoothPosition: 0
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
-  m_TrackRotation: 1
+  m_TrackRotation: 0
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
-  m_TrackScale: 1
+  m_TrackScale: 0
   m_SmoothScale: 0
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
-  m_ThrowOnDetach: 1
+  m_ThrowOnDetach: 0
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2
@@ -11100,9 +11161,9 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
-  m_LimitLinearVelocity: 0
+  m_LimitLinearVelocity: 1
   m_LimitAngularVelocity: 0
-  m_MaxLinearVelocityDelta: 10
+  m_MaxLinearVelocityDelta: 2
   m_MaxAngularVelocityDelta: 20
 --- !u!59 &2032837616
 HingeJoint:
