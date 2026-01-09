@@ -35,10 +35,7 @@ namespace Door {
             limits.max = 180;
             joint.limits = limits;
             
-            yield return new WaitForSeconds(5f);
-            
-            socket.enabled = false;
-            yield return new WaitForSeconds(5f);
+            //socket.enabled = false;
             rb.isKinematic = true;
             
             while (!(joint.angle is >= 160f and <= 175f)) {
