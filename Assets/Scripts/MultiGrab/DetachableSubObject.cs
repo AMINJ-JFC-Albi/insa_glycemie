@@ -3,6 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
+
 namespace MultiGrab {
     public class DetachableSubObject : MonoBehaviour {
         private XRGrabInteractable grab;
@@ -11,7 +12,7 @@ namespace MultiGrab {
         private Color[] originalColors;
 
         public DetachableSubObject prerequisiteObject;
-        private bool isDetached = false;
+        private bool isDetached;
 
         private void Awake() {
             grab = GetComponent<XRGrabInteractable>();
@@ -26,23 +27,21 @@ namespace MultiGrab {
 
             grab.enabled = false;
             rb.isKinematic = true;
-
+            
             grab.selectEntered.AddListener(OnGrabbed);
             grab.hoverEntered.AddListener(OnHoverEnter);
             grab.hoverExited.AddListener(OnHoverExit);
         }
 
-        public void EnableDetach(bool enabled) {
+        public void EnableDetach(bool canEnabled) {
             if (isDetached || (prerequisiteObject != null && !prerequisiteObject.isDetached)) {
                 return;
             }
-            grab.enabled = enabled;
+            grab.enabled = canEnabled;
         }
 
         private void OnGrabbed(SelectEnterEventArgs args) {
-            if (isDetached) {
-                return;
-            }
+            if (isDetached) return;
             isDetached = true;
 
             // Force XR à lâcher toute relation précédente
@@ -51,6 +50,7 @@ namespace MultiGrab {
             interactionManager.SelectExit(interactor, grab);
 
             rb.isKinematic = false;
+            
             transform.SetParent(null);
             grab.enabled = true;
             gameObject.layer = LayerMask.NameToLayer("Default");
