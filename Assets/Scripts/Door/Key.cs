@@ -25,10 +25,7 @@ namespace Door {
             grab.throwOnDetach = false;
             col.excludeLayers = LayerMask.GetMask("Door");
             
-            yield return new WaitForSeconds(1f);
-            
             HingeJoint joint = gameObject.AddComponent<HingeJoint>();
-            yield return new WaitForSeconds(5f);
             joint.anchor = new Vector3(0, 0, 0);
             joint.axis = new Vector3(0, 1, 0);
             
@@ -38,9 +35,10 @@ namespace Door {
             limits.max = 180;
             joint.limits = limits;
             
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
             
             socket.enabled = false;
+            yield return new WaitForSeconds(5f);
             rb.isKinematic = true;
             
             while (!(joint.angle is >= 160f and <= 175f)) {
