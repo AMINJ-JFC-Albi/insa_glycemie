@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3207399656079684205}
   - component: {fileID: 1430846997475690176}
   m_Layer: 0
-  m_Name: KeyBlack 2
+  m_Name: KeyRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
