@@ -34,8 +34,8 @@ namespace Door {
             limits.min = 0;
             limits.max = 180;
             joint.limits = limits;
-            
-            //socket.enabled = false;
+
+            socket.showInteractableHoverMeshes = false;
             rb.isKinematic = true;
             
             while (!(joint.angle is >= 160f and <= 175f)) {
