@@ -5,6 +5,9 @@ using HoloWatch;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.ARSubsystems;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.OpenXR.NativeTypes;
 
 namespace NavKeypad {
     public class Keypad : MonoBehaviour {
@@ -39,10 +42,19 @@ namespace NavKeypad {
         private bool displayingResult = false;
         private bool accessWasGranted = false;
 
+        public Boolean isWithCasette = false;
+
+        public XRGrabInteractable casette;
+
         private void Awake() {
             ClearInput();
             panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
-        }
+
+            if (isWithCasette)
+            {
+                casette.enabled = false;
+            }
+            }
 
 
         //Gets value from pressedbutton
@@ -106,6 +118,7 @@ namespace NavKeypad {
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
+            casette.enabled = true;
         }
 
         public void AccessGrantedDoor() {
