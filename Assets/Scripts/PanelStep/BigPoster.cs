@@ -31,7 +31,7 @@ public class BigPoster : MonoBehaviour
     public void EnableGrab()
     {
         GetComponent<AttachChildren>().InitializeOffsets();
-        grabInteractable.enabled = true;
+        //grabInteractable.enabled = true; DEBUG!!! mieux si désactivé ?
     }
 
     private void OnReleased(SelectExitEventArgs args)
