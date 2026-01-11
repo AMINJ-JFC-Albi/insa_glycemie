@@ -8,6 +8,8 @@ namespace Safe {
         
         private XRKnob knob;
         private XRGrabInteractable grab;
+
+        public XRGrabInteractable badge;
         
         private void Start() {
             knob = GetComponentInChildren<XRKnob>();
@@ -18,12 +20,15 @@ namespace Safe {
             
             led.SetColor("_EmissionColor", Color.red);
             led.color = Color.red;
+
+            badge.enabled = false;
         }
         
         public void CanOpenSafe() {
             knob.clampedMotion = false;
             led.SetColor("_EmissionColor", Color.green);
             led.color = Color.green;
+            badge.enabled = true;
         }
 
         private void OnKnobTurned(float value) {
