@@ -51,6 +51,7 @@ public class TaskManager : MonoBehaviour
         }
         else
         {
+            currentStep++;
             majTaskSQuad();
         }
     }
@@ -85,7 +86,7 @@ public class TaskManager : MonoBehaviour
             {
                 if (obj.TryGetComponent<Paramétrage>(out var options))
                 {
-                    Debug.Log("lancmeent Option");
+                    Debug.Log("lancement Option");
                     StartCoroutine(ShowLancementOption(options));
                 }
             }
