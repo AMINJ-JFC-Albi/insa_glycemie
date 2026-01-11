@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ChoiceRoom.unity
-    guid: 55bfb294c23c7d24e9b59ca6efc09ee4
-  - enabled: 1
     path: Assets/Scenes/ScenarioGlucoseSensor.unity
     guid: db3ef6802135d854c95187fc2697f771
   m_configObjects:
