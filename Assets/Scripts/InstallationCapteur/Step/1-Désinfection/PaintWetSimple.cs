@@ -68,7 +68,7 @@ public class PaintWetSimple : MonoBehaviour
             if (handInteractor != null)
             {
                 var controllerInteractor = handInteractor as XRBaseInputInteractor;
-                controllerInteractor?.SendHapticImpulse(0.5f, 0.2f);
+                controllerInteractor?.SendHapticImpulse(0.8f, 0.5f);
             }
 
             // Démarrer le séchage

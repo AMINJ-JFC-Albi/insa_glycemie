@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -15,7 +15,7 @@ namespace Door {
             rb = GetComponent<Rigidbody>();
             col = GetComponent<Collider>();
         }
-
+        
         public IEnumerator IsInLock(XRSocketInteractor socket, LockDoor lockDoor) {
             gameObject.layer = LayerMask.NameToLayer("Not Interactable");
             yield return new WaitForSeconds(0.5f);
