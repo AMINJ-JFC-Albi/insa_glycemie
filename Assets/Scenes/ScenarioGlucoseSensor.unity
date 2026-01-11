@@ -6357,7 +6357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7737245931186326321, guid: e7c5bc57f9f8042419787f9f203eaeeb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2.7531
       objectReference: {fileID: 0}
     - target: {fileID: 7737245931186326321, guid: e7c5bc57f9f8042419787f9f203eaeeb, type: 3}
       propertyPath: m_LocalScale.y
@@ -6369,7 +6369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7737245931186326321, guid: e7c5bc57f9f8042419787f9f203eaeeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0073252865
+      value: 0.0214
       objectReference: {fileID: 0}
     - target: {fileID: 7737245931186326321, guid: e7c5bc57f9f8042419787f9f203eaeeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7574,8 +7574,8 @@ Transform:
   m_GameObject: {fileID: 1445966311}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27059802, y: 0.6532815, z: -0.27059802, w: 0.65328145}
-  m_LocalPosition: {x: -0.0001, y: 0.9665, z: -0.0007}
-  m_LocalScale: {x: 0.08510375, y: 0.07542669, z: 0.071428575}
+  m_LocalPosition: {x: -0.0001, y: 0.9665, z: -0.0012}
+  m_LocalScale: {x: 0.08630099, y: 0.07542669, z: 0.071428575}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8973753}
@@ -7874,6 +7874,10 @@ PrefabInstance:
     - target: {fileID: 6985616814336841083, guid: 558fae54d6a4a32488cb29ee3b511ebd, type: 3}
       propertyPath: keypadCombo
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985616814336841083, guid: 558fae54d6a4a32488cb29ee3b511ebd, type: 3}
+      propertyPath: isWithCasette
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130422358261079296, guid: 558fae54d6a4a32488cb29ee3b511ebd, type: 3}
       propertyPath: m_Name
