@@ -12,6 +12,7 @@ namespace MultiGrab {
         private Color[] originalColors;
 
         public DetachableSubObject prerequisiteObject;
+        public GameObject fakeCollider;
         private bool isDetached;
 
         private void Awake() {
@@ -48,6 +49,8 @@ namespace MultiGrab {
             XRInteractionManager interactionManager = grab.interactionManager;
             IXRSelectInteractor interactor = args.interactorObject;
             interactionManager.SelectExit(interactor, grab);
+            
+            Destroy(fakeCollider);
 
             rb.isKinematic = false;
             
