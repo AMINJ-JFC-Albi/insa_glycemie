@@ -3452,6 +3452,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2151508913940180654, guid: 231a3139ed0c15d4da5f455f291f7b22, type: 3}
+      propertyPath: m_Limits.max
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151508913940180654, guid: 231a3139ed0c15d4da5f455f291f7b22, type: 3}
+      propertyPath: m_Limits.min
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 6328852404425083094, guid: 231a3139ed0c15d4da5f455f291f7b22, type: 3}
       propertyPath: m_Name
       value: Door
@@ -9133,6 +9141,10 @@ PrefabInstance:
     - target: {fileID: 541110116069777260, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
       propertyPath: m_Name
       value: VRController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066791778295950784, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 2147487905
       objectReference: {fileID: 0}
     - target: {fileID: 7075317494592712211, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
       propertyPath: m_RequestedTrackingOriginMode
