@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using HoloWatch;
 using UnityEngine;
 
 [System.Serializable]
@@ -30,6 +32,7 @@ public class SlotManager : MonoBehaviour
         bigPoster.EnableGrab();
 
         taskManager.StartSteps();
+        HolowatchUI.Instance.SetNextHints("Door", new List<string>() {"2-3", "2-4", "2-5", "2-6"});
 
     }
     else

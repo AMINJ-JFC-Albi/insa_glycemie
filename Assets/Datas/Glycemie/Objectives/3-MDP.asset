@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.ObjectiveData
   objectiveId: Password
   title: Trouver le mot de passe des dossiers patients
-  conversationName: ???
+  conversationName: Le mot de passe
   conversationAvatar: {fileID: 0}
   conversation:
   - sender: 0
     messageId: 3-1
-    content: Regarde le casier vert. Il y a un indice utile pour le cryptex
+    content: Regarde le casier, l'indice pour l'ouvrire est dessus.
   - sender: 0
     messageId: 3-2
+    content: "Appuie sur \"PLAY\" pour \xE9couter le message. La r\xE9ponse est dit
+      dedans."
+  - sender: 0
+    messageId: 3-3
     content: "Pour le mot de passe du dossier patient, les chiffres correspondent
-      \xE0 des lettres : par exemple 1 devient C, 10 devient E. Applique la m\xEAme
-      logique aux autres chiffres et mets les lettres dans le bon ordre pour former
-      le mot de passe."
+      aux lettres du cryptex : par exemple 1 devient C, 10 devient E. Applique la
+      m\xEAme logique aux autres chiffres pour former le mot de passe."

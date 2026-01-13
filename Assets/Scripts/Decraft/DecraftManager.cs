@@ -1,10 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.XR.ARSubsystems;
+﻿using System.Collections.Generic;
+using HoloWatch;
+using NavKeypad;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 namespace Decraft {
     public class DecraftManager : MonoBehaviour {
         [SerializeField] private ConfigurableJoint targetJoint;
+        [SerializeField] private Keypad keypad;
         private int currentCount;
 
         public XRGrabInteractable key;
@@ -18,6 +21,8 @@ namespace Decraft {
             currentCount++;
             if (currentCount >= 4) {
                 targetJoint.zMotion = ConfigurableJointMotion.Limited;
+                keypad.capteurAlreadyDo = true;
+                HolowatchUI.Instance.SetNextHints("Badge", new List<string>() {"4-3"});
                 key.enabled = true;
             }
         }

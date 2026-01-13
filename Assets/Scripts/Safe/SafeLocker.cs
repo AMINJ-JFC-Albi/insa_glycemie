@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using HoloWatch;
+using UnityEngine;
 using UnityEngine.XR.Content.Interaction;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -28,14 +30,15 @@ namespace Safe {
             knob.clampedMotion = false;
             led.SetColor("_EmissionColor", Color.green);
             led.color = Color.green;
-            badge.enabled = true;
+            HolowatchUI.Instance.SetNextHints("Badge", new List<string>() { "4-5" });
         }
 
         private void OnKnobTurned(float value) {
-            if (Mathf.Abs(value) >= 10) {
+            if (Mathf.Abs(value) >= 90) {
                 knob.onValueChange.RemoveListener(OnKnobTurned);
                 knob.enabled = false;
                 grab.enabled = true;
+                badge.enabled = true;
             }
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HoloWatch;
+using NavKeypad;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -7,6 +8,7 @@ namespace Cryptex {
     public class CryptexManager : MonoBehaviour {
         [SerializeField] private CryptexWheel[] wheels;
         [SerializeField] private GameObject retainer;
+        [SerializeField] private Keypad keypad;
         private string correctWord = "CAPILLAIRE";
         
         private void Update() {
@@ -49,7 +51,8 @@ namespace Cryptex {
                 meshCollider.convex = true;
                 grabInteractable.colliders.Add(meshCollider);
             }
-            HolowatchUI.Instance.SetNextHints("Password", new List<string>() {"3-2"});
+            HolowatchUI.Instance.SetNextHints("Password", new List<string>() {"3-3"});
+            keypad.cryptexAlreadyOpen = true;
         }
     }
 }

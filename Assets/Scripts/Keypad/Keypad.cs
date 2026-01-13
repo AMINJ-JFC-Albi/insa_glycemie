@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using HoloWatch;
+using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -50,11 +51,10 @@ namespace NavKeypad {
             ClearInput();
             panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
 
-            if (isWithCasette)
-            {
+            if (isWithCasette) {
                 casette.enabled = false;
             }
-            }
+        }
 
 
         //Gets value from pressedbutton
@@ -120,18 +120,29 @@ namespace NavKeypad {
             audioSource.PlayOneShot(accessGrantedSfx);
             casette.enabled = true;
         }
-
+        
+        public bool capteurAlreadyDo;
         public void AccessGrantedDoor() {
             HolowatchUI.Instance.AddMessage("GlycemieMain", "Urgence");
             HolowatchUI.Instance.CompleteObjective("Door");
             HolowatchUI.Instance.StartObjective("Password");
-            HolowatchUI.Instance.SetNextHints("Password", new List<string>() { "3-1" });
+            if (!open) {
+                HolowatchUI.Instance.SetNextHints("Password", new List<string>() { "3-1" });
+            }
             HolowatchUI.Instance.StartObjective("Badge");
-            HolowatchUI.Instance.SetNextHints("Badge", new List<string>() { "4-1", "4-2" });
+            if (!capteurAlreadyDo) {
+                HolowatchUI.Instance.SetNextHints("Badge", new List<string>() { "4-1", "4-2" });
+            }
         }
         
+        private bool open;
+        public bool cryptexAlreadyOpen;
         public void AccessGrantedCasier() {
+            open = true;
             GetComponentInParent<ConfigurableJoint>().zMotion = ConfigurableJointMotion.Limited;
+            if (!cryptexAlreadyOpen) {
+                HolowatchUI.Instance.SetNextHints("Password", new List<string>() { "3-2" });
+            }
         }
     }
 }

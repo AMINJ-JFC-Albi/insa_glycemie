@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoloWatch.ObjectiveData
   objectiveId: Badge
   title: "S\u2019authentifier sur le tablette avec le badge"
-  conversationName: ???
+  conversationName: Trouver le badge
   conversationAvatar: {fileID: 0}
   conversation:
   - sender: 0
@@ -23,16 +23,17 @@ MonoBehaviour:
       le capteur."
   - sender: 0
     messageId: 4-2
-    content: "Associe chaque pi\xE8ce \xE0 sa fonction correctement."
+    content: "Utilise deux mains pour retirer les pi\xE8ces et les mettre dans le
+      bon tiroir."
   - sender: 0
     messageId: 4-3
-    content: "Utilise la cl\xE9 sur la cloche."
+    content: "Le tiroir du milieu bureau dans le laboratoire est ouvert, utilise
+      la cl\xE9 dans la serrure pr\xE9sent dans le bureau du docteur."
   - sender: 0
     messageId: 4-4
-    content: "Lis l\u2019affiche au mur, juste au-dessus de la cloche."
+    content: "L'affiche \xE0 c\xF4t\xE9 t'indique la diff\xE9rence entre les courbes.
+      Choisit la bonne image avec le joystick et valide avec le bouton."
   - sender: 0
     messageId: 4-5
-    content: "Le tiroir \xE0 manivelle est maintenant accessible, prends le badge."
-  - sender: 0
-    messageId: 4-6
-    content: Passe le badge sur le lecteur et attends la validation.
+    content: "Le coffre est maintenant accessible, prends le badge \xE0 l'int\xE9rieur
+      et passe le sur le lecteur jusqu'\xE0 validation."
