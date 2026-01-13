@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using HoloWatch;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Samples.SpatialKeyboard;
@@ -42,6 +43,7 @@ public class TabletManager : MonoBehaviour {
         
         cleaned = cleaned.Normalize(NormalizationForm.FormC);
         if (secondStep.activeSelf && string.Equals(cleaned.Trim(), "care", System.StringComparison.OrdinalIgnoreCase)) {
+            HolowatchUI.Instance.CompleteObjective("Password");
             secondStep.SetActive(false);
             thirdStep.SetActive(true);
         }

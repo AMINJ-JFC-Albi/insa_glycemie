@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
         if (oneTime) return;
         oneTime = true;
         HolowatchUI.Instance.AddMessage(objIds[0], "Bravo");
+        HolowatchUI.Instance.CompleteObjective("GlycemieMain");
     }
 
     IEnumerator LoadSceneVR(string sceneName) {

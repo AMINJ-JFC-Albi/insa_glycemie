@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using HoloWatch;
 using UnityEngine;
 
 namespace RFID {
@@ -61,7 +62,7 @@ namespace RFID {
             done = true;
             indicatorMaterial.EnableKeyword("_EMISSION");
             indicatorMaterial.SetColor("_EmissionColor", Color.green);
-
+            HolowatchUI.Instance.CompleteObjective("Badge");
             Success();
         }
 
