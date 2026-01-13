@@ -7296,23 +7296,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.4008
+      value: 7.395
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.70726115
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.021491457
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.027209431
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7071068
+      value: -0.7061016
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7324,15 +7324,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -3.947
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.467
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: -89.89
       objectReference: {fileID: 0}
     - target: {fileID: 1330418954438926887, guid: 52b90126659fcc64a8958714098f62ee, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -8264,6 +8264,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1301039325}
     - target: {fileID: 6985616814336841083, guid: 558fae54d6a4a32488cb29ee3b511ebd, type: 3}
+      propertyPath: cassette
+      value: 
+      objectReference: {fileID: 1301039325}
+    - target: {fileID: 6985616814336841083, guid: 558fae54d6a4a32488cb29ee3b511ebd, type: 3}
       propertyPath: keypadCombo
       value: 14
       objectReference: {fileID: 0}
@@ -9141,6 +9145,10 @@ PrefabInstance:
     - target: {fileID: 541110116069777260, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
       propertyPath: m_Name
       value: VRController
+      objectReference: {fileID: 0}
+    - target: {fileID: 773256516650542585, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4066791778295950784, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
       propertyPath: m_RaycastMask.m_Bits

@@ -6,6 +6,7 @@ using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.OpenXR.NativeTypes;
@@ -45,14 +46,14 @@ namespace NavKeypad {
 
         public Boolean isWithCasette = false;
 
-        public XRGrabInteractable casette;
+        public XRGrabInteractable cassette;
 
         private void Awake() {
             ClearInput();
             panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
 
             if (isWithCasette) {
-                casette.enabled = false;
+                cassette.enabled = false;
             }
         }
 
@@ -118,7 +119,6 @@ namespace NavKeypad {
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
-            casette.enabled = true;
         }
         
         public bool capteurAlreadyDo;
@@ -143,6 +143,7 @@ namespace NavKeypad {
             if (!cryptexAlreadyOpen) {
                 HolowatchUI.Instance.SetNextHints("Password", new List<string>() { "3-2" });
             }
+            cassette.enabled = true;
         }
     }
 }
