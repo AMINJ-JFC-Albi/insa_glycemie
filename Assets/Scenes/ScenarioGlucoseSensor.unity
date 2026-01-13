@@ -1707,7 +1707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252629911600637343, guid: 6998e2a36d20380439d40eebd4359701, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.062
+      value: -3.0705
       objectReference: {fileID: 0}
     - target: {fileID: 252629911600637343, guid: 6998e2a36d20380439d40eebd4359701, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2072,7 +2072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 631201435127038174, guid: 81d2d715b3faebe44a29f4d98ea1609d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.159
       objectReference: {fileID: 0}
     - target: {fileID: 631201435127038174, guid: 81d2d715b3faebe44a29f4d98ea1609d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8859,6 +8859,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 273022100684368210, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 2147498913
+      objectReference: {fileID: 0}
     - target: {fileID: 541110116069777260, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
       propertyPath: m_Name
       value: VRController
@@ -8906,6 +8910,10 @@ PrefabInstance:
     - target: {fileID: 7664305851068346874, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084800330211076872, guid: c1430c7ed5a557b46b02a4d985aa1e55, type: 3}
+      propertyPath: m_PhysicsLayerMask.m_Bits
+      value: 15233
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11314,6 +11322,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: -850148085407719726, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -850148085407719726, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -850148085407719726, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -850148085407719726, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -850148085407719726, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -850148085407719726, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12482e7c3592d1446996efb8f3da6feb, type: 3}
       propertyPath: m_Name
       value: 'sol niveau innov '
@@ -11886,8 +11918,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.01, z: 0.009938301}
-  m_Center: {x: -0.0012506032, y: -3.9272904e-11, z: 0.0045308513}
+  m_Size: {x: 0.01, y: 0.01, z: 0.0078125}
+  m_Center: {x: 0, y: 0, z: 0.0032}
 --- !u!65 &2012264517
 BoxCollider:
   m_ObjectHideFlags: 0
